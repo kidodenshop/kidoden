@@ -58,19 +58,26 @@ export default function Home() {
       {/* Features Banner */}
       <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white text-center">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight mb-12">
+          <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight mb-2">
             Why Parents Trust Kidoden 💛
           </h2>
-          <div className="bg-[#fffbf9] rounded-3xl border border-brand-mint/10 p-6 lg:p-8 flex flex-col md:flex-row flex-wrap justify-between items-start gap-6 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-brand-mint/10">
+          <p className="text-brand-pink font-bold text-sm mb-10">Trusted by 100+ happy parents</p>
+
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
               { emoji: "👶", title: "Skin-safe & baby-friendly materials" },
               { emoji: "🚚", title: "Fast delivery across India" },
               { emoji: "💰", title: "Cash on Delivery available" },
               { emoji: "🔄", title: "Easy 7-day returns" },
               { emoji: "⭐", title: "Loved by growing families" },
-            ].map(({ emoji, title }) => (
-              <div key={title} className="flex flex-col items-center gap-3 px-2 lg:px-4 w-full md:w-1/5 py-4 md:py-0 text-center">
-                <div className="w-14 h-14 rounded-full bg-brand-yellow/10 flex items-center justify-center flex-shrink-0 text-3xl">
+            ].map(({ emoji, title }, i) => (
+              <div
+                key={title}
+                className={`flex flex-col items-center gap-3 p-5 bg-[#fffbf9] rounded-3xl border border-brand-mint/10 text-center ${
+                  i === 4 ? "col-span-2 md:col-span-1" : ""
+                }`}
+              >
+                <div className="w-14 h-14 rounded-full bg-brand-yellow/10 flex items-center justify-center text-3xl">
                   {emoji}
                 </div>
                 <h4 className="font-extrabold text-brand-navy text-sm leading-snug">{title}</h4>
