@@ -76,7 +76,7 @@ export default function Home() {
             Why Parents Trust Kidoden <span className="text-yellow-400">💛</span>
           </h2>
           <p className="text-gray-500 mb-1">Loved by 100+ families across India</p>
-          <p className="text-gray-500 mb-8">⭐ 4.8/5 from real parents</p>
+          <p className="text-gray-500 mb-8">⭐ 4.8/5 from our lovely parents</p>
 
           {/* Feature Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
