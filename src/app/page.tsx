@@ -63,8 +63,8 @@ export default function Home() {
         <svg className="absolute top-12 right-16 w-4 h-4 text-brand-pink" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg className="absolute top-20 right-32 w-3 h-3 text-brand-mint" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         {/* Heart decorations */}
-        <span className="absolute top-24 left-16 text-brand-pink/30 text-2xl">♥</span>
-        <span className="absolute top-32 right-20 text-brand-yellow/40 text-xl">♥</span>
+        <span className="absolute top-24 left-16 text-brand-pink/30 text-2xl hidden md:block">♥</span>
+        <span className="absolute top-32 right-20 text-brand-yellow/40 text-xl hidden md:block">♥</span>
 
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header with heart */}
@@ -152,12 +152,12 @@ export default function Home() {
           <div className="bg-pink-50 rounded-3xl p-6 mb-6 flex items-center justify-between max-w-4xl mx-auto border border-pink-100 border-dashed">
             <div className="flex items-center gap-4">
               <img src="/teddy_logo.png?v=2" alt="Teddy" className="w-12 h-12 object-contain" />
-              <span className="text-brand-pink text-lg">♥</span>
+              <span className="text-brand-pink text-lg hidden md:inline">♥</span>
             </div>
             <p className="text-lg md:text-xl text-brand-navy font-medium">
               Shop with confidence – your little one <span className="text-brand-pink font-bold">deserves the best!</span>
             </p>
-            <div className="flex items-center">
+            <div className="flex items-center hidden md:block">
               <img src="/foot.png?v=2" alt="Footprints" className="w-10 h-10 object-contain" />
             </div>
           </div>
@@ -211,7 +211,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-12">
             <span className="text-brand-yellow text-lg">✦</span>
-            <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight">Most Loved by Little Ones</h2>
+            <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight text-center">Most Loved by Little Ones</h2>
             <span className="text-brand-yellow text-lg">✦</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -244,7 +244,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="text-brand-mint text-lg">♥</span>
-            <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight">Shop by Your Little World</h2>
+            <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight text-center">Shop by Your Little World</h2>
             <span className="text-brand-mint text-lg">♥</span>
           </div>
           <p className="text-center text-gray-500 mb-12 max-w-xl mx-auto">Everything your little family needs, all in one place</p>
