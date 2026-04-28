@@ -8,7 +8,7 @@ interface WhatsAppOrderFormProps {
   productPrice: number;
 }
 
-const WHATSAPP_NUMBER = "917330230702";
+const WHATSAPP_NUMBER = "918397970941";
 
 export default function WhatsAppOrderForm({
   productName,
