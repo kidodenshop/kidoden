@@ -45,7 +45,7 @@ export default function Home() {
           </div>
 
           {/* Right Image Content */}
-          <div className="md:w-1/2 relative w-full max-w-lg mx-auto md:mr-0 z-10">
+          <div className="md:w-1/2 relative w-full max-w-lg mx-auto md:mr-0 z-10 hidden md:block">
             {/* Soft circular glow behind image */}
             <div className="absolute inset-0 bg-brand-pink/10 rounded-full blur-3xl scale-90" />
             <div className="relative w-full aspect-square animate-float" style={{ animationDuration: '6s' }}>
@@ -55,40 +55,122 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Banner */}
-      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white text-center">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight mb-2">
-            Why Parents Trust Kidoden 💛
-          </h2>
-          <p className="text-brand-pink font-bold text-sm mb-10">Trusted by 100+ happy parents</p>
+      {/* Why Parents Love Kidoden */}
+      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white text-center relative overflow-hidden">
+        {/* Decorative elements */}
+        <svg className="absolute top-8 left-12 w-4 h-4 text-brand-mint" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg className="absolute top-16 left-24 w-5 h-5 text-brand-yellow" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg className="absolute top-12 right-16 w-4 h-4 text-brand-pink" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg className="absolute top-20 right-32 w-3 h-3 text-brand-mint" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        {/* Heart decorations */}
+        <span className="absolute top-24 left-16 text-brand-pink/30 text-2xl">♥</span>
+        <span className="absolute top-32 right-20 text-brand-yellow/40 text-xl">♥</span>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {[
-              { emoji: "👶", title: "Skin-safe & baby-friendly materials" },
-              { emoji: "🚚", title: "Fast delivery across India" },
-              { emoji: "💰", title: "Cash on Delivery available" },
-              { emoji: "🔄", title: "Easy 7-day returns" },
-              { emoji: "⭐", title: "Loved by growing families" },
-            ].map(({ emoji, title }, i) => (
-              <div
-                key={title}
-                className={`flex flex-col items-center gap-3 p-5 bg-[#fffbf9] rounded-3xl border border-brand-mint/10 text-center ${
-                  i === 4 ? "col-span-2 md:col-span-1" : ""
-                }`}
-              >
-                <div className="w-14 h-14 rounded-full bg-brand-yellow/10 flex items-center justify-center text-3xl">
-                  {emoji}
-                </div>
-                <h4 className="font-extrabold text-brand-navy text-sm leading-snug">{title}</h4>
-              </div>
-            ))}
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Header with heart */}
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="text-brand-pink text-2xl">♥</span>
           </div>
+
+          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-2">
+            Why Parents Trust Kidoden <span className="text-yellow-400">💛</span>
+          </h2>
+          <p className="text-gray-500 mb-1">Loved by 100+ families across India</p>
+          <p className="text-gray-500 mb-8">⭐ 4.8/5 from real parents</p>
+
+          {/* Feature Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
+            {/* Card 1 - Gentle on delicate skin */}
+            <div className="bg-pink-50 rounded-3xl p-6 text-center relative border border-pink-100">
+              <span className="absolute top-4 right-4 text-brand-pink text-sm">♥</span>
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-pink-100 flex items-center justify-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#FF8FA3]">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M9 10h.01M15 10h.01"/>
+                  <path d="M9 14c1.5 1 4.5 1 6 0"/>
+                </svg>
+              </div>
+              <h3 className="font-bold text-brand-navy mb-2">Gentle on<br/>delicate skin</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">Made with ultra-soft, skin-friendly fabrics perfect for your little one.</p>
+            </div>
+
+            {/* Card 2 - Safe & quick delivery */}
+            <div className="bg-emerald-50 rounded-3xl p-6 text-center relative border border-emerald-100">
+              <span className="absolute top-4 right-4 text-emerald-400 text-sm">♥</span>
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-50 flex items-center justify-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#6EC1E4]">
+                  <rect x="1" y="3" width="15" height="13"/>
+                  <path d="M16 8h4l3 3v5h-7z"/>
+                  <circle cx="5.5" cy="18.5" r="2"/>
+                  <circle cx="18.5" cy="18.5" r="2"/>
+                </svg>
+              </div>
+              <h3 className="font-bold text-brand-navy mb-2">Safe & quick<br/>delivery</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">Carefully packed and delivered safely to your doorstep across India.</p>
+            </div>
+
+            {/* Card 3 - Pay easily with COD */}
+            <div className="bg-amber-50 rounded-3xl p-6 text-center relative border border-amber-100">
+              <span className="absolute top-4 right-4 text-amber-400 text-sm">♥</span>
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-amber-100 flex items-center justify-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#FFD166]">
+                  <rect x="2" y="5" width="20" height="14" rx="2"/>
+                  <path d="M16 12h.01"/>
+                </svg>
+              </div>
+              <h3 className="font-bold text-brand-navy mb-2">Pay easily<br/>with COD</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">Cash on Delivery available for your peace of mind.</p>
+            </div>
+
+            {/* Card 4 - Hassle-free returns */}
+            <div className="bg-violet-50 rounded-3xl p-6 text-center relative border border-violet-100">
+              <span className="absolute top-4 right-4 text-violet-400 text-sm">♥</span>
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-100 flex items-center justify-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#CDB4DB]">
+                  <path d="M21 12a9 9 0 1 1-3-6.7"/>
+                  <polyline points="21 3 21 9 15 9"/>
+                </svg>
+              </div>
+              <h3 className="font-bold text-brand-navy mb-2">Hassle-free<br/>returns</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">Easy 2-day returns because we care about your happiness.</p>
+            </div>
+
+            {/* Card 5 - Made with love */}
+            <div className="bg-rose-50 rounded-3xl p-6 text-center relative border border-rose-100">
+              <span className="absolute top-4 right-4 text-rose-400 text-sm">♥</span>
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-rose-100 flex items-center justify-center">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#FF6B6B]">
+                  <path d="M12 21s-6-4.35-9-7.5C1 11 2.5 7.5 6 7.5c2 0 3 1.5 3 1.5s1-1.5 3-1.5c3.5 0 5 3.5 3 6-3 3.15-9 7.5-9 7.5z"/>
+                </svg>
+              </div>
+              <h3 className="font-bold text-brand-navy mb-2">Made with love,<br/>for little ones</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">Thoughtfully designed products made with love and care in every stitch.</p>
+            </div>
+          </div>
+
+          {/* Banner with teddy bear */}
+          <div className="bg-pink-50 rounded-3xl p-6 mb-6 flex items-center justify-between max-w-4xl mx-auto border border-pink-100 border-dashed">
+            <div className="flex items-center gap-4">
+              <img src="/teddy_logo.png?v=2" alt="Teddy" className="w-12 h-12 object-contain" />
+              <span className="text-brand-pink text-lg">♥</span>
+            </div>
+            <p className="text-lg md:text-xl text-brand-navy font-medium">
+              Shop with confidence – your little one <span className="text-brand-pink font-bold">deserves the best!</span>
+            </p>
+            <div className="flex items-center">
+              <img src="/foot.png?v=2" alt="Footprints" className="w-10 h-10 object-contain" />
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <Link href="/shop" className="inline-flex items-center gap-2 bg-brand-pink hover:bg-pink-400 text-white font-bold py-3 px-8 rounded-full transition-colors">
+            Explore Collection <span>→</span>
+          </Link>
         </div>
       </section>
 
       {/* Shop By Category */}
-      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-[#fffbf9] text-center">
+      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-[#fffbf9]">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-12">
             <span className="text-brand-pink text-lg">♥</span>
@@ -125,11 +207,11 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white text-center">
+      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-12">
             <span className="text-brand-yellow text-lg">✦</span>
-            <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight">Featured Treasures</h2>
+            <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight">Most Loved by Little Ones</h2>
             <span className="text-brand-yellow text-lg">✦</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -138,7 +220,7 @@ export default function Home() {
                 <div className="relative h-80 w-full overflow-hidden bg-gray-50">
                   <Image src={product.imageUrl} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" />
                 </div>
-                <div className="p-8">
+                <div className="p-8 text-left">
                   <p className="text-sm font-bold text-brand-pink uppercase tracking-wider mb-3">{product.category}</p>
                   <h3 className="text-xl font-bold text-brand-navy mb-3 line-clamp-1">{product.name}</h3>
                   <div className="flex justify-between items-center mt-6">
@@ -158,7 +240,7 @@ export default function Home() {
       </section>
 
       {/* Shop for Moms & Babies */}
-      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-[#fffbf9] text-center">
+      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-[#fffbf9]">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="text-brand-mint text-lg">♥</span>
@@ -193,6 +275,36 @@ export default function Home() {
                 </span>
               </div>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Value Proposition Section */}
+      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white text-center">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <span className="text-brand-yellow text-2xl">💛</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
+              Made with Love, Designed for Comfort 💛
+            </h2>
+            <span className="text-brand-yellow text-2xl">💛</span>
+          </div>
+          <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            At Kidoden, we believe every child deserves the best. From soft fabrics to safe accessories, every product is carefully selected to keep your little ones happy, comfortable, and stylish.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div className="flex items-center gap-2 bg-brand-pink/10 px-5 py-3 rounded-full">
+              <span className="text-brand-pink text-xl">♥</span>
+              <span className="font-bold text-brand-navy text-sm">Soft Fabrics</span>
+            </div>
+            <div className="flex items-center gap-2 bg-brand-mint/10 px-5 py-3 rounded-full">
+              <span className="text-brand-mint text-xl">✓</span>
+              <span className="font-bold text-brand-navy text-sm">Safe Materials</span>
+            </div>
+            <div className="flex items-center gap-2 bg-brand-yellow/10 px-5 py-3 rounded-full">
+              <span className="text-brand-yellow text-xl">⭐</span>
+              <span className="font-bold text-brand-navy text-sm">Premium Quality</span>
+            </div>
           </div>
         </div>
       </section>

@@ -98,11 +98,10 @@ export default async function ProductDetailPage({
                       {feature}
                     </li>
                   ))}
-                  {product.ageRange && (
-                    <li className="flex items-center gap-3 text-gray-700 font-medium pt-2">
-                      <span className="font-bold text-brand-navy">Age Range:</span> {product.ageRange}
-                    </li>
-                  )}
+                  <li className="flex items-center gap-3 text-gray-700 font-medium pt-2">
+                    <span className="font-bold text-brand-navy">Age Range:</span>{" "}
+                    {product.category === "clothing" && product.ageRange ? product.ageRange : "All ages"}
+                  </li>
                 </ul>
               </div>
             )}
