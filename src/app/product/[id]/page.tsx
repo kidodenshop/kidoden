@@ -134,6 +134,17 @@ export default async function ProductDetailPage({
                 </p>
               </div>
 
+              {/* Return policy banner */}
+              <div className="flex items-center gap-4 bg-brand-pink/10 border border-brand-pink/25 rounded-3xl p-4">
+                <span className="text-3xl flex-shrink-0">↩️</span>
+                <div>
+                  <p className="font-extrabold text-brand-navy text-sm">2-Day Easy Returns</p>
+                  <p className="text-xs text-gray-500 font-medium mt-0.5">
+                    Not happy? Contact us within 2 days of delivery and we&apos;ll make it right — no questions asked.
+                  </p>
+                </div>
+              </div>
+
               {/* Trust badges */}
               <div className="grid grid-cols-2 gap-3">
                 {[

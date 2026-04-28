@@ -120,7 +120,10 @@ export default async function ShopPage({
               <div className="p-6 flex flex-col flex-1">
                 <p className="text-xs font-bold text-brand-pink uppercase tracking-wider mb-2">{product.category}</p>
                 <h3 className="text-lg font-bold text-brand-navy mb-2 flex-grow">{product.name}</h3>
-                <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                <p className="text-xs font-semibold text-gray-500 mb-4 bg-gray-50 inline-block px-3 py-1 rounded-full">
+                  {product.category === 'clothing' && product.ageRange ? `Age: ${product.ageRange}` : 'All ages'}
+                </p>
+                <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-100">
                   <p className="text-2xl font-black text-brand-orange">₹{product.price}</p>
                   <span className="bg-brand-mint/20 text-brand-navy font-bold px-4 py-2 rounded-full group-hover:bg-brand-mint transition-colors text-sm">View</span>
                 </div>

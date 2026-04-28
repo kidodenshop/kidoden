@@ -63,10 +63,10 @@ export default function Home() {
             <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight">Why Choose Kidoden?</h2>
             <span className="text-brand-pink text-lg">♥</span>
           </div>
-        <div className="bg-[#fffbf9] rounded-3xl border border-brand-mint/10 p-6 lg:p-8 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-brand-mint/10">
-          
+        <div className="bg-[#fffbf9] rounded-3xl border border-brand-mint/10 p-6 lg:p-8 flex flex-col md:flex-row justify-between items-start gap-6 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-brand-mint/10">
+
           {/* Feature 1 */}
-          <div className="flex items-center gap-4 px-2 lg:px-6 w-full md:w-1/4">
+          <div className="flex flex-col md:flex-row items-center gap-4 px-2 lg:px-6 w-full md:w-1/4 py-4 md:py-0 text-center">
             <div className="w-14 h-14 rounded-full bg-brand-pink/10 flex items-center justify-center flex-shrink-0">
               <svg className="w-7 h-7 text-brand-red fill-brand-red transform scale-110" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -79,7 +79,7 @@ export default function Home() {
           </div>
 
           {/* Feature 2 */}
-          <div className="flex items-center gap-4 px-2 lg:px-6 w-full md:w-1/4 pt-6 md:pt-0">
+          <div className="flex flex-col md:flex-row items-center gap-4 px-2 lg:px-6 w-full md:w-1/4 py-4 md:py-0 text-center">
             <div className="w-14 h-14 rounded-full bg-brand-mint/10 flex items-center justify-center flex-shrink-0">
               <svg className="w-7 h-7 text-brand-mint transform -rotate-12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 22 12 12"/>
@@ -92,7 +92,7 @@ export default function Home() {
           </div>
 
           {/* Feature 3 */}
-          <div className="flex items-center gap-4 px-2 lg:px-6 w-full md:w-1/4 pt-6 md:pt-0">
+          <div className="flex flex-col md:flex-row items-center gap-4 px-2 lg:px-6 w-full md:w-1/4 py-4 md:py-0 text-center">
             <div className="w-14 h-14 rounded-full bg-brand-yellow/10 flex items-center justify-center flex-shrink-0">
               <svg className="w-7 h-7 text-brand-yellow" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" fill="#fbcd6a" stroke="none"/><path d="m9 12 2 2 4-4" stroke="white" strokeWidth="3" fill="none"/>
@@ -105,7 +105,7 @@ export default function Home() {
           </div>
 
           {/* Feature 4 */}
-          <div className="flex items-center gap-4 px-2 lg:px-6 w-full md:w-1/4 pt-6 md:pt-0">
+          <div className="flex flex-col md:flex-row items-center gap-4 px-2 lg:px-6 w-full md:w-1/4 py-4 md:py-0 text-center">
             <div className="w-14 h-14 rounded-full bg-brand-purple/10 flex items-center justify-center flex-shrink-0">
               <svg className="w-7 h-7 text-brand-purple" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/><path d="M14 9h4l4 4v4c0 .6-.4 1-1 1h-2"/><circle cx="7" cy="18" r="2"/><path d="M15 18H9"/><circle cx="17" cy="18" r="2"/>
