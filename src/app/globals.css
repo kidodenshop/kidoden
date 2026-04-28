@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-brand-navy: #1a4263;
+  --color-brand-yellow: #fbcd6a;
+  --color-brand-pink: #f0959f;
+  --color-brand-mint: #8bcbc8;
+  --color-brand-purple: #aea3cc;
+  --color-brand-orange: #f79c6d;
+  --color-brand-red: #f38f9f;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-background: #fffbf9; /* Soft cream background */
+  --color-foreground: #171717;
+  
+  --font-sans: var(--font-quicksand), var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  
+  --animate-float: float 6s ease-in-out infinite;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 }
+
+:root {
+  --background: #fffbf9;
+  --foreground: #1a4263;
+}
+
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Hide scrollbar for clean horizontal scrolling */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide Next.js devtools indicator */
+[data-nextjs-dev-indicator] {
+  display: none !important;
 }
