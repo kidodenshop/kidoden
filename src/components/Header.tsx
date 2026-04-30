@@ -5,7 +5,7 @@ import MobileMenu from "@/components/MobileMenu";
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white md:bg-white/80 md:backdrop-blur-md border-b border-brand-mint/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:pl-0 lg:pl-0">
         <div className="flex justify-between items-center h-20">
           <Link href="/" className="flex items-center group">
             <div className="relative w-36 h-16 sm:w-44 sm:h-20 -ml-2 group-hover:scale-105 transition-transform">
