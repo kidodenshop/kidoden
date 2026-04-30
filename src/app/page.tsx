@@ -8,25 +8,33 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-pink-50 via-white to-mint-50">
 
-        {/* Cloud decorations */}
-        <svg className="absolute top-8 left-8 w-20 h-12 text-brand-mint opacity-40" viewBox="0 0 100 60" fill="currentColor"><ellipse cx="50" cy="45" rx="45" ry="18"/><ellipse cx="30" cy="38" rx="22" ry="18"/><ellipse cx="65" cy="35" rx="25" ry="20"/></svg>
-        <svg className="absolute top-16 right-24 w-24 h-14 text-brand-pink opacity-30" viewBox="0 0 100 60" fill="currentColor"><ellipse cx="50" cy="45" rx="45" ry="18"/><ellipse cx="30" cy="38" rx="22" ry="18"/><ellipse cx="65" cy="35" rx="25" ry="20"/></svg>
-        <svg className="absolute bottom-24 left-1/3 w-16 h-10 text-brand-yellow opacity-30" viewBox="0 0 100 60" fill="currentColor"><ellipse cx="50" cy="45" rx="45" ry="18"/><ellipse cx="30" cy="38" rx="22" ry="18"/><ellipse cx="65" cy="35" rx="25" ry="20"/></svg>
+        {/* Cloud decorations - hidden on mobile */}
+        <svg className="absolute top-8 left-8 w-20 h-12 text-brand-mint opacity-40 hidden md:block" viewBox="0 0 100 60" fill="currentColor"><ellipse cx="50" cy="45" rx="45" ry="18"/><ellipse cx="30" cy="38" rx="22" ry="18"/><ellipse cx="65" cy="35" rx="25" ry="20"/></svg>
+        <svg className="absolute top-16 right-24 w-24 h-14 text-brand-pink opacity-30 hidden md:block" viewBox="0 0 100 60" fill="currentColor"><ellipse cx="50" cy="45" rx="45" ry="18"/><ellipse cx="30" cy="38" rx="22" ry="18"/><ellipse cx="65" cy="35" rx="25" ry="20"/></svg>
+        <svg className="absolute bottom-24 left-1/3 w-16 h-10 text-brand-yellow opacity-30 hidden md:block" viewBox="0 0 100 60" fill="currentColor"><ellipse cx="50" cy="45" rx="45" ry="18"/><ellipse cx="30" cy="38" rx="22" ry="18"/><ellipse cx="65" cy="35" rx="25" ry="20"/></svg>
 
-        {/* Star decorations */}
-        <svg className="absolute top-10 left-1/3 w-5 h-5 text-brand-yellow animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        {/* Star decorations - reduced on mobile */}
+        <svg className="absolute top-10 left-1/3 w-5 h-5 text-brand-yellow animate-pulse hidden md:block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         <svg className="absolute top-1/3 left-6 w-4 h-4 text-brand-pink animate-pulse" style={{ animationDelay: '0.5s' }} fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg className="absolute top-20 right-1/3 w-6 h-6 text-brand-mint animate-pulse" style={{ animationDelay: '1s' }} fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg className="absolute bottom-20 right-10 w-5 h-5 text-brand-yellow animate-pulse" style={{ animationDelay: '1.5s' }} fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg className="absolute bottom-16 left-16 w-4 h-4 text-brand-purple animate-pulse" style={{ animationDelay: '2s' }} fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg className="absolute top-20 right-1/3 w-6 h-6 text-brand-mint animate-pulse hidden md:block" style={{ animationDelay: '1s' }} fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg className="absolute bottom-20 right-10 w-5 h-5 text-brand-yellow animate-pulse hidden md:block" style={{ animationDelay: '1.5s' }} fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg className="absolute bottom-16 left-16 w-4 h-4 text-brand-purple animate-pulse hidden md:block" style={{ animationDelay: '2s' }} fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+
+        {/* Additional decorative shapes - hidden on mobile */}
+        <svg className="absolute top-1/4 right-10 w-8 h-8 text-brand-pink opacity-20 animate-pulse hidden md:block" style={{ animationDelay: '2.5s' }} fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+        <svg className="absolute bottom-1/4 left-1/4 w-6 h-6 text-brand-mint opacity-25 animate-pulse hidden md:block" style={{ animationDelay: '3s' }} fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+        <svg className="absolute top-1/2 right-1/4 w-5 h-5 text-brand-yellow opacity-30 animate-pulse hidden md:block" style={{ animationDelay: '1.8s' }} fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+        <svg className="absolute bottom-10 right-1/3 w-4 h-4 text-brand-purple opacity-20 animate-pulse hidden md:block" style={{ animationDelay: '2.2s' }} fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <svg className="absolute top-1/3 right-1/2 w-3 h-3 text-brand-pink opacity-20 animate-pulse hidden md:block" style={{ animationDelay: '2.8s' }} fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <svg className="absolute bottom-1/3 left-1/2 w-3 h-3 text-brand-mint opacity-20 animate-pulse hidden md:block" style={{ animationDelay: '3.2s' }} fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
 
         <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
           {/* Left Text Content */}
           <div className="md:w-1/2 flex flex-col items-start text-left">
             <div className="flex items-center gap-2 mb-6">
-              <span className="text-brand-pink text-xl">♥</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#f0959f"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
               <span className="text-brand-pink font-bold tracking-widest text-sm uppercase">Hello Little One!</span>
             </div>
 
@@ -42,6 +50,22 @@ export default function Home() {
             <Link href="/shop" className="bg-brand-pink hover:bg-pink-400 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-lg flex items-center gap-3">
               SHOP NOW <span>→</span>
             </Link>
+
+            {/* Trust Strip */}
+            <div className="flex flex-wrap justify-center gap-3 mt-6 text-sm">
+              <div className="flex items-center gap-2 bg-brand-mint/10 text-black px-4 py-2 rounded-full">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2"/><circle cx="18.5" cy="18.5" r="2"/></svg>
+                <span className="font-medium">Free Delivery</span>
+              </div>
+              <div className="flex items-center gap-2 bg-brand-mint/10 text-black px-4 py-2 rounded-full">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h.01"/></svg>
+                <span className="font-medium">Cash on Delivery</span>
+              </div>
+              <div className="flex items-center gap-2 bg-brand-mint/10 text-black px-4 py-2 rounded-full">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
+                <span className="font-medium">Easy Returns</span>
+              </div>
+            </div>
           </div>
 
           {/* Right Image Content */}
@@ -58,31 +82,33 @@ export default function Home() {
       {/* Why Parents Love Kidoden */}
       <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white text-center relative overflow-hidden">
         {/* Decorative elements */}
-        <svg className="absolute top-8 left-12 w-4 h-4 text-brand-mint" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg className="absolute top-16 left-24 w-5 h-5 text-brand-yellow" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg className="absolute top-12 right-16 w-4 h-4 text-brand-pink" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg className="absolute top-20 right-32 w-3 h-3 text-brand-mint" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg className="absolute top-8 left-12 w-4 h-4 text-brand-mint" fill="currentColor" viewBox="0 0 24 24" style={{ fontFamily: 'var(--font-quicksand)' }}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg className="absolute top-16 left-24 w-5 h-5 text-brand-yellow" fill="currentColor" viewBox="0 0 24 24" style={{ fontFamily: 'var(--font-quicksand)' }}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg className="absolute top-12 right-16 w-4 h-4 text-brand-pink" fill="currentColor" viewBox="0 0 24 24" style={{ fontFamily: 'var(--font-quicksand)' }}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg className="absolute top-20 right-32 w-3 h-3 text-brand-mint" fill="currentColor" viewBox="0 0 24 24" style={{ fontFamily: 'var(--font-quicksand)' }}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         {/* Heart decorations */}
-        <span className="absolute top-24 left-16 text-brand-pink/30 text-2xl hidden md:block">♥</span>
-        <span className="absolute top-32 right-20 text-brand-yellow/40 text-xl hidden md:block">♥</span>
+        <span className="absolute top-24 left-16 text-brand-pink/30 text-2xl hidden md:block"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+        <span className="absolute top-32 right-20 text-brand-yellow/40 text-xl hidden md:block"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
 
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header with heart */}
           <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="text-brand-pink text-2xl">♥</span>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#f0959f">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
           </div>
 
           <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-2">
-            Why Parents Trust Kidoden <span className="text-yellow-400">💛</span>
+            Why Parents Trust Kidoden <svg width="24" height="24" viewBox="0 0 24 24" fill="#fbcd6a" className="inline-block align-middle ml-1"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           </h2>
           <p className="text-gray-500 mb-1">Loved by 100+ families across India</p>
-          <p className="text-gray-500 mb-8">⭐ 4.8/5 from our lovely parents</p>
+          <p className="text-gray-500 mb-8"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fbcd6a" className="inline-block align-middle mr-1"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg> 4.8/5 from our lovely parents</p>
 
           {/* Feature Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
             {/* Card 1 - Gentle on delicate skin */}
             <div className="bg-pink-50 rounded-3xl p-6 text-center relative border border-pink-100">
-              <span className="absolute top-4 right-4 text-brand-pink text-2xl">♥</span>
+              <span className="absolute top-4 right-4 text-brand-pink text-2xl"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
               <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-pink-100 flex items-center justify-center">
                 <img src="/baby_face.png" alt="Baby face" className="w-[75px] h-[75px] object-contain" />
               </div>
@@ -92,7 +118,7 @@ export default function Home() {
 
             {/* Card 2 - Safe & quick delivery */}
             <div className="bg-emerald-50 rounded-3xl p-6 text-center relative border border-emerald-100">
-              <span className="absolute top-4 right-4 text-emerald-400 text-2xl">♥</span>
+              <span className="absolute top-4 right-4 text-emerald-400 text-2xl"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
               <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-blue-50 flex items-center justify-center">
                 <img src="/truck.png" alt="Truck" className="w-[75px] h-[75px] object-contain" />
               </div>
@@ -102,7 +128,7 @@ export default function Home() {
 
             {/* Card 3 - Pay easily with COD */}
             <div className="bg-amber-50 rounded-3xl p-6 text-center relative border border-amber-100">
-              <span className="absolute top-4 right-4 text-amber-400 text-2xl">♥</span>
+              <span className="absolute top-4 right-4 text-amber-400 text-2xl"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
               <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-amber-100 flex items-center justify-center">
                 <img src="/cash_on_delivery.png" alt="Cash on delivery" className="w-[75px] h-[75px] object-contain" />
               </div>
@@ -112,17 +138,17 @@ export default function Home() {
 
             {/* Card 4 - Hassle-free returns */}
             <div className="bg-violet-50 rounded-3xl p-6 text-center relative border border-violet-100">
-              <span className="absolute top-4 right-4 text-violet-400 text-2xl">♥</span>
+              <span className="absolute top-4 right-4 text-violet-400 text-2xl"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
               <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-purple-100 flex items-center justify-center">
                 <img src="/return.png" alt="Return" className="w-[75px] h-[75px] object-contain" />
               </div>
               <h3 className="font-bold text-brand-navy mb-2">Hassle-free<br/>returns</h3>
-              <p className="text-xs text-gray-500 leading-relaxed">Easy 2-day returns because we care about your happiness.</p>
+              <p className="text-xs text-gray-500 leading-relaxed">Easy 5-day returns because we care about your happiness.</p>
             </div>
 
             {/* Card 5 - Made with love */}
             <div className="bg-rose-50 rounded-3xl p-6 text-center relative border border-rose-100">
-              <span className="absolute top-4 right-4 text-rose-400 text-2xl">♥</span>
+              <span className="absolute top-4 right-4 text-rose-400 text-2xl"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
               <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-rose-100 flex items-center justify-center">
                 <img src="/make_love.png" alt="Made with love" className="w-[75px] h-[75px] object-contain" />
               </div>
@@ -135,7 +161,7 @@ export default function Home() {
           <div className="bg-pink-50 rounded-3xl p-6 mb-6 flex items-center justify-between max-w-4xl mx-auto border border-pink-100 border-dashed">
             <div className="flex items-center gap-4">
               <img src="/teddy_logo.png?v=2" alt="Teddy" className="w-12 h-12 md:w-[70px] md:h-[70px] object-contain" />
-              <span className="text-brand-pink text-lg hidden md:inline">♥</span>
+              <span className="text-brand-pink text-lg hidden md:inline"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
             </div>
             <p className="text-lg md:text-xl text-brand-navy font-medium">
               Shop with confidence – your little one <span className="text-brand-pink font-bold">deserves the best!</span>
@@ -156,9 +182,9 @@ export default function Home() {
       <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-[#fffbf9]">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-12">
-            <span className="text-brand-pink text-lg">♥</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#f0959f"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
             <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight">Shop by Category</h2>
-            <span className="text-brand-pink text-lg">♥</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#f0959f"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Link href="/shop?category=clothing" className="group rounded-[2rem] overflow-hidden relative h-96 shadow-md hover:shadow-2xl transition-all">
@@ -226,9 +252,9 @@ export default function Home() {
       <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-[#fffbf9]">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <span className="text-brand-mint text-lg">♥</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#8bcbc8"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
             <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight text-center">Shop by Your Little World</h2>
-            <span className="text-brand-mint text-lg">♥</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#8bcbc8"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
           </div>
           <p className="text-center text-gray-500 mb-12 max-w-xl mx-auto">Everything your little family needs, all in one place</p>
 
@@ -266,18 +292,18 @@ export default function Home() {
       <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white text-center">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center gap-3 mb-8">
-            <span className="text-brand-yellow text-2xl">💛</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fbcd6a"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight">
-              Made with Love, Designed for Comfort 💛
+              Made with Love, Designed for Comfort <svg width="24" height="24" viewBox="0 0 24 24" fill="#fbcd6a" className="inline-block align-middle ml-1"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             </h2>
-            <span className="text-brand-yellow text-2xl">💛</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fbcd6a"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           </div>
           <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
             At Kidoden, we believe every child deserves the best. From soft fabrics to safe accessories, every product is carefully selected to keep your little ones happy, comfortable, and stylish.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <div className="flex items-center gap-2 bg-brand-pink/10 px-5 py-3 rounded-full">
-              <span className="text-brand-pink text-xl">♥</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#f0959f"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
               <span className="font-bold text-brand-navy text-sm">Soft Fabrics</span>
             </div>
             <div className="flex items-center gap-2 bg-brand-mint/10 px-5 py-3 rounded-full">
@@ -285,7 +311,7 @@ export default function Home() {
               <span className="font-bold text-brand-navy text-sm">Safe Materials</span>
             </div>
             <div className="flex items-center gap-2 bg-brand-yellow/10 px-5 py-3 rounded-full">
-              <span className="text-brand-yellow text-xl">⭐</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fbcd6a"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
               <span className="font-bold text-brand-navy text-sm">Premium Quality</span>
             </div>
           </div>

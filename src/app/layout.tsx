@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
+import { Nunito, Quicksand } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+const nunito = Nunito({
+  variable: "--font-nunito",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
 
 const quicksand = Quicksand({
   variable: "--font-quicksand",
@@ -46,8 +52,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${quicksand.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans selection:bg-brand-yellow selection:text-brand-navy">
+    <html lang="en" className={`${nunito.variable} ${quicksand.variable} h-full antialiased`}>
+      <body className={`${nunito.className} min-h-full flex flex-col font-sans selection:bg-brand-yellow selection:text-brand-navy`}>
         <Header />
         <main className="flex-grow flex flex-col">
           {children}

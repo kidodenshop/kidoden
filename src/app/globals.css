@@ -11,9 +11,7 @@
 
   --color-background: #fffbf9; /* Soft cream background */
   --color-foreground: #171717;
-  
-  --font-sans: var(--font-quicksand), var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  
+
   --animate-float: float 6s ease-in-out infinite;
 
   @keyframes float {
@@ -29,6 +27,7 @@
 :root {
   --background: #fffbf9;
   --foreground: #1a4263;
+  --font-sans: var(--font-nunito), var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 
