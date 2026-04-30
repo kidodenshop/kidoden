@@ -82,13 +82,9 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
             {/* Card 1 - Gentle on delicate skin */}
             <div className="bg-pink-50 rounded-3xl p-6 text-center relative border border-pink-100">
-              <span className="absolute top-4 right-4 text-brand-pink text-sm">♥</span>
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-pink-100 flex items-center justify-center">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#FF8FA3]">
-                  <circle cx="12" cy="12" r="9"/>
-                  <path d="M9 10h.01M15 10h.01"/>
-                  <path d="M9 14c1.5 1 4.5 1 6 0"/>
-                </svg>
+              <span className="absolute top-4 right-4 text-brand-pink text-2xl">♥</span>
+              <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-pink-100 flex items-center justify-center">
+                <img src="/baby_face.png" alt="Baby face" className="w-[75px] h-[75px] object-contain" />
               </div>
               <h3 className="font-bold text-brand-navy mb-2">Gentle on<br/>delicate skin</h3>
               <p className="text-xs text-gray-500 leading-relaxed">Made with ultra-soft, skin-friendly fabrics perfect for your little one.</p>
@@ -96,14 +92,9 @@ export default function Home() {
 
             {/* Card 2 - Safe & quick delivery */}
             <div className="bg-emerald-50 rounded-3xl p-6 text-center relative border border-emerald-100">
-              <span className="absolute top-4 right-4 text-emerald-400 text-sm">♥</span>
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-50 flex items-center justify-center">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#6EC1E4]">
-                  <rect x="1" y="3" width="15" height="13"/>
-                  <path d="M16 8h4l3 3v5h-7z"/>
-                  <circle cx="5.5" cy="18.5" r="2"/>
-                  <circle cx="18.5" cy="18.5" r="2"/>
-                </svg>
+              <span className="absolute top-4 right-4 text-emerald-400 text-2xl">♥</span>
+              <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-blue-50 flex items-center justify-center">
+                <img src="/truck.png" alt="Truck" className="w-[75px] h-[75px] object-contain" />
               </div>
               <h3 className="font-bold text-brand-navy mb-2">Safe & quick<br/>delivery</h3>
               <p className="text-xs text-gray-500 leading-relaxed">Carefully packed and delivered safely to your doorstep across India.</p>
@@ -111,12 +102,9 @@ export default function Home() {
 
             {/* Card 3 - Pay easily with COD */}
             <div className="bg-amber-50 rounded-3xl p-6 text-center relative border border-amber-100">
-              <span className="absolute top-4 right-4 text-amber-400 text-sm">♥</span>
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-amber-100 flex items-center justify-center">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#FFD166]">
-                  <rect x="2" y="5" width="20" height="14" rx="2"/>
-                  <path d="M16 12h.01"/>
-                </svg>
+              <span className="absolute top-4 right-4 text-amber-400 text-2xl">♥</span>
+              <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-amber-100 flex items-center justify-center">
+                <img src="/cash_on_delivery.png" alt="Cash on delivery" className="w-[75px] h-[75px] object-contain" />
               </div>
               <h3 className="font-bold text-brand-navy mb-2">Pay easily<br/>with COD</h3>
               <p className="text-xs text-gray-500 leading-relaxed">Cash on Delivery available for your peace of mind.</p>
@@ -124,12 +112,9 @@ export default function Home() {
 
             {/* Card 4 - Hassle-free returns */}
             <div className="bg-violet-50 rounded-3xl p-6 text-center relative border border-violet-100">
-              <span className="absolute top-4 right-4 text-violet-400 text-sm">♥</span>
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-100 flex items-center justify-center">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#CDB4DB]">
-                  <path d="M21 12a9 9 0 1 1-3-6.7"/>
-                  <polyline points="21 3 21 9 15 9"/>
-                </svg>
+              <span className="absolute top-4 right-4 text-violet-400 text-2xl">♥</span>
+              <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-purple-100 flex items-center justify-center">
+                <img src="/return.png" alt="Return" className="w-[75px] h-[75px] object-contain" />
               </div>
               <h3 className="font-bold text-brand-navy mb-2">Hassle-free<br/>returns</h3>
               <p className="text-xs text-gray-500 leading-relaxed">Easy 2-day returns because we care about your happiness.</p>
@@ -137,11 +122,9 @@ export default function Home() {
 
             {/* Card 5 - Made with love */}
             <div className="bg-rose-50 rounded-3xl p-6 text-center relative border border-rose-100">
-              <span className="absolute top-4 right-4 text-rose-400 text-sm">♥</span>
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-rose-100 flex items-center justify-center">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#FF6B6B]">
-                  <path d="M12 21s-6-4.35-9-7.5C1 11 2.5 7.5 6 7.5c2 0 3 1.5 3 1.5s1-1.5 3-1.5c3.5 0 5 3.5 3 6-3 3.15-9 7.5-9 7.5z"/>
-                </svg>
+              <span className="absolute top-4 right-4 text-rose-400 text-2xl">♥</span>
+              <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-rose-100 flex items-center justify-center">
+                <img src="/make_love.png" alt="Made with love" className="w-[75px] h-[75px] object-contain" />
               </div>
               <h3 className="font-bold text-brand-navy mb-2">Made with love,<br/>for little ones</h3>
               <p className="text-xs text-gray-500 leading-relaxed">Thoughtfully designed products made with love and care in every stitch.</p>
@@ -151,7 +134,7 @@ export default function Home() {
           {/* Banner with teddy bear */}
           <div className="bg-pink-50 rounded-3xl p-6 mb-6 flex items-center justify-between max-w-4xl mx-auto border border-pink-100 border-dashed">
             <div className="flex items-center gap-4">
-              <img src="/teddy_logo.png?v=2" alt="Teddy" className="w-12 h-12 object-contain" />
+              <img src="/teddy_logo.png?v=2" alt="Teddy" className="w-12 h-12 md:w-[70px] md:h-[70px] object-contain" />
               <span className="text-brand-pink text-lg hidden md:inline">♥</span>
             </div>
             <p className="text-lg md:text-xl text-brand-navy font-medium">
