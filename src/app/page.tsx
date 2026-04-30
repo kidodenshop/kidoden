@@ -50,9 +50,7 @@ export default function Home() {
             <Link href="/shop" className="bg-brand-pink hover:bg-pink-400 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-lg flex items-center gap-3">
               SHOP NOW <span>→</span>
             </Link>
-
-            
-
+          </div>
           {/* Right Image Content */}
           <div className="md:w-1/2 relative w-full max-w-lg mx-auto md:mr-0 z-10 hidden md:block">
             {/* Soft circular glow behind image */}
