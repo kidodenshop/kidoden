@@ -379,7 +379,7 @@ export default function ComingSoonPage() {
           {/* Logo */}
           <div className="cs-logo">
             <Image
-              src="/brand_logo-new.png"
+              src="/logo/Brand_logo.png"
               alt="Kidoden"
               width={200}
               height={64}
