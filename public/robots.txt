@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://kidoden.in
+Host: kidoden.in
 
 # Sitemaps
 Sitemap: https://kidoden.in/sitemap.xml
