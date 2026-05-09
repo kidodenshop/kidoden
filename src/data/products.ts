@@ -53,7 +53,8 @@ export const products: Product[] = [
     category: "clothing",
     imageUrl: "/clothe/clo-4.jpeg",
     ageRange: "2-8 years",
-    features: ["Soft Cotton", "Machine washable", "Comfortable fit"]
+    features: ["Soft Cotton", "Machine washable", "Comfortable fit"],
+    isFeatured: true
   },
   {
     id: "c-5",
@@ -63,7 +64,8 @@ export const products: Product[] = [
     category: "clothing",
     imageUrl: "/clothe/clo-5.jpeg",
     ageRange: "2-8 years",
-    features: ["Breathable fabric", "Machine washable", "Comfortable fit"]
+    features: ["Breathable fabric", "Machine washable", "Comfortable fit"],
+    isFeatured: true
   },
   {
     id: "j-1",
@@ -104,7 +106,8 @@ export const products: Product[] = [
     category: "nails",
     imageUrl: "/nails/nails-1.jpeg",
     ageRange: "6-15 years",
-    features: ["Non-toxic adhesive", "Peel-off removal", "Water resistant"]
+    features: ["Non-toxic adhesive", "Peel-off removal", "Water resistant"],
+    isFeatured: true
   },
   {
     id: "n-2",
@@ -114,7 +117,8 @@ export const products: Product[] = [
     category: "nails",
     imageUrl: "/nails/nails-2.jpeg",
     ageRange: "7-16 years",
-    features: ["Pre-glued", "Reusable", "Variety of sizes"]
+    features: ["Pre-glued", "Reusable", "Variety of sizes"],
+    isFeatured: true
   },
   {
     id: "n-3",

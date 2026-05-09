@@ -1,477 +1,273 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { products } from "@/data/products";
+import HeroSlider from "@/components/HeroSlider";
+import ProductSlider from "@/components/ProductSlider";
 
-export default function ComingSoonPage() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubmitted(true);
-    }
-  }
+export default function Home() {
+  const featuredProducts = products.filter((p) => p.isFeatured);
 
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+    <div className="flex flex-col min-h-screen bg-white">
+      {/* Modern Hero Slider */}
+      <HeroSlider />
 
-        .cs-page {
-          min-height: 100dvh;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          overflow: hidden;
-          background: linear-gradient(135deg, #fffbf9 0%, #fde8f0 30%, #e8f6f5 60%, #fef6e4 100%);
-          font-family: 'Nunito', sans-serif;
-          padding: 2rem 1rem;
-        }
+      {/* Why Parents Trust Kidoden - Kept exactly as requested */}
+      <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white text-center relative overflow-hidden">
+        {/* Decorative elements */}
+        <svg className="absolute top-8 left-12 w-4 h-4 text-brand-mint" fill="currentColor" viewBox="0 0 24 24" style={{ fontFamily: 'var(--font-quicksand)' }}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+        <svg className="absolute top-16 left-24 w-5 h-5 text-brand-yellow" fill="currentColor" viewBox="0 0 24 24" style={{ fontFamily: 'var(--font-quicksand)' }}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+        <svg className="absolute top-12 right-16 w-4 h-4 text-brand-pink" fill="currentColor" viewBox="0 0 24 24" style={{ fontFamily: 'var(--font-quicksand)' }}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+        <svg className="absolute top-20 right-32 w-3 h-3 text-brand-mint" fill="currentColor" viewBox="0 0 24 24" style={{ fontFamily: 'var(--font-quicksand)' }}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+        {/* Heart decorations */}
+        <span className="absolute top-24 left-16 text-brand-pink/30 text-2xl hidden md:block"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg></span>
+        <span className="absolute top-32 right-20 text-brand-yellow/40 text-xl hidden md:block"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg></span>
 
-        .cs-blob {
-          position: absolute;
-          border-radius: 50%;
-          filter: blur(80px);
-          opacity: 0.35;
-          animation: blobFloat 8s ease-in-out infinite;
-        }
-        .cs-blob-1 {
-          width: 600px; height: 600px;
-          background: radial-gradient(circle, #f0959f, #fbcd6a);
-          top: -200px; left: -200px;
-          animation-delay: 0s;
-        }
-        .cs-blob-2 {
-          width: 500px; height: 500px;
-          background: radial-gradient(circle, #8bcbc8, #aea3cc);
-          bottom: -150px; right: -150px;
-          animation-delay: -4s;
-        }
-        .cs-blob-3 {
-          width: 350px; height: 350px;
-          background: radial-gradient(circle, #fbcd6a, #f0959f);
-          top: 40%; left: 60%;
-          animation-delay: -2s;
-        }
-
-        @keyframes blobFloat {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          33% { transform: translate(30px, -30px) scale(1.05); }
-          66% { transform: translate(-20px, 20px) scale(0.95); }
-        }
-
-        .cs-float {
-          position: absolute;
-          animation: floatUp 6s ease-in-out infinite;
-          pointer-events: none;
-          user-select: none;
-        }
-        @keyframes floatUp {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-18px) rotate(8deg); }
-        }
-
-        .cs-card {
-          position: relative;
-          z-index: 10;
-          background: rgba(255,255,255,0.72);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1.5px solid rgba(255,255,255,0.9);
-          border-radius: 2.5rem;
-          padding: 3rem 2.5rem;
-          max-width: 680px;
-          width: 100%;
-          box-shadow:
-            0 8px 32px rgba(240,149,159,0.18),
-            0 2px 8px rgba(26,66,99,0.08),
-            inset 0 1px 0 rgba(255,255,255,0.9);
-          text-align: center;
-        }
-
-        .cs-logo {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 1.5rem;
-        }
-
-        .cs-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          background: linear-gradient(135deg, #fde8f0, #fef6e4);
-          border: 1px solid rgba(240,149,159,0.3);
-          border-radius: 100px;
-          padding: 6px 16px;
-          font-size: 0.75rem;
-          font-weight: 700;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: #f0959f;
-          margin-bottom: 1.25rem;
-        }
-
-        .cs-heading {
-          font-size: clamp(2rem, 6vw, 3.25rem);
-          font-weight: 900;
-          color: #1a4263;
-          line-height: 1.15;
-          margin-bottom: 0.75rem;
-          letter-spacing: -0.02em;
-        }
-        .cs-heading .highlight {
-          background: linear-gradient(135deg, #f0959f, #fbcd6a);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        .cs-subheading {
-          font-size: clamp(1rem, 2.5vw, 1.15rem);
-          color: #5a7a91;
-          font-weight: 600;
-          margin-bottom: 1.75rem;
-          line-height: 1.6;
-        }
-
-        .cs-divider {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          margin: 0 auto 1.75rem;
-          max-width: 320px;
-        }
-        .cs-divider-line {
-          flex: 1;
-          height: 1.5px;
-          background: linear-gradient(to right, transparent, rgba(240,149,159,0.4), transparent);
-        }
-
-        .cs-countdown {
-          display: flex;
-          align-items: stretch;
-          justify-content: center;
-          gap: 0.5rem;
-          margin-bottom: 2rem;
-          flex-wrap: wrap;
-        }
-        .cs-unit {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.25rem;
-          min-width: 72px;
-        }
-        .cs-value {
-          background: linear-gradient(135deg, #1a4263, #2a5f8f);
-          color: #fbcd6a;
-          font-size: clamp(1.8rem, 5vw, 2.5rem);
-          font-weight: 900;
-          border-radius: 1rem;
-          width: 72px;
-          height: 72px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 4px 14px rgba(26,66,99,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
-          letter-spacing: -0.02em;
-          font-variant-numeric: tabular-nums;
-        }
-        .cs-label {
-          font-size: 0.65rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          color: #8ba3b5;
-        }
-        .cs-sep {
-          font-size: 2rem;
-          font-weight: 900;
-          color: #f0959f;
-          align-self: flex-start;
-          margin-top: 14px;
-          line-height: 1;
-        }
-
-        .cs-form {
-          display: flex;
-          gap: 0.5rem;
-          max-width: 420px;
-          margin: 0 auto 1.5rem;
-          flex-wrap: wrap;
-        }
-        .cs-input {
-          flex: 1;
-          min-width: 200px;
-          padding: 0.85rem 1.25rem;
-          border-radius: 100px;
-          border: 2px solid rgba(240,149,159,0.3);
-          background: rgba(255,255,255,0.8);
-          font-family: inherit;
-          font-size: 0.95rem;
-          color: #1a4263;
-          outline: none;
-          transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .cs-input:focus {
-          border-color: #f0959f;
-          box-shadow: 0 0 0 4px rgba(240,149,159,0.15);
-        }
-        .cs-input::placeholder { color: #b0c4d0; }
-
-        .cs-btn {
-          padding: 0.85rem 1.5rem;
-          border-radius: 100px;
-          border: none;
-          background: linear-gradient(135deg, #f0959f, #fbcd6a);
-          color: white;
-          font-family: inherit;
-          font-weight: 800;
-          font-size: 0.9rem;
-          cursor: pointer;
-          transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
-          box-shadow: 0 4px 16px rgba(240,149,159,0.4);
-          white-space: nowrap;
-          letter-spacing: 0.02em;
-        }
-        .cs-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(240,149,159,0.5);
-          filter: brightness(1.05);
-        }
-        .cs-btn:active { transform: translateY(0); }
-
-        .cs-success {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          background: linear-gradient(135deg, #e8f6f5, #d4f1ef);
-          border: 1.5px solid #8bcbc8;
-          border-radius: 100px;
-          padding: 0.85rem 1.75rem;
-          color: #1a7c78;
-          font-weight: 700;
-          font-size: 0.95rem;
-          max-width: 420px;
-          margin: 0 auto 1.5rem;
-          animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
-        }
-        @keyframes popIn {
-          0% { transform: scale(0.8); opacity: 0; }
-          100% { transform: scale(1); opacity: 1; }
-        }
-
-        .cs-social {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.75rem;
-          margin-bottom: 1.5rem;
-        }
-        .cs-social-label {
-          font-size: 0.8rem;
-          font-weight: 700;
-          color: #8ba3b5;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-        }
-        .cs-social-link {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          background: rgba(255,255,255,0.8);
-          border: 1.5px solid rgba(240,149,159,0.25);
-          color: #1a4263;
-          text-decoration: none;
-          transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
-          box-shadow: 0 2px 8px rgba(240,149,159,0.1);
-        }
-        .cs-social-link:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 6px 16px rgba(240,149,159,0.3);
-          background: linear-gradient(135deg, #f0959f, #fbcd6a);
-          border-color: transparent;
-          color: white;
-        }
-        .cs-social-link svg { width: 18px; height: 18px; fill: currentColor; }
-
-        .cs-footer {
-          font-size: 0.78rem;
-          color: #b0c4d0;
-          font-weight: 600;
-        }
-        .cs-footer a {
-          color: #f0959f;
-          text-decoration: none;
-          font-weight: 700;
-        }
-        .cs-footer a:hover { text-decoration: underline; }
-
-        .cs-features {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 0.65rem;
-          margin-bottom: 1.75rem;
-        }
-        .cs-feature-pill {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          background: rgba(255,255,255,0.7);
-          border: 1px solid rgba(240,149,159,0.2);
-          border-radius: 100px;
-          padding: 6px 14px;
-          font-size: 0.78rem;
-          font-weight: 700;
-          color: #1a4263;
-          box-shadow: 0 2px 6px rgba(240,149,159,0.1);
-        }
-
-        .cs-notify-label {
-          font-size: 0.82rem;
-          font-weight: 700;
-          color: #8ba3b5;
-          margin-bottom: 0.65rem;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-        }
-
-        @media (max-width: 480px) {
-          .cs-card { padding: 2rem 1.25rem; border-radius: 2rem; }
-          .cs-unit { min-width: 60px; }
-          .cs-value { width: 60px; height: 60px; font-size: 1.5rem; border-radius: 0.75rem; }
-          .cs-form { flex-direction: column; align-items: stretch; }
-          .cs-btn { width: 100%; }
-          .cs-blob-1 { width: 300px; height: 300px; }
-          .cs-blob-2 { width: 250px; height: 250px; }
-          .cs-blob-3 { display: none; }
-          .cs-float { display: none; }
-        }
-      `}</style>
-
-      <div className="cs-page">
-        {/* Background blobs */}
-        <div className="cs-blob cs-blob-1" />
-        <div className="cs-blob cs-blob-2" />
-        <div className="cs-blob cs-blob-3" />
-
-        {/* Floating decorations */}
-        <span className="cs-float" style={{ top: "8%", left: "5%", animationDelay: "0s", fontSize: "2rem" }}>⭐</span>
-        <span className="cs-float" style={{ top: "15%", right: "8%", animationDelay: "1s", fontSize: "1.5rem" }}>💛</span>
-        <span className="cs-float" style={{ bottom: "20%", left: "7%", animationDelay: "2s", fontSize: "1.75rem" }}>✨</span>
-        <span className="cs-float" style={{ bottom: "12%", right: "5%", animationDelay: "0.5s", fontSize: "2rem" }}>🌸</span>
-        <span className="cs-float" style={{ top: "45%", left: "3%", animationDelay: "3s", fontSize: "1.25rem" }}>💕</span>
-        <span className="cs-float" style={{ top: "60%", right: "4%", animationDelay: "1.5s", fontSize: "1.5rem" }}>🧸</span>
-
-        {/* Main Card */}
-        <div className="cs-card">
-          {/* Logo */}
-          <div className="cs-logo">
-            <Image
-              src="/logo/Brand_logo.png"
-              alt="Kidoden"
-              width={200}
-              height={64}
-              style={{ height: 64, width: "auto", objectFit: "contain" }}
-              priority
-            />
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Header with heart */}
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#f0959f">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
           </div>
 
-          {/* Badge */}
-          <div className="cs-badge">
-            <span>🌟</span>
-            Something magical is coming
-          </div>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-2">
+            Why Parents Trust Kidoden <svg width="24" height="24" viewBox="0 0 24 24" fill="#fbcd6a" className="inline-block align-middle ml-1"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+          </h2>
+          <p className="text-gray-500 mb-1">Loved by 100+ families across India</p>
+          <p className="text-gray-500 mb-8"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fbcd6a" className="inline-block align-middle mr-1"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg> 4.8/5 from our lovely parents</p>
 
-          {/* Heading */}
-          <h1 className="cs-heading">
-            We&apos;re getting<br />
-            <span className="highlight">ready for you!</span>
-          </h1>
-
-          <p className="cs-subheading">
-            Soft fabrics, safe accessories &amp; loads of love —<br />
-            crafted for your little ones. Launching very soon! 🎀
-          </p>
-
-          {/* Category pills */}
-          <div className="cs-features">
-            <div className="cs-feature-pill"><span>👗</span> Kids Clothing</div>
-            <div className="cs-feature-pill"><span>🎒</span> Kids Accessories</div>
-            <div className="cs-feature-pill"><span>🍼</span> Newborn Essentials</div>
-          </div>
-
-
-
-          {/* Email signup */}
-          <p className="cs-notify-label">Be the first to know 🎉</p>
-
-          {submitted ? (
-            <div className="cs-success">
-              <span>🎀</span>
-              <span>You&apos;re on the list! We&apos;ll notify you soon.</span>
+          {/* Feature Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
+            {/* Card 1 - Gentle on delicate skin */}
+            <div className="bg-pink-50 rounded-3xl p-6 text-center relative border border-pink-100">
+              <span className="absolute top-4 right-4 text-brand-pink text-2xl"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg></span>
+              <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-pink-100 flex items-center justify-center">
+                <img src="/baby_face.png" alt="Baby face" className="w-[75px] h-[75px] object-contain" />
+              </div>
+              <h3 className="font-bold text-brand-navy mb-2">Gentle on<br />delicate skin</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">Made with ultra-soft, skin-friendly fabrics perfect for your little one.</p>
             </div>
-          ) : (
-            <form className="cs-form" onSubmit={handleSubmit} id="notify-form">
-              <input
-                id="notify-email"
-                type="email"
-                className="cs-input"
-                placeholder="Enter your email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                autoComplete="email"
-              />
-              <button type="submit" className="cs-btn" id="notify-submit">
-                Notify Me ✨
-              </button>
-            </form>
-          )}
 
-          {/* Social links */}
-          <div className="cs-social">
-            <span className="cs-social-label">Follow us</span>
-            <a
-              href="https://www.instagram.com/kidoden_"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cs-social-link"
-              aria-label="Kidoden on Instagram"
-              id="instagram-link"
-            >
-              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
-            </a>
-            <a
-              href="https://wa.me/918397970941?text=Hi%20Kidoden!%20I%27d%20love%20to%20know%20when%20you%20launch%20%F0%9F%8E%80"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cs-social-link"
-              aria-label="Kidoden on WhatsApp"
-              id="whatsapp-link"
-            >
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
-            </a>
+            {/* Card 2 - Safe & quick delivery */}
+            <div className="bg-emerald-50 rounded-3xl p-6 text-center relative border border-emerald-100">
+              <span className="absolute top-4 right-4 text-emerald-400 text-2xl"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg></span>
+              <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-blue-50 flex items-center justify-center">
+                <img src="/truck.png" alt="Truck" className="w-[75px] h-[75px] object-contain" />
+              </div>
+              <h3 className="font-bold text-brand-navy mb-2">Safe & quick<br />delivery</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">Carefully packed and delivered safely to your doorstep across India.</p>
+            </div>
+
+            {/* Card 3 - Pay easily with COD */}
+            <div className="bg-amber-50 rounded-3xl p-6 text-center relative border border-amber-100">
+              <span className="absolute top-4 right-4 text-amber-400 text-2xl"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg></span>
+              <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-amber-100 flex items-center justify-center">
+                <img src="/cash_on_delivery.png" alt="Cash on delivery" className="w-[75px] h-[75px] object-contain" />
+              </div>
+              <h3 className="font-bold text-brand-navy mb-2">Pay easily<br />with COD</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">Cash on Delivery available for your peace of mind.</p>
+            </div>
+
+            {/* Card 4 - Hassle-free returns */}
+            <div className="bg-violet-50 rounded-3xl p-6 text-center relative border border-violet-100">
+              <span className="absolute top-4 right-4 text-violet-400 text-2xl"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg></span>
+              <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-purple-100 flex items-center justify-center">
+                <img src="/return.png" alt="Return" className="w-[75px] h-[75px] object-contain" />
+              </div>
+              <h3 className="font-bold text-brand-navy mb-2">Hassle-free<br />returns</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">Easy 7-day returns because we care about your happiness.</p>
+            </div>
+
+            {/* Card 5 - Made with love */}
+            <div className="bg-rose-50 rounded-3xl p-6 text-center relative border border-rose-100">
+              <span className="absolute top-4 right-4 text-rose-400 text-2xl"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg></span>
+              <div className="w-[100px] h-[100px] mx-auto mb-4 rounded-full bg-rose-100 flex items-center justify-center">
+                <img src="/make_love.png" alt="Made with love" className="w-[75px] h-[75px] object-contain" />
+              </div>
+              <h3 className="font-bold text-brand-navy mb-2">Made with love,<br />for little ones</h3>
+              <p className="text-xs text-gray-500 leading-relaxed">Thoughtfully designed products made with love and care in every stitch.</p>
+            </div>
           </div>
 
-          {/* Footer note */}
-          <p className="cs-footer">
-            Made with 💕 for little ones &nbsp;·&nbsp;{" "}
-            <a href="mailto:kidoden.shop@gmail.com">kidoden.shop@gmail.com</a>
-          </p>
+          {/* Banner with teddy bear */}
+          <div className="bg-pink-50 rounded-3xl p-6 mb-6 flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 md:gap-0 max-w-4xl mx-auto border border-pink-100 border-dashed text-center md:text-left">
+            <div className="flex items-center justify-center gap-4">
+              <img src="/teddy_logo.png?v=2" alt="Teddy" className="w-16 h-16 md:w-[70px] md:h-[70px] object-contain" />
+              <span className="text-brand-pink text-lg hidden md:inline"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg></span>
+            </div>
+            <p className="text-lg md:text-xl text-brand-navy font-medium">
+              Shop with confidence – your little one <br className="block md:hidden" /><span className="text-brand-pink font-bold">deserves the best!</span>
+            </p>
+            <div className="flex items-center hidden md:block">
+              <img src="/foot.png?v=2" alt="Footprints" className="w-10 h-10 object-contain" />
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <Link href="/shop" className="inline-flex items-center gap-2 bg-brand-pink hover:bg-pink-400 text-white font-bold py-3 px-8 rounded-full transition-colors">
+            Explore Collection <span>→</span>
+          </Link>
         </div>
-      </div>
-    </>
+      </section>
+
+      {/* Modernized Shop by Category */}
+      <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-[#fafafa]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">Shop by Category</h2>
+            <div className="w-16 h-1 bg-brand-pink mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-10 max-w-6xl mx-auto">
+            {[
+              { title: "Shop for Boy", image: "/clothe/Homepage/shop-for-boy.png", link: "/shop?category=clothing" },
+              { title: "Shop for Girl", image: "/clothe/Homepage/shop-for-girl.png", link: "/shop?category=clothing" },
+              { title: "Jewellery", image: "/jewellery/shop-by-jewellery.png", link: "/shop?category=jewellery" }
+            ].map((cat) => (
+              <Link key={cat.title} href={cat.link} className="group flex flex-col">
+                <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden mb-5 bg-gray-100">
+                  <Image src={cat.image} alt={cat.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-1 group-hover:text-brand-pink transition-colors">{cat.title}</h3>
+                  <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-semibold group-hover:text-brand-navy transition-colors">
+                    Shop Collection
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Modernized Featured Products */}
+      <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 relative flex flex-col items-center">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">New Arrivals</h2>
+            <div className="w-16 h-1 bg-brand-pink mx-auto rounded-full"></div>
+            <Link href="/shop" className="hidden md:inline-flex absolute right-0 top-1/2 -translate-y-1/2 items-center gap-2 text-brand-navy font-bold hover:text-brand-pink transition-colors">
+              View All <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </Link>
+          </div>
+
+          <ProductSlider products={featuredProducts} />
+
+          <div className="mt-12 text-center md:hidden">
+            <Link href="/shop" className="inline-block border-2 border-brand-navy text-brand-navy font-bold py-3 px-8 rounded-full">
+              View All
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Modern UX: For the Whole Family */}
+      <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">For the Whole Family</h2>
+            <div className="w-16 h-1 bg-brand-yellow rounded-full mb-6"></div>
+            <p className="text-lg text-gray-500 max-w-2xl">Everything you and your little ones need, crafted with love and care.</p>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-6 md:gap-8 items-stretch">
+            {/* Left: Shop for Babies (Large horizontal card) */}
+            <Link href="/shop?category=clothing" className="group w-full lg:w-3/5 flex flex-col sm:flex-row bg-[#fafafa] rounded-[2rem] overflow-hidden hover:shadow-xl transition-all duration-500 border border-gray-100">
+              <div className="w-full sm:w-1/2 p-8 md:p-12 flex flex-col justify-center order-2 sm:order-1">
+                <span className="text-brand-mint font-bold tracking-widest text-xs md:text-sm uppercase mb-4 block">For the Little Ones</span>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-brand-navy mb-4 leading-tight">Shop for Babies</h3>
+                <p className="text-gray-500 mb-8 leading-relaxed">Discover soft, safe, and adorable outfits designed for everyday comfort and play.</p>
+                <div className="flex items-center gap-2 text-brand-navy font-bold group-hover:text-brand-mint transition-colors mt-auto">
+                  Explore Collection <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                </div>
+              </div>
+              <div className="w-full sm:w-1/2 relative min-h-[300px] sm:min-h-[400px] lg:min-h-[480px] order-1 sm:order-2">
+                <Image src="/shop_by/shop_for_baby.png" alt="Shop for Babies" fill className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" />
+              </div>
+            </Link>
+
+            {/* Right: Shop for Moms (Vertical card) */}
+            <Link href="/shop?category=jewellery" className="group w-full lg:w-2/5 flex flex-col bg-[#fffbf9] rounded-[2rem] overflow-hidden hover:shadow-xl transition-all duration-500 border border-pink-50">
+              <div className="w-full relative min-h-[300px] sm:min-h-[350px] lg:flex-1">
+                <Image src="/shop_by/shop_for_mom.png" alt="Shop for Moms" fill className="object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-700 ease-in-out" />
+              </div>
+              <div className="p-8 md:p-10 flex flex-col justify-center flex-none">
+                <span className="text-brand-pink font-bold tracking-widest text-xs md:text-sm uppercase mb-3 block">For You</span>
+                <h3 className="text-2xl md:text-3xl font-extrabold text-brand-navy mb-3">Shop for Moms</h3>
+                <p className="text-gray-500 mb-8 leading-relaxed text-sm md:text-base">Elegant jewellery and beautiful accessories to treat yourself, because you deserve it.</p>
+                <div className="flex items-center gap-2 text-brand-navy font-bold group-hover:text-brand-pink transition-colors mt-auto">
+                  Explore <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Summer Banner Section */}
+      <section className="w-full relative h-[400px] md:h-[500px] overflow-hidden">
+        <Image
+          src="/banner/summer_banner.png"
+          alt="Hello Summer"
+          fill
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 flex items-center justify-end">
+          <div className="bg-black/20 w-full md:w-[55%] h-[60%] md:h-[45%] flex flex-col justify-center items-center text-center px-4 py-8 backdrop-blur-[1px]">
+            <h2 className="text-5xl md:text-7xl font-black text-white tracking-wider mb-2 drop-shadow-md" style={{ fontFamily: 'var(--font-quicksand)' }}>
+              HELLO SUMMER!
+            </h2>
+            <p className="text-xl md:text-3xl text-white font-medium mb-8 drop-shadow-md">
+              A collection that smiles.
+            </p>
+            <Link
+              href="/shop"
+              className="bg-[#f4a28c] hover:bg-[#e3917b] text-white font-bold py-3 px-10 text-sm md:text-base tracking-widest uppercase transition-colors shadow-lg"
+            >
+              Shop Now
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Modernized Value Proposition */}
+      <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-8">
+            Quality without compromise.
+          </h2>
+          <p className="text-lg md:text-2xl text-gray-500 leading-relaxed max-w-3xl mx-auto font-medium mb-16">
+            At Kidoden, we believe every child deserves the best. From soft fabrics to safe accessories, every product is carefully selected.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-[#fafafa] rounded-full flex items-center justify-center mb-6">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4263" strokeWidth="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" /><line x1="7" y1="7" x2="7.01" y2="7" /></svg>
+              </div>
+              <h4 className="font-bold text-xl text-brand-navy mb-2">Premium Quality</h4>
+              <p className="text-gray-500 text-sm">Finest materials for lasting comfort.</p>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-[#fafafa] rounded-full flex items-center justify-center mb-6">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4263" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+              </div>
+              <h4 className="font-bold text-xl text-brand-navy mb-2">Child Safe</h4>
+              <p className="text-gray-500 text-sm">Non-toxic, gentle on delicate skin.</p>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-[#fafafa] rounded-full flex items-center justify-center mb-6">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4263" strokeWidth="2"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+              </div>
+              <h4 className="font-bold text-xl text-brand-navy mb-2">Modern Design</h4>
+              <p className="text-gray-500 text-sm">Thoughtfully crafted styles they'll love.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

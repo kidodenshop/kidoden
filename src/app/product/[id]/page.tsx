@@ -4,7 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { products } from "@/data/products";
 import WhatsAppOrderForm from "@/components/WhatsAppOrderForm";
-
+import AddToCartButton from "@/components/AddToCartButton";
+import ProductSlider from "@/components/ProductSlider";
 export async function generateMetadata({
   params,
 }: {
@@ -163,12 +164,25 @@ export default async function ProductDetailPage({
               </div>
             </div>
 
+            <div className="mb-8">
+              <AddToCartButton product={product} />
+            </div>
+
             <WhatsAppOrderForm
               productName={product.name}
               productCategory={product.category}
               productPrice={product.price}
             />
           </div>
+        </div>
+
+        {/* Most Popular Finds */}
+        <div className="mt-24 mb-12">
+          <div className="text-center mb-10 relative flex flex-col items-center">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">Most Popular Finds</h2>
+            <div className="w-16 h-1 bg-brand-pink mx-auto rounded-full"></div>
+          </div>
+          <ProductSlider products={products.filter((p) => p.isFeatured && p.id !== id)} />
         </div>
       </div>
     </div>

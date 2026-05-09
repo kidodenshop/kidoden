@@ -7,6 +7,7 @@ const links = [
   { href: "/shop?category=clothing", label: "Clothing", emoji: "👗", hover: "hover:bg-brand-mint/10 hover:text-brand-mint" },
   { href: "/shop?category=jewellery", label: "Jewellery", emoji: "💎", hover: "hover:bg-brand-yellow/10 hover:text-brand-yellow" },
   { href: "/shop?category=nails", label: "Nails", emoji: "💅", hover: "hover:bg-brand-purple/10 hover:text-brand-purple" },
+  { href: "/contact", label: "Contact Us", emoji: "📞", hover: "hover:bg-brand-pink/10 hover:text-brand-pink" },
 ];
 
 export default function MobileMenu() {
@@ -36,8 +37,8 @@ export default function MobileMenu() {
 
       {/* Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-72 bg-white z-50 shadow-2xl flex flex-col md:hidden transform transition-transform duration-300 ease-in-out ${
-          open ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-2xl flex flex-col md:hidden transform transition-transform duration-300 ease-in-out ${
+          open ? "translate-x-0" : "-translate-x-full"
         }`}
         role="dialog"
         aria-modal="true"
