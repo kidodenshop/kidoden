@@ -15,7 +15,6 @@ export default function ProductAccordions({
 }: ProductAccordionsProps) {
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     features: true, // Default open the features list
-    howItWorks: false,
     shipping: false,
     returns: false,
   });
@@ -77,53 +76,6 @@ export default function ProductAccordions({
         </div>
       )}
 
-      {/* 2. How Ordering Works */}
-      <div>
-        <button
-          onClick={() => toggleSection("howItWorks")}
-          className={headerClass}
-          aria-expanded={openSections.howItWorks}
-        >
-          <span>How ordering works</span>
-          <svg
-            className={`w-4 h-4 transition-transform duration-300 ${
-              openSections.howItWorks ? "rotate-180" : ""
-            }`}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-
-        <div
-          className={`transition-all duration-300 overflow-hidden ${
-            openSections.howItWorks ? "max-h-96 opacity-100 mb-5" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="bg-brand-mint/10 border border-brand-mint/25 rounded-2xl p-5">
-            <ol className="space-y-2.5">
-              {[
-                "Fill in your delivery details above",
-                "We confirm your order on WhatsApp — usually within the hour",
-                "Receive your order, verify the product, then pay cash. No advance. Ever.",
-              ].map((step, i) => (
-                <li key={i} className="flex items-start gap-3 text-xs md:text-sm text-gray-600 font-medium">
-                  <span className="bg-brand-mint text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-bold flex-shrink-0 mt-0.5">
-                    {i + 1}
-                  </span>
-                  {step}
-                </li>
-              ))}
-            </ol>
-            <p className="text-[11px] text-brand-purple font-semibold mt-3.5 pt-3 border-t border-brand-mint/30">
-              ✨ More checkout options coming very soon — we&apos;re working on it!
-            </p>
-          </div>
-        </div>
-      </div>
 
       {/* 3. Shipping & COD Policy */}
       <div>
