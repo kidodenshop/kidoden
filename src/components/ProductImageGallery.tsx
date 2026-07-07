@@ -63,7 +63,7 @@ export default function ProductImageGallery({ images, name }: ProductImageGaller
   };
 
   return (
-    <div className="flex flex-col-reverse md:flex-row gap-4 w-full">
+    <div className="flex flex-col-reverse md:flex-row gap-4 w-full items-start">
       <style>{`
         @keyframes galleryFadeIn {
           from {

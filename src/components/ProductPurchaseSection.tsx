@@ -14,11 +14,11 @@ export default function ProductPurchaseSection({ product }: { product: Product }
   const inventoryItems = product.inventory || (
     product.category === "clothing"
       ? [
-          { size: "2-3 Years", stockQuantity: 5 },
-          { size: "3-4 Years", stockQuantity: 2 },
-          { size: "5-6 Years", stockQuantity: 0 },
-          { size: "7-8 Years", stockQuantity: 8 }
-        ]
+        { size: "2-3 Years", stockQuantity: 5 },
+        { size: "3-4 Years", stockQuantity: 2 },
+        { size: "5-6 Years", stockQuantity: 0 },
+        { size: "7-8 Years", stockQuantity: 8 }
+      ]
       : [{ size: "Standard", stockQuantity: 10 }]
   );
 
@@ -46,7 +46,7 @@ export default function ProductPurchaseSection({ product }: { product: Product }
       setError("Please select a size");
       return;
     }
-    
+
     const params = new URLSearchParams({
       buyNow: "true",
       productId: product.id,
@@ -88,13 +88,12 @@ export default function ProductPurchaseSection({ product }: { product: Product }
                   setSelectedSize(item.size);
                   setError("");
                 }}
-                className={`relative px-5 py-3 rounded-2xl text-sm font-bold border transition-all cursor-pointer ${
-                  isSelected
-                    ? "bg-brand-pink border-brand-pink text-white shadow-md shadow-pink-100"
-                    : hasNoStock
+                className={`relative px-5 py-3 rounded-2xl text-sm font-bold border transition-all cursor-pointer ${isSelected
+                  ? "bg-brand-pink border-brand-pink text-white shadow-md shadow-pink-100"
+                  : hasNoStock
                     ? "bg-gray-50 border-gray-200 text-gray-400 cursor-not-allowed line-through"
                     : "bg-white border-gray-200 text-brand-navy hover:border-brand-pink hover:text-brand-pink"
-                }`}
+                  }`}
               >
                 {item.size}
                 {hasNoStock && (
@@ -137,7 +136,7 @@ export default function ProductPurchaseSection({ product }: { product: Product }
             disabled
             className="w-full flex items-center justify-center gap-2 font-bold py-4 px-8 rounded-2xl bg-gray-100 border border-gray-200 text-gray-400 cursor-not-allowed shadow-none text-base sm:text-lg"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 8V6a4 4 0 0 1 8 0v2"/><path d="M6 8h12l1.5 12a2 2 0 0 1-2 2h-11a2 2 0 0 1-2 2L6 8Z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 8V6a4 4 0 0 1 8 0v2" /><path d="M6 8h12l1.5 12a2 2 0 0 1-2 2h-11a2 2 0 0 1-2 2L6 8Z" /></svg>
             Choose Size to Add to Cart
           </button>
         ) : isOutOfStock ? (
@@ -154,7 +153,7 @@ export default function ProductPurchaseSection({ product }: { product: Product }
               onClick={handleAddToCart}
               className="flex-1 flex items-center justify-center gap-2 font-bold py-4 px-6 rounded-2xl border-2 border-brand-navy text-brand-navy hover:bg-brand-navy/5 transition-all text-sm sm:text-base cursor-pointer"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M8 8V6a4 4 0 0 1 8 0v2"/><path d="M6 8h12l1.5 12a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2L6 8Z"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M8 8V6a4 4 0 0 1 8 0v2" /><path d="M6 8h12l1.5 12a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2L6 8Z" /></svg>
               Add to Cart
             </button>
             {/* Buy Now */}
@@ -162,7 +161,7 @@ export default function ProductPurchaseSection({ product }: { product: Product }
               onClick={handleBuyNow}
               className="flex-1 flex items-center justify-center gap-2 font-bold py-4 px-6 rounded-2xl bg-brand-pink text-white hover:bg-brand-navy shadow-md shadow-pink-100/50 transition-all text-sm sm:text-base cursor-pointer"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               Buy Now
             </button>
           </div>
@@ -174,9 +173,9 @@ export default function ProductPurchaseSection({ product }: { product: Product }
         <div className="w-full grid grid-cols-4 gap-1.5 sm:gap-2">
           {[
             { src: "/icons/1.svg", text: "Gentle on Delicate Skin" },
-            { src: "/icons/2.svg", text: "Fast & Safe Delivery" },
-            { src: "/icons/3.svg", text: "Premium Gift Box" },
-            { src: "/icons/4.svg", text: "Easy Returns" },
+            { src: "/icons/2.svg", text: "Delivery In 3–5 Days Across India" },
+            { src: "/icons/3.svg", text: "Cash On Delivery Available" },
+            { src: "/icons/4.svg", text: "10 Days Easy Returns" },
           ].map((badge, idx) => (
             <div key={idx} className="flex flex-col items-center text-center">
               <div className="relative w-10 h-10 sm:w-12 sm:h-12 mb-1.5 flex-shrink-0">
