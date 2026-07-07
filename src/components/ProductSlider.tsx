@@ -55,15 +55,24 @@ export default function ProductSlider({ products }: { products: Product[] }) {
                 <Image src={product.imageUrl} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out mix-blend-multiply" />
               </Link>
               <div className="absolute bottom-24 left-4 right-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-                <button 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    addToCart(product);
-                  }}
-                  className="w-full text-center bg-white hover:bg-brand-navy hover:text-white text-brand-navy font-bold py-3 rounded-xl shadow-lg transition-colors"
-                >
-                  Add to Cart
-                </button>
+                {product.category === 'clothing' ? (
+                  <Link 
+                    href={`/product/${product.id}`}
+                    className="block w-full text-center bg-white hover:bg-brand-navy hover:text-white text-brand-navy font-bold py-3 rounded-xl shadow-lg transition-colors text-sm"
+                  >
+                    Select Size
+                  </Link>
+                ) : (
+                  <button 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      addToCart(product, 1, "Standard");
+                    }}
+                    className="w-full text-center bg-white hover:bg-brand-navy hover:text-white text-brand-navy font-bold py-3 rounded-xl shadow-lg transition-colors text-sm cursor-pointer"
+                  >
+                    Add to Cart
+                  </button>
+                )}
               </div>
               <Link href={`/product/${product.id}`} className="text-left px-2 flex flex-col flex-grow">
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{product.category}</p>

@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-gray-200 text-gray-800 py-12 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="relative w-36 h-16 sm:w-44 sm:h-20 mb-4">
@@ -17,21 +17,22 @@ export default function Footer() {
               <li><Link href="/shop" className="hover:text-brand-pink transition-colors">Shop All</Link></li>
               <li><Link href="/about" className="hover:text-brand-pink transition-colors">About Us</Link></li>
               <li><Link href="/shop?category=clothing" className="hover:text-brand-pink transition-colors">Clothing</Link></li>
-              <li><Link href="/shop?category=jewellery" className="hover:text-brand-pink transition-colors">Jewellery</Link></li>
-              <li><Link href="/shop?category=nails" className="hover:text-brand-pink transition-colors">Nails</Link></li>
-              <li><Link href="/contact" className="hover:text-brand-pink transition-colors">Contact Us</Link></li>
+              <li><Link href="/shop?category=gifting" className="hover:text-brand-pink transition-colors">Gifting</Link></li>
+
+              <li><Link href="/contact" className="hover:text-brand-pink transition-colors">Contact</Link></li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-bold mb-4 text-brand-navy">Contact Us</h3>
+            <h3 className="text-lg font-bold mb-4 text-brand-navy">Contact</h3>
             <p className="text-sm text-gray-600">Based in India</p>
             <p className="text-sm text-gray-600 mt-2">Email: kidoden.shop@gmail.com</p>
             <p className="text-sm text-gray-600 mt-2">Phone: +91 9606969128</p>
+            <p className="text-sm text-gray-600 mt-2">GSTIN: 29GIGPK7449F1ZR</p>
           </div>
           <div>
             <h3 className="text-lg font-bold mb-4 text-brand-navy">Follow Us</h3>
             <div className="flex gap-4">
-              <a href="https://www.facebook.com/share/1CiaBxXDiP/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-brand-navy text-white flex items-center justify-center hover:bg-brand-pink transition-colors">
+              <a href="https://www.facebook.com/kidoden.in" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-brand-navy text-white flex items-center justify-center hover:bg-brand-pink transition-colors">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
               </a>
               <a href="https://instagram.com/kidoden.in" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-brand-navy text-white flex items-center justify-center hover:bg-brand-pink transition-colors">

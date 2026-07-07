@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { products } from "@/data/products";
+import { getProducts } from "@/lib/products";
 import HeroSlider from "@/components/HeroSlider";
 import ProductSlider from "@/components/ProductSlider";
+import ProductCard from "@/components/ProductCard";
 
-export default function Home() {
+export default async function Home() {
+  const products = await getProducts();
   const featuredProducts = products.filter((p) => p.isFeatured);
+  const bestSellers = products.filter((p) => ["c-1", "c-2", "c-5", "g-1", "g-2"].includes(p.id));
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -14,16 +17,8 @@ export default function Home() {
 
       {/* Why Parents Trust Kidoden - Kept exactly as requested */}
       <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white text-center relative overflow-hidden">
-        {/* Decorative elements */}
-        <svg className="absolute top-8 left-12 w-4 h-4 text-brand-mint" fill="currentColor" viewBox="0 0 24 24" style={{ fontFamily: 'var(--font-quicksand)' }}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
-        <svg className="absolute top-16 left-24 w-5 h-5 text-brand-yellow" fill="currentColor" viewBox="0 0 24 24" style={{ fontFamily: 'var(--font-quicksand)' }}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
-        <svg className="absolute top-12 right-16 w-4 h-4 text-brand-pink" fill="currentColor" viewBox="0 0 24 24" style={{ fontFamily: 'var(--font-quicksand)' }}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
-        <svg className="absolute top-20 right-32 w-3 h-3 text-brand-mint" fill="currentColor" viewBox="0 0 24 24" style={{ fontFamily: 'var(--font-quicksand)' }}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
-        {/* Heart decorations */}
-        <span className="absolute top-24 left-16 text-brand-pink/30 text-2xl hidden md:block"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg></span>
-        <span className="absolute top-32 right-20 text-brand-yellow/40 text-xl hidden md:block"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg></span>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-8xl mx-auto relative z-10">
           {/* Header with heart */}
           <div className="flex items-center justify-center gap-2 mb-3">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="#f0959f">
@@ -34,8 +29,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-2">
             Why Parents Trust Kidoden <svg width="24" height="24" viewBox="0 0 24 24" fill="#fbcd6a" className="inline-block align-middle ml-1"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
           </h2>
-          <p className="text-gray-500 mb-1">Loved by 100+ families across India</p>
-          <p className="text-gray-500 mb-8"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fbcd6a" className="inline-block align-middle mr-1"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg> 4.8/5 from our lovely parents</p>
+          <p className="text-gray-500 mb-8">Loved by 100+ families across India</p>
 
           {/* Feature Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
@@ -113,27 +107,86 @@ export default function Home() {
 
       {/* Modernized Shop by Category */}
       <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-[#fafafa]">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">Shop by Category</h2>
             <div className="w-16 h-1 bg-brand-pink mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-10 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
             {[
-              { title: "Shop for Boy", image: "/clothe/Homepage/shop-for-boy.png", link: "/shop?category=clothing" },
-              { title: "Shop for Girl", image: "/clothe/Homepage/shop-for-girl.png", link: "/shop?category=clothing" },
-              { title: "Jewellery", image: "/jewellery/shop-by-jewellery.png", link: "/shop?category=jewellery" }
+              {
+                title: "Little Gentlemen",
+                image: "/clothe/Homepage/shop-for-boy.png",
+                link: "/shop?category=clothing",
+                position: "object-[center_15%]",
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1a4263" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14.5 12l5.5 4.5v-9L14.5 12z" />
+                    <path d="M9.5 12L4 7.5v9L9.5 12z" />
+                    <rect x="9.5" y="9.5" width="5" height="5" rx="1" />
+                  </svg>
+                )
+              },
+              {
+                title: "Little Princess",
+                image: "/clothe/Homepage/shop-for-baby-girl.png",
+                link: "/shop?category=clothing",
+                position: "object-[center_15%]",
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e88fa2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 19h16" />
+                    <path d="M4 15l2-8 4 4 2-6 2 6 4-4 2 8" />
+                    <path d="M4 15v4" />
+                    <path d="M20 15v4" />
+                  </svg>
+                )
+              },
+              {
+                title: "Gifting",
+                image: "/clothe/Homepage/gifting.png",
+                link: "/shop?category=gifting",
+                icon: (
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f4a28c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 12v10H4V12" />
+                    <rect x="2" y="7" width="20" height="5" rx="1" />
+                    <path d="M12 22V7" />
+                    <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+                    <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+                  </svg>
+                )
+              }
             ].map((cat) => (
-              <Link key={cat.title} href={cat.link} className="group flex flex-col">
-                <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden mb-5 bg-gray-100">
-                  <Image src={cat.image} alt={cat.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+              <Link key={cat.title} href={cat.link} className="group flex flex-col items-center bg-[#fffdfa] rounded-[2rem] p-3 pb-8 shadow-sm border border-[#f5ece1] hover:shadow-md transition-shadow">
+                <div className="relative w-full aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-gray-100">
+                  <Image src={cat.image} alt={cat.title} fill className={`object-cover ${cat.position || "object-center"} group-hover:scale-105 transition-transform duration-700 ease-out`} />
                 </div>
-                <div className="text-center">
-                  <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-1 group-hover:text-brand-pink transition-colors">{cat.title}</h3>
-                  <span className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-semibold group-hover:text-brand-navy transition-colors">
+                <div className="w-[72px] h-[72px] rounded-full bg-white shadow-[0_4px_15px_rgba(0,0,0,0.06)] flex items-center justify-center -mt-9 relative z-10 border border-gray-50">
+                  {cat.icon}
+                </div>
+                <div className="mt-5 text-center flex flex-col items-center w-full px-2">
+                  <div className="flex items-center justify-center gap-3 w-full">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#cbb5a1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="transform scale-x-[-1] flex-shrink-0">
+                      <path d="M4 22S4 13 10 8" />
+                      <path d="M10 8c0 0 3-4 7-4 0 0-1 4-4 6" />
+                      <path d="M8 12c0 0 3-3 6-2 0 0-1 3-3 4" />
+                      <path d="M6 16c0 0 3-2 5-1 0 0-1 2-3 2" />
+                    </svg>
+                    <h3 className="text-xl md:text-[22px] font-bold text-brand-navy tracking-wide truncate">{cat.title}</h3>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#cbb5a1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
+                      <path d="M4 22S4 13 10 8" />
+                      <path d="M10 8c0 0 3-4 7-4 0 0-1 4-4 6" />
+                      <path d="M8 12c0 0 3-3 6-2 0 0-1 3-3 4" />
+                      <path d="M6 16c0 0 3-2 5-1 0 0-1 2-3 2" />
+                    </svg>
+                  </div>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="#f0959f" className="my-3">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                  </svg>
+                  <span className="text-[11px] md:text-xs text-[#1a4263] font-bold uppercase tracking-[0.15em]">
                     Shop Collection
                   </span>
+                  <div className="w-8 h-[2px] bg-[#f0959f] mt-1.5 group-hover:w-16 transition-all duration-300"></div>
                 </div>
               </Link>
             ))}
@@ -142,8 +195,8 @@ export default function Home() {
       </section>
 
       {/* Modernized Featured Products */}
-      <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="pt-12 md:pt-16 pb-6 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-8xl mx-auto">
           <div className="text-center mb-12 relative flex flex-col items-center">
             <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">New Arrivals</h2>
             <div className="w-16 h-1 bg-brand-pink mx-auto rounded-full"></div>
@@ -163,49 +216,46 @@ export default function Home() {
       </section>
 
       {/* Modern UX: For the Whole Family */}
-      <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">For the Whole Family</h2>
-            <div className="w-16 h-1 bg-brand-yellow rounded-full mb-6"></div>
-            <p className="text-lg text-gray-500 max-w-2xl">Everything you and your little ones need, crafted with love and care.</p>
+      {/* Best Sellers Section */}
+      <section className="pt-6 pb-12 md:pb-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-gray-100">
+        <div className="max-w-8xl mx-auto">
+          <div className="text-center mb-12 relative flex flex-col items-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">Best Sellers</h2>
+            <div className="w-16 h-1 bg-brand-pink mx-auto rounded-full"></div>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-6 md:gap-8 items-stretch">
-            {/* Left: Shop for Babies (Large horizontal card) */}
-            <Link href="/shop?category=clothing" className="group w-full lg:w-3/5 flex flex-col sm:flex-row bg-[#fafafa] rounded-[2rem] overflow-hidden hover:shadow-xl transition-all duration-500 border border-gray-100">
-              <div className="w-full sm:w-1/2 p-8 md:p-12 flex flex-col justify-center order-2 sm:order-1">
-                <span className="text-brand-mint font-bold tracking-widest text-xs md:text-sm uppercase mb-4 block">For the Little Ones</span>
-                <h3 className="text-3xl md:text-4xl font-extrabold text-brand-navy mb-4 leading-tight">Shop for Babies</h3>
-                <p className="text-gray-500 mb-8 leading-relaxed">Discover soft, safe, and adorable outfits designed for everyday comfort and play.</p>
-                <div className="flex items-center gap-2 text-brand-navy font-bold group-hover:text-brand-mint transition-colors mt-auto">
-                  Explore Collection <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                </div>
-              </div>
-              <div className="w-full sm:w-1/2 relative min-h-[300px] sm:min-h-[400px] lg:min-h-[480px] order-1 sm:order-2">
-                <Image src="/shop_by/shop_for_baby.png" alt="Shop for Babies" fill className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" />
-              </div>
-            </Link>
+          <ProductSlider products={bestSellers} />
+        </div>
+      </section>
 
-            {/* Right: Shop for Moms (Vertical card) */}
-            <Link href="/shop?category=jewellery" className="group w-full lg:w-2/5 flex flex-col bg-[#fffbf9] rounded-[2rem] overflow-hidden hover:shadow-xl transition-all duration-500 border border-pink-50">
-              <div className="w-full relative min-h-[300px] sm:min-h-[350px] lg:flex-1">
-                <Image src="/shop_by/shop_for_mom.png" alt="Shop for Moms" fill className="object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-700 ease-in-out" />
-              </div>
-              <div className="p-8 md:p-10 flex flex-col justify-center flex-none">
-                <span className="text-brand-pink font-bold tracking-widest text-xs md:text-sm uppercase mb-3 block">For You</span>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-brand-navy mb-3">Shop for Moms</h3>
-                <p className="text-gray-500 mb-8 leading-relaxed text-sm md:text-base">Elegant jewellery and beautiful accessories to treat yourself, because you deserve it.</p>
-                <div className="flex items-center gap-2 text-brand-navy font-bold group-hover:text-brand-pink transition-colors mt-auto">
-                  Explore <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                </div>
-              </div>
+      {/* Bundles of Love Banner Section */}
+      <section className="w-full relative h-[350px] md:h-[450px] overflow-hidden bg-[#f0959f] border-t border-b border-gray-100">
+        <Image
+          src="/Banner/baby-gift.png"
+          alt="Hampers of Joy"
+          fill
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-y-0 left-0 w-full md:w-[50%] bg-gradient-to-r from-brand-navy/85 via-brand-navy/55 to-transparent z-10" />
+        <div className="absolute inset-0 flex items-center justify-start max-w-8xl mx-auto px-6 sm:px-8 lg:px-12 z-20">
+          <div className="w-full md:w-[45%] flex flex-col justify-center items-start text-left">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-wide mb-3 leading-tight" style={{ fontFamily: 'var(--font-quicksand), sans-serif' }}>
+              Hampers of <span className="text-[#fbcd6a]">Joy</span>
+            </h2>
+            <p className="text-base md:text-lg lg:text-xl text-white font-semibold mb-8 max-w-sm">
+              Thoughtfully curated newborn boxes & milestone gift hampers.
+            </p>
+            <Link
+              href="/shop?category=gifting"
+              className="bg-white hover:bg-[#fafafa] text-brand-navy font-bold py-3.5 px-8 rounded-full text-xs md:text-sm tracking-widest uppercase transition-colors shadow-lg"
+            >
+              Explore Gifts
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Summer Banner Section */}
+      {/* Summer Banner Section - Hidden for now
       <section className="w-full relative h-[400px] md:h-[500px] overflow-hidden">
         <Image
           src="/banner/summer_banner.png"
@@ -230,6 +280,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Modernized Value Proposition */}
       <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">

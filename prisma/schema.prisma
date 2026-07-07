@@ -1,0 +1,192 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ----------------------------------------------------
+// PRODUCT & CATEGORY MODELS
+// ----------------------------------------------------
+
+model Category {
+  id        String    @id @default(uuid())
+  name      String    @unique // e.g. "clothing", "gifting"
+  slug      String    @unique // e.g. "clothing", "gifting"
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id           String      @id @default(uuid())
+  name         String
+  description  String
+  price        Int         // Stored in paise (e.g., 59900 for ₹599)
+  imageUrl     String      // Primary card image URL
+  images       String[]    // Carousel image URLs (native PG array)
+  ageRange     String?     // e.g. "2-8 years"
+  gender       String?     // "boy" | "girl" | "unisex"
+  features     String[]    // List of bullet points (native PG array)
+  isFeatured   Boolean     @default(false)
+  rating       Float       @default(0.0)
+  reviewsCount Int         @default(0)
+  
+  categoryId   String
+  category     Category    @relation(fields: [categoryId], references: [id])
+  
+  inventory    Inventory[]
+  orderItems   OrderItem[]
+  
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  @@index([categoryId])
+}
+
+// Size-level inventory to prevent overselling
+model Inventory {
+  id            String   @id @default(uuid())
+  productId     String
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  size          String   // e.g. "2-3 Years", "Newborn"
+  stockQuantity Int      @default(0)
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([productId, size])
+}
+
+// ----------------------------------------------------
+// CUSTOMER & ORDER MODELS
+// ----------------------------------------------------
+
+model Customer {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  name      String?
+  phone     String?
+  addresses Address[]
+  orders    Order[]
+  
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Address {
+  id                String   @id @default(uuid())
+  customerId        String
+  customer          Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  line1             String
+  line2             String?
+  city              String
+  state             String
+  postalCode        String
+  country           String   @default("IN")
+  phone             String
+  isDefaultShipping Boolean  @default(false)
+  orders            Order[]
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([customerId])
+}
+
+model Order {
+  id                String         @id @default(uuid())
+  orderNumber       String         @unique // Customer facing identifier, e.g. KD-1001
+  customerId        String
+  customer          Customer       @relation(fields: [customerId], references: [id])
+  shippingAddressId String
+  shippingAddress   Address        @relation(fields: [shippingAddressId], references: [id])
+  totalAmount       Int            // In paise
+  status            OrderStatus    @default(PENDING)
+  paymentStatus     PaymentStatus  @default(PENDING)
+  paymentMethod     PaymentMethod
+  
+  items             OrderItem[]
+  payment           Payment?
+  shippingDetails   ShippingDetail?
+  
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+
+  @@index([customerId])
+  @@index([shippingAddressId])
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  size      String   // Size purchased (frozen at order time)
+  quantity  Int
+  price     Int      // Price at order time in paise
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  COD
+  RAZORPAY
+}
+
+// ----------------------------------------------------
+// PAYMENT & SHIPPING METADATA
+// ----------------------------------------------------
+
+model Payment {
+  id                String   @id @default(uuid())
+  orderId           String   @unique
+  order             Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  razorpayOrderId   String?  @unique
+  razorpayPaymentId String?  @unique
+  razorpaySignature String?
+  amount            Int      // in paise
+  status            String   // e.g. "captured", "failed", "pending"
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model ShippingDetail {
+  id                String   @id @default(uuid())
+  orderId           String   @unique
+  order             Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  shiprocketOrderId String?  @unique
+  shipmentId        String?  @unique
+  awbNumber         String?
+  courierName       String?
+  status            String?  // Shiprocket shipment status
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
