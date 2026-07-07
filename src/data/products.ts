@@ -1,4 +1,4 @@
-export type Category = 'clothing' | 'jewellery' | 'nails';
+export type Category = 'clothing' | 'gifting';
 
 export interface Product {
   id: string;
@@ -7,9 +7,14 @@ export interface Product {
   price: number;
   category: Category;
   imageUrl: string;
+  images?: string[];
   ageRange?: string;
+  gender?: 'boy' | 'girl' | 'unisex';
   features: string[];
   isFeatured?: boolean;
+  rating?: number;
+  reviewsCount?: number;
+  inventory?: { size: string; stockQuantity: number }[];
 }
 
 export const products: Product[] = [
@@ -20,9 +25,13 @@ export const products: Product[] = [
     price: 599,
     category: "clothing",
     imageUrl: "/clothe/clo-1.jpeg",
+    images: ["/clothe/clo-1.jpeg", "/clothe/placeholder.png"],
     ageRange: "2-8 years",
+    gender: "boy",
     features: ["100% Breathable Cotton", "Machine Washable", "Skin-friendly dyes"],
-    isFeatured: true
+    isFeatured: true,
+    rating: 4.9,
+    reviewsCount: 24
   },
   {
     id: "c-2",
@@ -31,9 +40,13 @@ export const products: Product[] = [
     price: 1499,
     category: "clothing",
     imageUrl: "/clothe/clo-2.jpeg",
+    images: ["/clothe/clo-2.jpeg", "/clothe/placeholder.png"],
     ageRange: "3-10 years",
+    gender: "girl",
     features: ["Premium Organza", "Comfortable fit", "Includes butterfly wings"],
-    isFeatured: true
+    isFeatured: true,
+    rating: 4.8,
+    reviewsCount: 15
   },
   {
     id: "c-3",
@@ -42,8 +55,12 @@ export const products: Product[] = [
     price: 899,
     category: "clothing",
     imageUrl: "/clothe/clo-3.jpeg",
+    images: ["/clothe/clo-3.jpeg", "/clothe/placeholder.png"],
     ageRange: "4-10 years",
-    features: ["Soft Cotton Blend", "Tag-less design", "Relaxed fit"]
+    gender: "girl",
+    features: ["Soft Cotton Blend", "Tag-less design", "Relaxed fit"],
+    rating: 4.7,
+    reviewsCount: 9
   },
   {
     id: "c-4",
@@ -52,8 +69,13 @@ export const products: Product[] = [
     price: 799,
     category: "clothing",
     imageUrl: "/clothe/clo-4.jpeg",
+    images: ["/clothe/clo-4.jpeg", "/clothe/placeholder.png"],
     ageRange: "2-8 years",
-    features: ["Soft Cotton", "Machine washable", "Comfortable fit"]
+    gender: "girl",
+    features: ["Soft Cotton", "Machine washable", "Comfortable fit"],
+    isFeatured: true,
+    rating: 5.0,
+    reviewsCount: 12
   },
   {
     id: "c-5",
@@ -62,108 +84,53 @@ export const products: Product[] = [
     price: 849,
     category: "clothing",
     imageUrl: "/clothe/clo-5.jpeg",
+    images: ["/clothe/clo-5.jpeg", "/clothe/placeholder.png"],
     ageRange: "2-8 years",
-    features: ["Breathable fabric", "Machine washable", "Comfortable fit"]
+    gender: "girl",
+    features: ["Breathable fabric", "Machine washable", "Comfortable fit"],
+    isFeatured: true,
+    rating: 4.9,
+    reviewsCount: 16
   },
   {
-    id: "j-1",
-    name: "Sparkle Butterfly Pendant",
-    description: "A delicate, child-safe silver-plated butterfly pendant with soft enamel coloring.",
-    price: 399,
-    category: "jewellery",
-    imageUrl: "/jewellery/jew-1.jpeg",
-    ageRange: "5-15 years",
-    features: ["Hypoallergenic", "Adjustable chain length", "Nickel-free"],
-    isFeatured: true
+    id: "g-1",
+    name: "Premium Newborn Gift Set",
+    description: "A thoughtfully curated gift set with organic cotton bodysuit, cozy booties, bib, and a hand-crafted wooden bunny rattle. Packed with love.",
+    price: 1899,
+    category: "gifting",
+    imageUrl: "/clothe/gift-set-1.png",
+    images: ["/clothe/gift-set-1.png", "/clothe/placeholder.png"],
+    ageRange: "Newborn - 6 months",
+    features: ["100% Organic Cotton Bodysuit", "Safe hand-crafted wooden rattle", "Premium hardboard gift box packaging"],
+    isFeatured: true,
+    rating: 5.0,
+    reviewsCount: 32
   },
   {
-    id: "j-2",
-    name: "Unicorn Charm Bracelet",
-    description: "A magical charm bracelet featuring unicorns, stars, and rainbow colored beads.",
-    price: 449,
-    category: "jewellery",
-    imageUrl: "/jewellery/jew-2.jpeg",
-    ageRange: "4-12 years",
-    features: ["Stretchable string", "Child-safe beads", "Choking hazard: Not for under 3 yrs"]
+    id: "g-2",
+    name: "Little Explorer Milestone Box",
+    description: "The ultimate milestone set with organic swaddle blankets, wooden milestone cards, and a soft knitted dinosaur cuddle toy.",
+    price: 2199,
+    category: "gifting",
+    imageUrl: "/clothe/gift-set-2.png",
+    images: ["/clothe/gift-set-2.png", "/clothe/placeholder.png"],
+    ageRange: "Newborn - 12 months",
+    features: ["Breathable cotton swaddles", "12 Wooden double-sided milestone cards", "Soft hypoallergenic knitted toy"],
+    rating: 4.8,
+    reviewsCount: 14
   },
   {
-    id: "j-3",
-    name: "Princess Tiara Headband",
-    description: "A sparkling tiara headband adorned with crystals and pearls. Perfect for little princesses.",
-    price: 599,
-    category: "jewellery",
-    imageUrl: "/jewellery/jew-3.jpeg",
-    ageRange: "3-10 years",
-    features: ["Comfortable fit", "Non-slip", "Durable materials"]
-  },
-  {
-    id: "n-1",
-    name: "Rainbow Magic Stick-on Nails",
-    description: "A set of 24 cute, non-toxic stick-on nails for kids. No glue required, safe and easy to remove.",
-    price: 249,
-    category: "nails",
-    imageUrl: "/nails/nails-1.jpeg",
-    ageRange: "6-15 years",
-    features: ["Non-toxic adhesive", "Peel-off removal", "Water resistant"]
-  },
-  {
-    id: "n-2",
-    name: "Glitter Glam Press-On Nails",
-    description: "Sparkling press-on nails for a dazzling look. Easy to apply and remove, perfect for parties.",
-    price: 299,
-    category: "nails",
-    imageUrl: "/nails/nails-2.jpeg",
-    ageRange: "7-16 years",
-    features: ["Pre-glued", "Reusable", "Variety of sizes"]
-  },
-  {
-    id: "n-3",
-    name: "Magical Unicorn Nail Wraps",
-    description: "Fun and whimsical unicorn-themed nail wraps. A quick and creative way to decorate nails.",
-    price: 199,
-    category: "nails",
-    imageUrl: "/nails/nails-3.jpeg",
-    ageRange: "5-14 years",
-    features: ["Easy application", "No drying time", "Gentle on nails"]
-  },
-  {
-    id: "n-4",
-    name: "Ocean Breeze Nail Polish Set",
-    description: "A set of vibrant, water-based nail polishes in ocean-inspired colors. Non-toxic and peelable.",
-    price: 349,
-    category: "nails",
-    imageUrl: "/nails/nail-4.jpeg",
-    ageRange: "3-12 years",
-    features: ["Water-based formula", "Non-toxic", "Peel-off removal"]
-  },
-  {
-    id: "n-5",
-    name: "Princess Crown Nail Stickers",
-    description: "Adorable crown and princess-themed nail stickers. Perfect for little princesses everywhere.",
-    price: 179,
-    category: "nails",
-    imageUrl: "/nails/nails-5.jpeg",
-    ageRange: "4-12 years",
-    features: ["Self-adhesive", "Waterproof", "Easy to remove"]
-  },
-  {
-    id: "n-6",
-    name: "Starlight Sparkle Nail Kit",
-    description: "Complete nail kit with star and moon designs. Includes everything needed for a magical manicure.",
-    price: 399,
-    category: "nails",
-    imageUrl: "/nails/nails-6.jpeg",
-    ageRange: "6-14 years",
-    features: ["Complete kit", "Child-safe", "Multi-use"]
-  },
-  {
-    id: "n-7",
-    name: "Floral Fantasy Nail Art",
-    description: "Beautiful flower and butterfly nail art designs. Perfect for spring and summer fun.",
-    price: 279,
-    category: "nails",
-    imageUrl: "/nails/nails-7.jpeg",
-    ageRange: "5-15 years",
-    features: ["Hand-painted designs", "Durable", "Gentle adhesive"]
-  },
+    id: "g-3",
+    name: "Little Prince Welcome Box",
+    description: "Premium blue-themed gift box with an organic cotton romper, crown booties, matching bib, and a plush bunny toy.",
+    price: 1999,
+    category: "gifting",
+    imageUrl: "/clothe/gift-set-3.png",
+    images: ["/clothe/gift-set-3.png", "/clothe/placeholder.png"],
+    ageRange: "Newborn - 6 months",
+    features: ["100% Organic Cotton Romper", "Comfortable crown pattern booties", "Includes soft matching bib and plush toy"],
+    isFeatured: true,
+    rating: 4.9,
+    reviewsCount: 21
+  }
 ];

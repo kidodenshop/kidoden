@@ -3,12 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const links = [
-  { href: "/shop?category=clothing", label: "Clothing", emoji: "👗", hover: "hover:bg-brand-mint/10 hover:text-brand-mint" },
-  { href: "/shop?category=jewellery", label: "Jewellery", emoji: "💎", hover: "hover:bg-brand-yellow/10 hover:text-brand-yellow" },
-  { href: "/shop?category=nails", label: "Nails", emoji: "💅", hover: "hover:bg-brand-purple/10 hover:text-brand-purple" },
-];
-
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
 
@@ -36,8 +30,8 @@ export default function MobileMenu() {
 
       {/* Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-72 bg-white z-50 shadow-2xl flex flex-col md:hidden transform transition-transform duration-300 ease-in-out ${
-          open ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-2xl flex flex-col md:hidden transform transition-transform duration-300 ease-in-out ${
+          open ? "translate-x-0" : "-translate-x-full"
         }`}
         role="dialog"
         aria-modal="true"
@@ -58,21 +52,55 @@ export default function MobileMenu() {
         </div>
 
         {/* Nav links */}
-        <nav className="flex-1 px-4 py-6 flex flex-col gap-1">
-          <p className="text-xs font-black text-gray-400 uppercase tracking-widest px-4 mb-2">
-            Shop by Category
-          </p>
-          {links.map(({ href, label, emoji, hover }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setOpen(false)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-brand-navy transition-colors ${hover}`}
-            >
-              <span aria-hidden="true">{emoji}</span>
-              {label}
-            </Link>
-          ))}
+        <nav className="flex-1 px-4 py-6 flex flex-col gap-6 overflow-y-auto">
+          {/* Section 1: Shop by Age */}
+          <div>
+            <p className="text-xs font-black text-gray-400 uppercase tracking-widest px-4 mb-2 select-none">
+              Shop by Age
+            </p>
+            <div className="flex flex-col gap-1">
+              <Link href="/shop?category=clothing&age=0-1" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">0–1 Year</Link>
+              <Link href="/shop?category=clothing&age=1-3" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">1–3 Years</Link>
+              <Link href="/shop?category=clothing&age=3-5" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">3–5 Years</Link>
+              <Link href="/shop?category=clothing&age=5-7" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">5–7 Years</Link>
+              <Link href="/shop?category=clothing&age=7-12" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">7–12 Years</Link>
+            </div>
+          </div>
+
+          {/* Section 2: Collections */}
+          <div>
+            <p className="text-xs font-black text-gray-400 uppercase tracking-widest px-4 mb-2 select-none">
+              Collections
+            </p>
+            <div className="flex flex-col gap-1">
+              <Link href="/shop?collection=new-arrivals" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">New Arrivals</Link>
+              <Link href="/shop?collection=best-sellers" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">Best Sellers</Link>
+              <Link href="/shop?collection=premium-picks" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">Premium Picks</Link>
+            </div>
+          </div>
+
+          {/* Section 3: Gifting */}
+          <div>
+            <p className="text-xs font-black text-gray-400 uppercase tracking-widest px-4 mb-2 select-none">
+              Gifting
+            </p>
+            <div className="flex flex-col gap-1">
+              <Link href="/shop?category=gifting&giftType=gift-boxes" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">Gift Boxes</Link>
+              <Link href="/shop?category=gifting&giftType=birthday-gifts" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">Birthday Gifts</Link>
+              <Link href="/shop?category=gifting&giftType=baby-shower-gifts" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">Baby Shower Gifts</Link>
+            </div>
+          </div>
+
+          {/* Section 4: Featured */}
+          <div>
+            <p className="text-xs font-black text-gray-400 uppercase tracking-widest px-4 mb-2 select-none">
+              Featured
+            </p>
+            <div className="flex flex-col gap-1">
+              <Link href="/shop?category=clothing&collection=summer-collection" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">Summer Collection</Link>
+              <Link href="/shop?category=clothing&collection=matching-outfits" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">Matching Outfits</Link>
+            </div>
+          </div>
         </nav>
 
         {/* CTA at bottom */}
