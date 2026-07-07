@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 import { useSearchParams } from "next/navigation";
+import PaymentBadges from "@/components/PaymentBadges";
 
 function CheckoutPageContent() {
   const searchParams = useSearchParams();
@@ -517,6 +518,9 @@ function CheckoutPageContent() {
               <span className="text-lg">🛡️</span>
               <p>Your transaction is encrypted. We support safe payment options across UPI, Debit/Credit Cards, and net banking via Razorpay.</p>
             </div>
+
+            {/* Payment Trust Badges */}
+            <PaymentBadges />
           </div>
         </form>
       </div>
