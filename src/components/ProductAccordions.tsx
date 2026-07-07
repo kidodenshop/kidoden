@@ -41,9 +41,8 @@ export default function ProductAccordions({
           >
             <span>Why you'll love it</span>
             <svg
-              className={`w-4 h-4 transition-transform duration-300 ${
-                openSections.features ? "rotate-180" : ""
-              }`}
+              className={`w-4 h-4 transition-transform duration-300 ${openSections.features ? "rotate-180" : ""
+                }`}
               fill="none"
               stroke="currentColor"
               strokeWidth="2.5"
@@ -52,11 +51,10 @@ export default function ProductAccordions({
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          
+
           <div
-            className={`transition-all duration-300 overflow-hidden ${
-              openSections.features ? "max-h-96 opacity-100 mb-5" : "max-h-0 opacity-0"
-            }`}
+            className={`transition-all duration-300 overflow-hidden ${openSections.features ? "max-h-96 opacity-100 mb-5" : "max-h-0 opacity-0"
+              }`}
           >
             <div className="bg-brand-yellow/10 p-5 rounded-2xl border border-brand-yellow/20">
               <ul className="space-y-2.5">
@@ -86,9 +84,8 @@ export default function ProductAccordions({
         >
           <span>Shipping & COD Policy</span>
           <svg
-            className={`w-4 h-4 transition-transform duration-300 ${
-              openSections.shipping ? "rotate-180" : ""
-            }`}
+            className={`w-4 h-4 transition-transform duration-300 ${openSections.shipping ? "rotate-180" : ""
+              }`}
             fill="none"
             stroke="currentColor"
             strokeWidth="2.5"
@@ -99,16 +96,15 @@ export default function ProductAccordions({
         </button>
 
         <div
-          className={`transition-all duration-300 overflow-hidden ${
-            openSections.shipping ? "max-h-96 opacity-100 mb-5" : "max-h-0 opacity-0"
-          }`}
+          className={`transition-all duration-300 overflow-hidden ${openSections.shipping ? "max-h-96 opacity-100 mb-5" : "max-h-0 opacity-0"
+            }`}
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {[
               { icon: "⚡", title: "Fast Reply", sub: "We're always a message away" },
               { icon: "🚚", title: "Ships Across India", sub: "Delivered to your door" },
               { icon: "🛡️", title: "100% Genuine", sub: "Carefully chosen for little ones" },
-              { icon: "💵", title: "No Advance Payment", sub: "Pay cash only on delivery" },
+              { icon: "🔒", title: "Secure Shopping", sub: "Pay cash or pay securely online" },
             ].map(({ icon, title, sub }) => (
               <div
                 key={title}
@@ -134,9 +130,8 @@ export default function ProductAccordions({
         >
           <span>Easy Returns & Exchange</span>
           <svg
-            className={`w-4 h-4 transition-transform duration-300 ${
-              openSections.returns ? "rotate-180" : ""
-            }`}
+            className={`w-4 h-4 transition-transform duration-300 ${openSections.returns ? "rotate-180" : ""
+              }`}
             fill="none"
             stroke="currentColor"
             strokeWidth="2.5"
@@ -147,16 +142,15 @@ export default function ProductAccordions({
         </button>
 
         <div
-          className={`transition-all duration-300 overflow-hidden ${
-            openSections.returns ? "max-h-96 opacity-100 mb-5" : "max-h-0 opacity-0"
-          }`}
+          className={`transition-all duration-300 overflow-hidden ${openSections.returns ? "max-h-96 opacity-100 mb-5" : "max-h-0 opacity-0"
+            }`}
         >
           <div className="flex items-center gap-4 bg-brand-pink/10 border border-brand-pink/25 rounded-2xl p-4">
             <span className="text-2xl flex-shrink-0">↩️</span>
             <div>
-              <p className="font-extrabold text-brand-navy text-xs md:text-sm">2-Day Easy Returns</p>
+              <p className="font-extrabold text-brand-navy text-xs md:text-sm">10-Day Easy Returns</p>
               <p className="text-[11px] text-gray-500 font-medium mt-0.5 leading-relaxed">
-                Not happy? Contact us within 2 days of delivery and we&apos;ll make it right — no questions asked.
+                Not happy? Contact us within 10 days of delivery and we&apos;ll make it right — no questions asked.
               </p>
             </div>
           </div>
