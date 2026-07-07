@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { Product } from "@/data/products";
+import PaymentBadges from "./PaymentBadges";
 
 export default function ProductPurchaseSection({ product }: { product: Product }) {
   const { addToCart } = useCart();
@@ -166,6 +167,14 @@ export default function ProductPurchaseSection({ product }: { product: Product }
             </button>
           </div>
         )}
+      </div>
+
+      {/* Payment trust badges */}
+      <div className="pt-5 border-t border-gray-100">
+        <span className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2 text-center sm:text-left">
+          Guaranteed Safe & Secure Checkout
+        </span>
+        <PaymentBadges />
       </div>
     </div>
   );
