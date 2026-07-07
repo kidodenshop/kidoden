@@ -170,24 +170,25 @@ export default function ProductPurchaseSection({ product }: { product: Product }
       </div>
 
       {/* Product trust badges */}
-      <div className="!mt-4 pt-4 border-t border-gray-100/60">
-        <div className="grid grid-cols-2 gap-3.5">
+      <div className="!mt-6 pt-5 border-t border-gray-100/80">
+        <div className="max-w-[280px] mx-auto grid grid-cols-2 gap-x-8 gap-y-5">
           {[
-            { src: "/icons/1.svg", text: "Skin-friendly materials" },
-            { src: "/icons/2.svg", text: "Premium gift packaging" },
-            { src: "/icons/3.svg", text: "Cash on Delivery" },
+            { src: "/icons/1.svg", text: "Gentle on Delicate Skin" },
+            { src: "/icons/2.svg", text: "Fast & Safe Delivery" },
+            { src: "/icons/3.svg", text: "Premium Gift Box" },
             { src: "/icons/4.svg", text: "Easy Returns" },
           ].map((badge, idx) => (
-            <div key={idx} className="flex flex-col items-center text-center p-3 bg-gray-50/40 rounded-2xl border border-gray-100/40">
-              <div className="relative w-12 h-12 md:w-14 md:h-14 mb-2 flex-shrink-0">
+            <div key={idx} className="flex flex-col items-center text-center">
+              <div className="relative w-16 h-16 mb-2 flex-shrink-0">
                 <Image
                   src={badge.src}
                   alt={badge.text}
                   fill
                   className="object-contain"
+                  priority
                 />
               </div>
-              <span className="text-[11px] sm:text-xs font-black text-brand-navy leading-snug">
+              <span className="text-[11px] sm:text-xs font-bold text-brand-navy leading-tight px-1">
                 {badge.text}
               </span>
             </div>
