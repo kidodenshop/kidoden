@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import PaymentBadges from "./PaymentBadges";
 
 export default function Footer() {
   return (
@@ -42,12 +41,8 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        {/* Payment Methods Row */}
-        <div className="border-t border-gray-300 mt-8 pt-6 flex justify-center">
-          <PaymentBadges />
-        </div>
 
-        <div className="border-t border-gray-300 mt-4 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        <div className="border-t border-gray-300 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <p>© {new Date().getFullYear()} Kidoden. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <Link href="/privacy" className="hover:text-brand-pink transition-colors">Privacy Policy</Link>
