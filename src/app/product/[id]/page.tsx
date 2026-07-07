@@ -77,15 +77,6 @@ export default async function ProductDetailPage({
               ₹{product.price}
             </p>
 
-            <div className="flex flex-wrap items-center gap-2 mb-6">
-              <span className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 text-xs font-bold px-3 py-1 rounded-full border border-green-200/60 shadow-xs">
-                ✅ Cash on Delivery
-              </span>
-              <span className="text-xs text-gray-500 font-semibold">
-                Pay only after you verify your product
-              </span>
-            </div>
-
             <p className="text-base text-gray-600 mb-8 font-medium leading-relaxed">
               {product.description}
             </p>
