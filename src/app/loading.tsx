@@ -1,20 +1,25 @@
 import React from "react";
+import Image from "next/image";
 
 export default function Loading() {
   return (
-    <div className="w-full flex-grow min-h-[60vh] flex flex-col items-center justify-center bg-[#fffbf9]">
-      <div className="flex flex-col items-center space-y-6">
-        {/* Elegant pulsing logo-like outline or spinner */}
-        <div className="relative w-16 h-16 flex items-center justify-center">
-          <div className="absolute inset-0 rounded-full border-4 border-brand-pink/20 animate-ping"></div>
-          <div className="absolute inset-0 rounded-full border-4 border-t-brand-pink border-r-transparent border-b-brand-pink border-l-transparent animate-spin"></div>
-          <div className="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center text-brand-pink text-sm font-black select-none">
-            K
-          </div>
+    <div className="w-full flex-grow min-h-[60vh] flex flex-col items-center justify-center bg-[#fffbf9] select-none">
+      <div className="flex flex-col items-center justify-center">
+        {/* Bouncing Baby Image */}
+        <div className="relative w-28 h-28 sm:w-32 sm:h-32 animate-bounce">
+          <Image
+            src="/loader/DODO_Baby.png"
+            alt="Loading Baby"
+            fill
+            className="object-contain"
+            priority
+          />
         </div>
-        <p className="text-gray-400 font-bold tracking-wider text-[10px] sm:text-xs uppercase animate-pulse">
-          Loading...
-        </p>
+
+        {/* Brand progress bar */}
+        <div className="w-28 sm:w-32 bg-pink-100/50 h-1.5 rounded-full overflow-hidden relative mt-6">
+          <div className="bg-brand-pink h-full w-full absolute left-0 top-0 origin-left animate-loading-bar rounded-full"></div>
+        </div>
       </div>
     </div>
   );

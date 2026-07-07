@@ -32,29 +32,22 @@ export default function PageLoader() {
         loading ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      <div className="flex flex-col items-center space-y-8 animate-float">
-        {/* Logo Container */}
-        <div className="relative w-48 h-16 md:w-56 md:h-20 flex items-center justify-center">
+      <div className="flex flex-col items-center justify-center">
+        {/* Bouncing Baby Image */}
+        <div className="relative w-28 h-28 sm:w-32 sm:h-32 animate-bounce">
           <Image
-            src="/logo/Kidoden-logo.png"
-            alt="Kidoden Logo"
+            src="/loader/DODO_Baby.png"
+            alt="Loading Baby"
             fill
             className="object-contain"
             priority
           />
         </div>
 
-        {/* Playful Brand Loader Animation */}
-        <div className="flex items-center gap-3">
-          <div className="w-4 h-4 rounded-full bg-brand-pink animate-bounce [animation-delay:-0.3s]" />
-          <div className="w-4 h-4 rounded-full bg-brand-yellow animate-bounce [animation-delay:-0.15s]" />
-          <div className="w-4 h-4 rounded-full bg-brand-mint animate-bounce" />
-          <div className="w-4 h-4 rounded-full bg-brand-navy animate-bounce [animation-delay:0.15s]" />
+        {/* Brand progress bar */}
+        <div className="w-28 sm:w-32 bg-pink-100/50 h-1.5 rounded-full overflow-hidden relative mt-6">
+          <div className="bg-brand-pink h-full w-full absolute left-0 top-0 origin-left animate-loading-bar rounded-full"></div>
         </div>
-
-        <p className="text-brand-navy font-bold tracking-widest text-[10px] sm:text-xs uppercase animate-pulse">
-          Made with love...
-        </p>
       </div>
     </div>
   );
