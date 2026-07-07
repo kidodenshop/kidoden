@@ -60,15 +60,25 @@ export default function CartDrawer() {
               </button>
             </div>
           ) : (
-            cartItems.map((item) => (
+             cartItems.map((item) => (
               <div key={`${item.id}-${item.selectedSize || 'default'}`} className="flex gap-4">
-                <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-gray-50 flex-shrink-0 border border-gray-100">
+                <Link
+                  href={`/product/${item.id}`}
+                  onClick={() => setIsCartOpen(false)}
+                  className="relative w-24 h-24 rounded-xl overflow-hidden bg-gray-50 flex-shrink-0 border border-gray-100 hover:opacity-90 transition-opacity"
+                >
                   <Image src={item.imageUrl} alt={item.name} fill className="object-cover" />
-                </div>
+                </Link>
                 <div className="flex flex-col flex-grow">
                   <div className="flex justify-between items-start">
                     <div>
-                      <h4 className="font-bold text-brand-navy text-sm line-clamp-2">{item.name}</h4>
+                      <Link
+                        href={`/product/${item.id}`}
+                        onClick={() => setIsCartOpen(false)}
+                        className="hover:text-brand-pink transition-colors"
+                      >
+                        <h4 className="font-bold text-brand-navy text-sm line-clamp-2">{item.name}</h4>
+                      </Link>
                       <p className="text-xs text-gray-400 mt-1 uppercase tracking-wider">{item.category}</p>
                       {item.selectedSize && (
                         <p className="text-xs text-brand-pink font-bold mt-1 bg-pink-50 px-2 py-0.5 rounded-md inline-block border border-pink-100/50">
