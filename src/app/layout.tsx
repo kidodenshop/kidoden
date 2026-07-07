@@ -8,6 +8,7 @@ import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/CartDrawer";
 import { releaseMvp1 } from "@/flags";
 import ComingSoonPage from "@/components/ComingSoon";
+import PageLoader from "@/components/PageLoader";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -66,6 +67,7 @@ export default async function RootLayout({
     <html lang="en" className={`${nunito.variable} ${quicksand.variable} ${openSans.variable} h-full antialiased`}>
       <body className={`${openSans.className} min-h-full flex flex-col font-sans selection:bg-brand-yellow selection:text-brand-navy`}>
         <CartProvider>
+          <PageLoader />
           {isMvpReleased ? (
             <>
               <Header />
