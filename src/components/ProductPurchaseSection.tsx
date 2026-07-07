@@ -170,7 +170,7 @@ export default function ProductPurchaseSection({ product }: { product: Product }
       </div>
 
       {/* Payment trust badges */}
-      <div className="pt-5 border-t border-gray-100">
+      <div className="!mt-4 pt-3 border-t border-gray-100">
         <span className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2 text-center sm:text-left">
           Guaranteed Safe & Secure Checkout
         </span>
