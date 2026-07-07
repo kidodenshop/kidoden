@@ -114,7 +114,7 @@ export default function ProductImageGallery({ images, name }: ProductImageGaller
       <div 
         onMouseMove={isHoverable ? handleMouseMove : undefined}
         onMouseLeave={isHoverable ? handleMouseLeave : undefined}
-        className={`relative w-auto h-[400px] sm:h-[500px] lg:h-[600px] aspect-[4/5] rounded-[3rem] overflow-hidden bg-gray-50 shadow-sm border border-gray-100 group ${
+        className={`relative w-auto h-[480px] sm:h-[580px] lg:h-[680px] aspect-[4/5] rounded-[3rem] overflow-hidden bg-gray-50 shadow-sm border border-gray-100 group ${
           isHoverable ? "cursor-zoom-in" : ""
         }`}
       >
