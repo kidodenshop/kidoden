@@ -28,7 +28,7 @@ export default function PageLoader() {
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#fffbf9] transition-opacity duration-300 ease-out select-none ${
+      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#fffbf9]/90 backdrop-blur-md transition-opacity duration-300 ease-out select-none ${
         loading ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >

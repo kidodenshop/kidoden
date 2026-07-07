@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Loading() {
   return (
-    <div className="w-full flex-grow min-h-[60vh] flex flex-col items-center justify-center bg-[#fffbf9] select-none">
+    <div className="w-full flex-grow min-h-[60vh] flex flex-col items-center justify-center bg-transparent select-none">
       <div className="flex flex-col items-center justify-center">
         {/* Bouncing Baby Image */}
         <div className="relative w-28 h-28 sm:w-32 sm:h-32 animate-bounce">
