@@ -171,15 +171,15 @@ export default function ProductPurchaseSection({ product }: { product: Product }
 
       {/* Product trust badges */}
       <div className="!mt-4 pt-4 border-t border-gray-100/60">
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3.5">
           {[
             { src: "/icons/1.svg", text: "Skin-friendly materials" },
             { src: "/icons/2.svg", text: "Premium gift packaging" },
             { src: "/icons/3.svg", text: "Cash on Delivery" },
             { src: "/icons/4.svg", text: "Easy Returns" },
           ].map((badge, idx) => (
-            <div key={idx} className="flex items-center gap-2.5 bg-gray-50/40 p-2.5 rounded-2xl border border-gray-100/40">
-              <div className="relative w-8 h-8 flex-shrink-0">
+            <div key={idx} className="flex flex-col items-center text-center p-3 bg-gray-50/40 rounded-2xl border border-gray-100/40">
+              <div className="relative w-12 h-12 md:w-14 md:h-14 mb-2 flex-shrink-0">
                 <Image
                   src={badge.src}
                   alt={badge.text}
@@ -187,7 +187,7 @@ export default function ProductPurchaseSection({ product }: { product: Product }
                   className="object-contain"
                 />
               </div>
-              <span className="text-xs font-bold text-brand-navy leading-tight">
+              <span className="text-[11px] sm:text-xs font-black text-brand-navy leading-snug">
                 {badge.text}
               </span>
             </div>
