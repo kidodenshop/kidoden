@@ -9,6 +9,7 @@ import CartDrawer from "@/components/CartDrawer";
 import { releaseMvp1 } from "@/flags";
 import ComingSoonPage from "@/components/ComingSoon";
 import PageLoader from "@/components/PageLoader";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -68,6 +69,7 @@ export default async function RootLayout({
       <body className={`${openSans.className} min-h-full flex flex-col font-sans selection:bg-brand-yellow selection:text-brand-navy`}>
         <CartProvider>
           <PageLoader />
+          <ScrollToTop />
           {isMvpReleased ? (
             <>
               <Header />
