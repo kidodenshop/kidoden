@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { Product } from "@/data/products";
-import PaymentBadges from "./PaymentBadges";
+import Image from "next/image";
 
 export default function ProductPurchaseSection({ product }: { product: Product }) {
   const { addToCart } = useCart();
@@ -169,12 +169,30 @@ export default function ProductPurchaseSection({ product }: { product: Product }
         )}
       </div>
 
-      {/* Payment trust badges */}
-      <div className="!mt-4 pt-3 border-t border-gray-100">
-        <span className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2 text-center sm:text-left">
-          Guaranteed Safe & Secure Checkout
-        </span>
-        <PaymentBadges />
+      {/* Product trust badges */}
+      <div className="!mt-4 pt-4 border-t border-gray-100/60">
+        <div className="grid grid-cols-2 gap-3">
+          {[
+            { src: "/icons/1.svg", text: "Skin-friendly materials" },
+            { src: "/icons/2.svg", text: "Premium gift packaging" },
+            { src: "/icons/3.svg", text: "Cash on Delivery" },
+            { src: "/icons/4.svg", text: "Easy Returns" },
+          ].map((badge, idx) => (
+            <div key={idx} className="flex items-center gap-2.5 bg-gray-50/40 p-2.5 rounded-2xl border border-gray-100/40">
+              <div className="relative w-8 h-8 flex-shrink-0">
+                <Image
+                  src={badge.src}
+                  alt={badge.text}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <span className="text-xs font-bold text-brand-navy leading-tight">
+                {badge.text}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
