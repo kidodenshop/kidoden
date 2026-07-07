@@ -58,7 +58,7 @@ export default async function ProductDetailPage({
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 md:items-start">
           {/* Image Gallery — sticky on desktop */}
-          <div className="md:col-span-6 lg:col-span-7 md:sticky md:top-8 md:self-start">
+          <div className="md:col-span-6 lg:col-span-7 md:sticky md:top-8 md:self-start h-fit">
             <ProductImageGallery
               images={product.images && product.images.length > 0 ? product.images : [product.imageUrl]}
               name={product.name}
