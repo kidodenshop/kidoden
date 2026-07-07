@@ -171,7 +171,7 @@ export default function ProductPurchaseSection({ product }: { product: Product }
 
       {/* Product trust badges */}
       <div className="!mt-6 pt-5 border-t border-gray-100/80">
-        <div className="max-w-[280px] mx-auto grid grid-cols-2 gap-x-8 gap-y-5">
+        <div className="w-full grid grid-cols-4 gap-1.5 sm:gap-2">
           {[
             { src: "/icons/1.svg", text: "Gentle on Delicate Skin" },
             { src: "/icons/2.svg", text: "Fast & Safe Delivery" },
@@ -179,7 +179,7 @@ export default function ProductPurchaseSection({ product }: { product: Product }
             { src: "/icons/4.svg", text: "Easy Returns" },
           ].map((badge, idx) => (
             <div key={idx} className="flex flex-col items-center text-center">
-              <div className="relative w-16 h-16 mb-2 flex-shrink-0">
+              <div className="relative w-10 h-10 sm:w-12 sm:h-12 mb-1.5 flex-shrink-0">
                 <Image
                   src={badge.src}
                   alt={badge.text}
@@ -188,7 +188,7 @@ export default function ProductPurchaseSection({ product }: { product: Product }
                   priority
                 />
               </div>
-              <span className="text-[11px] sm:text-xs font-bold text-brand-navy leading-tight px-1">
+              <span className="text-[9px] sm:text-[10px] md:text-[11px] font-bold text-brand-navy leading-tight px-0.5">
                 {badge.text}
               </span>
             </div>
