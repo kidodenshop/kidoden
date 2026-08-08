@@ -13,6 +13,7 @@ interface SendOrderEmailArgs {
     quantity: number;
     price: number; // in Rupees
   }>;
+  isCod?: boolean;
 }
 
 export async function sendOrderConfirmationEmail({
@@ -21,6 +22,7 @@ export async function sendOrderConfirmationEmail({
   orderNumber,
   totalAmount,
   items,
+  isCod = false,
 }: SendOrderEmailArgs) {
   if (!resend) {
     console.warn("[EMAIL UTILITY] Resend API key is not configured. Confirmation email skipped.");
@@ -62,7 +64,11 @@ export async function sendOrderConfirmationEmail({
 
           <h2 style="color: #1a4263; text-align: center; font-size: 22px; font-weight: 800; margin-top: 0; margin-bottom: 8px;">Order Confirmed!</h2>
           <p style="text-align: center; color: #4b5563; font-size: 14px; line-height: 1.5; margin-bottom: 25px;">
-            Hi <strong>${customerName}</strong>, thank you for shopping with us! We have successfully received your payment and are packing your items with love.
+            ${
+              isCod
+                ? `Hi <strong>${customerName}</strong>, thank you for shopping with us! We have successfully received your order and are packing your items with love. Please keep <strong>₹${totalAmount.toFixed(2)}</strong> ready for payment upon delivery.`
+                : `Hi <strong>${customerName}</strong>, thank you for shopping with us! We have successfully received your payment and are packing your items with love.`
+            }
           </p>
           
           <!-- Order ID Box -->
@@ -87,7 +93,7 @@ export async function sendOrderConfirmationEmail({
           
           <!-- Total -->
           <div style="text-align: right; padding-top: 5px; margin-bottom: 30px;">
-            <span style="font-size: 13px; color: #4b5563; font-weight: 600; text-transform: uppercase; margin-right: 10px;">Total Paid:</span>
+            <span style="font-size: 13px; color: #4b5563; font-weight: 600; text-transform: uppercase; margin-right: 10px;">${isCod ? "Total to Pay (COD):" : "Total Paid:"}</span>
             <span style="font-size: 20px; color: #FF6B8B; font-weight: 900; letter-spacing: -0.5px;">₹${totalAmount.toFixed(2)}</span>
           </div>
           

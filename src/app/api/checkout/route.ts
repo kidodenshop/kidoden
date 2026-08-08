@@ -211,6 +211,7 @@ export async function POST(req: Request) {
         orderNumber: result.order.orderNumber,
         totalAmount: result.order.totalAmount / 100, // paise to rupees
         items: formattedItems,
+        isCod: true,
       }).catch((err) => console.error("[CHECKOUT API] COD email sending error:", err));
 
       return NextResponse.json({
