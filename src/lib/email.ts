@@ -14,6 +14,7 @@ interface SendOrderEmailArgs {
     price: number; // in Rupees
   }>;
   isCod?: boolean;
+  shippingAddress?: string;
 }
 
 export async function sendOrderConfirmationEmail({
@@ -23,6 +24,7 @@ export async function sendOrderConfirmationEmail({
   totalAmount,
   items,
   isCod = false,
+  shippingAddress,
 }: SendOrderEmailArgs) {
   if (!resend) {
     console.warn("[EMAIL UTILITY] Resend API key is not configured. Confirmation email skipped.");
@@ -76,6 +78,18 @@ export async function sendOrderConfirmationEmail({
             <span style="font-size: 11px; text-transform: uppercase; color: #f87171; font-weight: 800; letter-spacing: 1px; display: block; margin-bottom: 4px;">Order Number</span>
             <strong style="font-size: 18px; color: #1a4263; font-weight: 900; letter-spacing: -0.5px;">${orderNumber}</strong>
           </div>
+          
+          <!-- Delivery Address Box -->
+          ${
+            shippingAddress
+              ? `
+          <div style="background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 15px; margin-bottom: 25px; font-size: 13px; line-height: 1.5; color: #4b5563; text-align: left;">
+            <span style="font-size: 10px; text-transform: uppercase; color: #9ca3af; font-weight: 800; letter-spacing: 1.5px; display: block; margin-bottom: 6px;">Delivering at</span>
+            <strong style="color: #1f2937;">${shippingAddress}</strong>
+          </div>
+          `
+              : ""
+          }
           
           <!-- Table -->
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">

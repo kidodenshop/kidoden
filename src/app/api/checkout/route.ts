@@ -205,6 +205,13 @@ export async function POST(req: Request) {
         price: item.price / 100, // paise to rupees
       }));
 
+      const formattedAddress = [
+        name,
+        address,
+        city,
+        pincode
+      ].filter(Boolean).join(", ");
+
       sendOrderConfirmationEmail({
         toEmail: (result.order as any).customer.email,
         customerName: (result.order as any).customer.name || "Customer",
@@ -212,6 +219,7 @@ export async function POST(req: Request) {
         totalAmount: result.order.totalAmount / 100, // paise to rupees
         items: formattedItems,
         isCod: true,
+        shippingAddress: formattedAddress,
       }).catch((err) => console.error("[CHECKOUT API] COD email sending error:", err));
 
       return NextResponse.json({

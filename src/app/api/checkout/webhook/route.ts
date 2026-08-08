@@ -98,6 +98,7 @@ export async function POST(req: Request) {
             },
           },
           customer: true,
+          shippingAddress: true,
         },
       });
 
@@ -182,12 +183,21 @@ export async function POST(req: Request) {
         price: item.price / 100, // paise to rupees
       }));
 
+      const formattedAddress = [
+        orderData.customer.name,
+        orderData.shippingAddress.line1,
+        orderData.shippingAddress.line2,
+        orderData.shippingAddress.city,
+        orderData.shippingAddress.postalCode
+      ].filter(Boolean).join(", ");
+
       sendOrderConfirmationEmail({
         toEmail: orderData.customer.email,
         customerName: orderData.customer.name || "Customer",
         orderNumber: orderData.orderNumber,
         totalAmount: orderData.totalAmount / 100, // paise to rupees
         items: formattedItems,
+        shippingAddress: formattedAddress,
       }).catch((err) => console.error("[WEBHOOK API] Email sending error:", err));
     }
 
