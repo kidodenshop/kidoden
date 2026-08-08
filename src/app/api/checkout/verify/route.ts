@@ -206,13 +206,12 @@ export async function POST(req: Request) {
         price: item.price / 100, // paise to rupees
       }));
 
-      const formattedAddress = [
-        orderData.customer.name,
+      const formattedAddress = `<strong>${orderData.customer.name}</strong>, ${[
         orderData.shippingAddress.line1,
         orderData.shippingAddress.line2,
         orderData.shippingAddress.city,
         orderData.shippingAddress.postalCode
-      ].filter(Boolean).join(", ");
+      ].filter(Boolean).join(", ")}`;
 
       sendOrderConfirmationEmail({
         toEmail: orderData.customer.email,

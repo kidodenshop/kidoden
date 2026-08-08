@@ -83,13 +83,41 @@ export async function sendOrderConfirmationEmail({
           ${
             shippingAddress
               ? `
-          <div style="background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 15px; margin-bottom: 25px; font-size: 13px; line-height: 1.5; color: #4b5563; text-align: left;">
-            <span style="font-size: 10px; text-transform: uppercase; color: #9ca3af; font-weight: 800; letter-spacing: 1.5px; display: block; margin-bottom: 6px;">Delivering at</span>
-            <strong style="color: #1f2937;">${shippingAddress}</strong>
+          <div style="background-color: #fafbfc; border: 1px solid #eef2f6; border-radius: 16px; padding: 20px; margin-bottom: 20px; text-align: left;">
+            <div style="font-size: 16px; font-weight: 800; color: #1a4263; margin-bottom: 8px; font-family: 'Segoe UI', sans-serif;">Delivering at</div>
+            <div style="font-size: 13px; line-height: 1.6; color: #4b5563; font-family: 'Segoe UI', sans-serif;">
+              ${shippingAddress}
+            </div>
           </div>
           `
               : ""
           }
+
+          <!-- What's Next & Need Help Grid -->
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px; text-align: left;">
+            <tr>
+              <td style="width: 50%; padding-right: 8px; vertical-align: top;">
+                <div style="background-color: #fafbfc; border: 1px solid #eef2f6; border-radius: 16px; padding: 20px; min-height: 110px;">
+                  <div style="font-size: 16px; font-weight: 800; color: #1a4263; margin-bottom: 8px; font-family: 'Segoe UI', sans-serif;">What's next?</div>
+                  <div style="font-size: 12px; line-height: 1.6; color: #4b5563; font-family: 'Segoe UI', sans-serif;">
+                    We will send you a confirmation once your order is prepped and ready to ship.
+                  </div>
+                </div>
+              </td>
+              <td style="width: 50%; padding-left: 8px; vertical-align: top;">
+                <div style="background-color: #fafbfc; border: 1px solid #eef2f6; border-radius: 16px; padding: 20px; min-height: 110px;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="float: right; opacity: 0.8; margin-top: 2px;">
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+                  </svg>
+                  <div style="font-size: 16px; font-weight: 800; color: #1a4263; margin-bottom: 8px; font-family: 'Segoe UI', sans-serif;">Need help?</div>
+                  <div style="font-size: 12px; line-height: 1.6; color: #4b5563; font-family: 'Segoe UI', sans-serif;">
+                    For queries, or any assistance <a href="mailto:kidoden.shop@gmail.com" style="color: #FF6B8B; text-decoration: none; font-weight: 700;">contact us</a>.
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
           
           <!-- Table -->
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">

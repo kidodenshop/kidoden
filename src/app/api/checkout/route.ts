@@ -205,12 +205,7 @@ export async function POST(req: Request) {
         price: item.price / 100, // paise to rupees
       }));
 
-      const formattedAddress = [
-        name,
-        address,
-        city,
-        pincode
-      ].filter(Boolean).join(", ");
+      const formattedAddress = `<strong>${name}</strong>, ${[address, city, pincode].filter(Boolean).join(", ")}`;
 
       sendOrderConfirmationEmail({
         toEmail: (result.order as any).customer.email,
