@@ -59,7 +59,7 @@
 :root {
   --background: #fffbf9;
   --foreground: #1a4263;
-  --font-sans: var(--font-nunito), var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  --font-sans: var(--font-open-sans), "Open Sans", Arial, Helvetica, sans-serif;
 }
 
 
@@ -81,3 +81,13 @@ body {
 [data-nextjs-dev-indicator] {
   display: none !important;
 }
+
+/* WhatsApp button position adjustment when sticky bar is active */
+.whatsapp-button {
+  transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s, transform 0.2s !important;
+}
+
+body.has-sticky-bar .whatsapp-button {
+  bottom: 84px !important;
+}
+

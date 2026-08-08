@@ -19,6 +19,7 @@ graph TD
     Warehouse["📦 Supabase (The Main Warehouse)"]
     Razorpay["💳 Razorpay (The Digital Cash Register)"]
     Shiprocket["🚀 Shiprocket (The Delivery Rocket)"]
+    Resend["📧 Resend (The Mail Postman)"]
 
     %% Flow connections
     Customer -->|1. Browses & buys toys| Storefront
@@ -30,8 +31,11 @@ graph TD
     Storefront -->|6. Sends payments| Razorpay
     Razorpay -->|7. Confirms money received| Storefront
     
-    Storefront -->|8. Books delivery truck| Shiprocket
-    Shiprocket -->|9. Delivers toy to home| Customer
+    Storefront -->|8. Dispatch notification| Resend
+    Resend -->|9. Mails invoice receipt| Customer
+    
+    Storefront -->|10. Books delivery truck| Shiprocket
+    Shiprocket -->|11. Delivers toy to home| Customer
     
     %% Style highlights
     style Customer fill:#fff,stroke:#333,stroke-width:2px
@@ -40,6 +44,7 @@ graph TD
     style Warehouse fill:#3ecf8e,stroke:#333,stroke-width:2px,color:#fff
     style Razorpay fill:#528ff0,stroke:#333,stroke-width:2px,color:#fff
     style Shiprocket fill:#f4a28c,stroke:#333,stroke-width:2px,color:#fff
+    style Resend fill:#a78bfa,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 ---
@@ -67,7 +72,11 @@ Next.js speaks **TypeScript/JavaScript**, but Supabase speaks **SQL (Database La
 Think of Razorpay as our **secured electronic cash register**.
 * It safely collects money from credit cards, UPI, or net banking, makes sure the money is real, and tells our cashier (Next.js): *"Payment successful! Go ahead and pack the toys!"*
 
-### 5. Shiprocket 🚀 (The Delivery Rocket)
+### 5. Resend 📧 (The Mail Postman)
+Think of Resend as our **reliable automated postman**.
+* Once payment is confirmed, Resend prints out a receipt and mails a beautiful, detailed HTML order confirmation invoice directly to the customer's email inbox.
+
+### 6. Shiprocket 🚀 (The Delivery Rocket)
 Think of Shiprocket as our **logistics fleet manager**.
 * Once the order is paid, Next.js calls Shiprocket: *"We have a package ready for shipping!"*
 * Shiprocket automatically prints a tracking sticker (AWB number), calls a courier, and tracks the package until it arrives at the customer's front door.
@@ -101,7 +110,8 @@ Let’s trace the journey of buying a **Mickey Vest (size 2-3 Years)**:
 3. **Checkout**: You click "Buy". Next.js generates an order and opens the **Razorpay Cash Register**.
 4. **Paying**: You enter UPI pin. Razorpay processes it, confirms to Next.js that the money is received.
 5. **Deducting Stock**: The **Prisma Robot** rushes to the **Inventory Table** and reduces the stock by `1` (if we had 5 vests, now we have 4).
-6. **Shipping**: Next.js sends the order to **Shiprocket** to generate a delivery slip. A courier picks it up, delivers it to your house, and you wear your cute new vest! 🎉
+6. **Mailing Invoice**: Next.js asks **Resend** to dispatch a confirmation invoice directly to the customer's email.
+7. **Shipping**: Next.js sends the order to **Shiprocket** to generate a delivery slip. A courier picks it up, delivers it to your house, and you wear your cute new vest! 🎉
 
 ---
 
@@ -124,11 +134,12 @@ If you choose to pay online via UPI, Credit/Debit cards, or Netbanking:
 3. **Draft Order**: Next.js creates the Customer, Shipping Address, and Order records. The Order is initially marked as `status: PENDING` and `paymentStatus: PENDING`.
 4. **Gateway Order**: Next.js calls the Razorpay API to generate a matching Razorpay order and returns its unique ID to your browser.
 5. **Payment Popup**: The checkout page opens the secure Razorpay Checkout overlay widget. You select your payment option and authorize the purchase.
-6. **Signature Verification**: Once you pay, Razorpay returns a payment signature. Next.js sends this to the verification endpoint (`/api/checkout/verify`), which calculates a secure SHA256 checksum to verify the payment is authentic.
-7. **Stock Deduction & Finalization**: After verification succeeds:
-   - Next.js **decrements** the stock counts in the **Inventory Table**.
-   - Updates the Order status to `CONFIRMED` and paymentStatus to `PAID`.
-   - Clears your cart and redirects you to the `/checkout/success` page.
+6. **Signature Verification / Webhook Fail-Safe**: 
+   - **Verification:** Once paid, Razorpay returns a signature which the verification endpoint (`/api/checkout/verify`) validates via secure checksum.
+   - **Webhook:** If the customer closes the browser before the verification endpoint is completed, our **Webhook Handler** (`/api/checkout/webhook`) acts as a secure fail-safe. It detects the `order.paid` event directly from Razorpay to finalize database updates.
+7. **Stock Deduction, Invoice & Finalization**: Whichever endpoint (Verification or Webhook) runs first:
+   - Locks the order, **decrements** the stock counts in the **Inventory Table**, and transitions the Order status to `CONFIRMED` and paymentStatus to `PAID`.
+   - Clear the cart, sends the customer order receipt via **Resend**, and redirects the customer to `/checkout/success`.
    *(If the transaction fails or the popup is closed, the order is marked `CANCELLED` and stock remains untouched).*
 
 ---
@@ -166,4 +177,3 @@ If you want to keep your local backup files updated:
    npx prisma db seed
    ```
    The Prisma Robot will automatically scan the list, find your new item, upload it to the Supabase database, and set up the starting sizes and stocks!
-

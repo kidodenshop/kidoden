@@ -106,10 +106,10 @@ export default async function Home() {
       </section>
 
       {/* Modernized Shop by Category */}
-      <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-[#fafafa]">
+      <section className="py-10 md:py-16 px-4 sm:px-6 lg:px-8 bg-[#fafafa]">
         <div className="max-w-8xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">Shop by Category</h2>
+          <div className="text-center mb-8 md:mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">Shop by Category</h2>
             <div className="w-16 h-1 bg-brand-pink mx-auto rounded-full"></div>
           </div>
 
@@ -195,10 +195,10 @@ export default async function Home() {
       </section>
 
       {/* Modernized Featured Products */}
-      <section className="pt-12 md:pt-16 pb-6 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="pt-10 md:pt-16 pb-4 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-8xl mx-auto">
-          <div className="text-center mb-12 relative flex flex-col items-center">
-            <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">New Arrivals</h2>
+          <div className="text-center mb-8 md:mb-12 relative flex flex-col items-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">New Arrivals</h2>
             <div className="w-16 h-1 bg-brand-pink mx-auto rounded-full"></div>
             <Link href="/shop" className="hidden md:inline-flex absolute right-0 top-1/2 -translate-y-1/2 items-center gap-2 text-brand-navy font-bold hover:text-brand-pink transition-colors">
               View All <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -207,7 +207,7 @@ export default async function Home() {
 
           <ProductSlider products={featuredProducts} />
 
-          <div className="mt-12 text-center md:hidden">
+          <div className="mt-6 text-center md:hidden">
             <Link href="/shop" className="inline-block border-2 border-brand-navy text-brand-navy font-bold py-3 px-8 rounded-full">
               View All
             </Link>
@@ -217,9 +217,9 @@ export default async function Home() {
 
       {/* Modern UX: For the Whole Family */}
       {/* Best Sellers Section */}
-      <section className="pt-6 pb-12 md:pb-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-gray-100">
+      <section className="pt-6 pb-10 md:pb-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-gray-100">
         <div className="max-w-8xl mx-auto">
-          <div className="text-center mb-12 relative flex flex-col items-center">
+          <div className="text-center mb-8 md:mb-12 relative flex flex-col items-center">
             <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">Best Sellers</h2>
             <div className="w-16 h-1 bg-brand-pink mx-auto rounded-full"></div>
           </div>
@@ -283,9 +283,9 @@ export default async function Home() {
       */}
 
       {/* Modernized Value Proposition */}
-      <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
+      <section className="py-10 md:py-16 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-8">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-6 md:mb-8">
             Quality without compromise.
           </h2>
           <p className="text-lg md:text-2xl text-gray-500 leading-relaxed max-w-3xl mx-auto font-medium mb-16">
@@ -314,7 +314,7 @@ export default async function Home() {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4263" strokeWidth="2"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
               </div>
               <h4 className="font-bold text-xl text-brand-navy mb-2">Modern Design</h4>
-              <p className="text-gray-500 text-sm">Thoughtfully crafted styles they'll love.</p>
+              <p className="text-gray-500 text-sm">Thoughtfully crafted styles they&apos;ll love.</p>
             </div>
           </div>
         </div>

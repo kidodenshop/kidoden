@@ -1,10 +1,29 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/db";
 import { razorpay } from "@/lib/razorpay";
+import { checkoutSchema } from "@/lib/validation";
+import { rateLimit } from "@/lib/rateLimit";
+import crypto from "crypto";
 
 export async function POST(req: Request) {
   try {
+    // 1. Rate Limiting (limit IP to 5 requests per minute on checkout)
+    const ip = req.headers.get("x-forwarded-for") || "127.0.0.1";
+    const limitResponse = await rateLimit(ip, "checkout", 5, 60);
+    if (limitResponse) return limitResponse;
+
     const body = await req.json();
+
+    // 2. Validate input using Zod schema
+    const validationResult = checkoutSchema.safeParse(body);
+    if (!validationResult.success) {
+      const errorMessage = validationResult.error.issues.map(issue => issue.message).join(", ");
+      return NextResponse.json(
+        { error: `Validation failed: ${errorMessage}` },
+        { status: 400 }
+      );
+    }
+
     const {
       email,
       name,
@@ -14,22 +33,7 @@ export async function POST(req: Request) {
       pincode,
       paymentMethod,
       cartItems,
-    } = body;
-
-    // 1. Basic validation
-    if (!email || !name || !phone || !address || !city || !pincode || !paymentMethod || !cartItems || !Array.isArray(cartItems) || cartItems.length === 0) {
-      return NextResponse.json(
-        { error: "Invalid request payload. All fields are required." },
-        { status: 400 }
-      );
-    }
-
-    if (paymentMethod !== "COD" && paymentMethod !== "RAZORPAY") {
-      return NextResponse.json(
-        { error: "Invalid payment method." },
-        { status: 400 }
-      );
-    }
+    } = validationResult.data;
 
     // Check if database URL is valid
     const hasValidDbUrl = process.env.DATABASE_URL && 
@@ -48,7 +52,7 @@ export async function POST(req: Request) {
       });
     }
 
-    // 2. Start database transaction
+    // 3. Start database transaction
     const result = await prisma.$transaction(async (tx) => {
       // Fetch products in cart
       const productIds = cartItems.map((item) => item.id);
@@ -77,16 +81,26 @@ export async function POST(req: Request) {
           );
         }
 
-        // If Cash on Delivery (COD), deduct stock immediately in transaction
+        // If Cash on Delivery (COD), deduct stock immediately in transaction.
+        // We use updateMany with condition to prevent race conditions (optimistic lock / atomic decrement constraint)
         if (paymentMethod === "COD") {
-          await tx.inventory.update({
-            where: { id: inventoryItem.id },
+          const updated = await tx.inventory.updateMany({
+            where: {
+              id: inventoryItem.id,
+              stockQuantity: {
+                gte: item.quantity
+              }
+            },
             data: {
               stockQuantity: {
                 decrement: item.quantity,
               },
             },
           });
+
+          if (updated.count === 0) {
+            throw new Error(`Concurrency check failed: Insufficient stock for "${dbProduct.name}" (Size: ${sizeKey}).`);
+          }
         }
       }
 
@@ -120,9 +134,10 @@ export async function POST(req: Request) {
         },
       });
 
-      // Generate order number
-      const orderCount = await tx.order.count();
-      const orderNumber = `KD-${1001 + orderCount}`;
+      // Generate order number: collision-free unique format (KD-YYMMDD-XXXX)
+      const dateStr = new Date().toISOString().slice(2, 10).replace(/-/g, "");
+      const randomHex = crypto.randomBytes(2).toString("hex").toUpperCase();
+      const orderNumber = `KD-${dateStr}-${randomHex}`;
 
       // Create Order
       const order = await tx.order.create({
@@ -167,7 +182,7 @@ export async function POST(req: Request) {
       };
     });
 
-    // 3. For COD, return success immediately
+    // 4. For COD, return success immediately
     if (paymentMethod === "COD") {
       return NextResponse.json({
         success: true,
@@ -178,7 +193,7 @@ export async function POST(req: Request) {
       });
     }
 
-    // 4. For Razorpay, call Razorpay API to create an order
+    // 5. For Razorpay, call Razorpay API to create an order
     try {
       const razorpayOrder = await razorpay.orders.create({
         amount: result.amount, // in paise

@@ -34,24 +34,24 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Kidoden | Made with love, for little ones",
+    default: "Kidoden | Premium Kidswear & Baby Gift Boxes in India",
     template: "%s | Kidoden",
   },
   description:
-    "Kidoden is a premium store for kids clothing, accessories and new born gift sets in India. Thoughtfully curated with love for little ones.",
+    "Discover premium baby clothing, kidswear and thoughtful gift boxes for little ones. Soft fabrics, adorable designs and Pan-India delivery.",
   openGraph: {
     type: "website",
     siteName: "Kidoden",
-    title: "Kidoden | Made with love, for little ones",
+    title: "Kidoden | Premium Kidswear & Baby Gift Boxes in India",
     description:
-      "Kidoden is a premium store for kids clothing, accessories and new born gift sets in India. Thoughtfully curated with love for little ones.",
+      "Discover premium baby clothing, kidswear and thoughtful gift boxes for little ones. Soft fabrics, adorable designs and Pan-India delivery.",
     images: [{ url: "/brand_logo-new.png", width: 800, height: 400, alt: "Kidoden" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kidoden | Made with love, for little ones",
+    title: "Kidoden | Premium Kidswear & Baby Gift Boxes in India",
     description:
-      "Kidoden is a premium store for kids clothing, accessories and new born gift sets in India. Thoughtfully curated with love for little ones.",
+      "Discover premium baby clothing, kidswear and thoughtful gift boxes for little ones. Soft fabrics, adorable designs and Pan-India delivery.",
     images: ["/brand_logo-new.png"],
   },
   robots: { index: true, follow: true },
@@ -83,7 +83,7 @@ export default async function RootLayout({
                 href="https://wa.me/919606969128?text=Hi%20Kidoden!%20%F0%9F%91%8B%20I%20have%20a%20question!"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-[#1EBE5D] transition-all transform hover:scale-110"
+                className="whatsapp-button fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-[#1EBE5D] transition-all transform hover:scale-110"
                 aria-label="Chat on WhatsApp"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">

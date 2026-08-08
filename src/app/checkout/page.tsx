@@ -536,8 +536,10 @@ function CheckoutPageContent() {
               <div className="absolute inset-0 rounded-full border-4 border-t-brand-pink border-r-transparent border-b-brand-pink border-l-transparent animate-spin"></div>
               {/* Center icon */}
               <div className="relative w-16 h-16 rounded-full bg-pink-50 flex items-center justify-center text-brand-pink">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="animate-bounce">
-                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce">
+                  <rect x="2" y="5" width="20" height="14" rx="2" ry="2" />
+                  <line x1="2" y1="10" x2="22" y2="10" />
+                  <line x1="7" y1="15" x2="11" y2="15" />
                 </svg>
               </div>
             </div>
