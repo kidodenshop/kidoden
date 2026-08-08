@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 interface SendOrderEmailArgs {
   toEmail: string;
@@ -22,7 +22,7 @@ export async function sendOrderConfirmationEmail({
   totalAmount,
   items,
 }: SendOrderEmailArgs) {
-  if (!process.env.RESEND_API_KEY) {
+  if (!resend) {
     console.warn("[EMAIL UTILITY] Resend API key is not configured. Confirmation email skipped.");
     return;
   }
