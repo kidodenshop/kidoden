@@ -7,6 +7,7 @@ import ProductCard from "@/components/ProductCard";
 interface ShopFilterGridProps {
   products: Product[];
   category?: string;
+  isPending?: boolean;
 }
 
 function parseAgeRange(rangeStr: string): [number, number] | null {
@@ -43,7 +44,7 @@ const sizeLabels: Record<string, string> = {
   "7-12": "7–12 Years"
 };
 
-export default function ShopFilterGrid({ products, category }: ShopFilterGridProps) {
+export default function ShopFilterGrid({ products, category, isPending }: ShopFilterGridProps) {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
@@ -632,7 +633,20 @@ export default function ShopFilterGrid({ products, category }: ShopFilterGridPro
         </>
       )}
 
-      {sortedProducts.length > 0 ? (
+      {isPending ? (
+        <div className={`grid grid-cols-2 sm:grid-cols-3 ${colsCount === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-5'} gap-4 sm:gap-6`}>
+          {Array.from({ length: 8 }).map((_, idx) => (
+            <div key={idx} className="bg-white rounded-[2rem] p-4 border border-gray-100/80 shadow-sm flex flex-col gap-4 animate-pulse">
+              <div className="relative aspect-square w-full rounded-2xl bg-gray-100 overflow-hidden" />
+              <div className="flex flex-col gap-2 px-1">
+                <div className="h-4 bg-gray-100 rounded-md w-1/3" />
+                <div className="h-6 bg-gray-100 rounded-md w-3/4" />
+                <div className="h-5 bg-gray-100 rounded-md w-1/2 mt-1" />
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : sortedProducts.length > 0 ? (
         colsCount === 4 ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 animate-in fade-in duration-300">
             {sortedProducts.map((product) => (

@@ -4,6 +4,7 @@ import { razorpay } from "@/lib/razorpay";
 import { checkoutSchema } from "@/lib/validation";
 import { rateLimit } from "@/lib/rateLimit";
 import crypto from "crypto";
+import { sendOrderConfirmationEmail } from "@/lib/email";
 
 export async function POST(req: Request) {
   try {
@@ -175,15 +176,43 @@ export async function POST(req: Request) {
         },
       });
 
+      // Query the fully populated order details (items, products, customer) for receipt email
+      const fullOrder = await tx.order.findUnique({
+        where: { id: order.id },
+        include: {
+          items: {
+            include: {
+              product: true,
+            },
+          },
+          customer: true,
+        },
+      });
+
       return {
-        order,
+        order: fullOrder || order,
         payment,
         amount: totalAmountInPaise,
       };
     });
 
-    // 4. For COD, return success immediately
+    // 4. For COD, return success immediately and trigger confirmation email
     if (paymentMethod === "COD") {
+      const formattedItems = (result.order as any).items.map((item: any) => ({
+        name: item.product.name,
+        size: item.size,
+        quantity: item.quantity,
+        price: item.price / 100, // paise to rupees
+      }));
+
+      sendOrderConfirmationEmail({
+        toEmail: (result.order as any).customer.email,
+        customerName: (result.order as any).customer.name || "Customer",
+        orderNumber: result.order.orderNumber,
+        totalAmount: result.order.totalAmount / 100, // paise to rupees
+        items: formattedItems,
+      }).catch((err) => console.error("[CHECKOUT API] COD email sending error:", err));
+
       return NextResponse.json({
         success: true,
         orderNumber: result.order.orderNumber,
