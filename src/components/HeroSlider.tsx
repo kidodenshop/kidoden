@@ -103,38 +103,6 @@ export default function HeroSlider() {
                 )}
               </div>
 
-              {/* Decorative hand-drawn styled hearts for Slide 1 only */}
-              {slide.type === "classic" && (
-                <>
-                  {/* Heart 1: Top Left empty area */}
-                  <div className="absolute top-[18%] left-[8%] z-20 text-brand-pink/60 animate-pulse select-none pointer-events-none">
-                    <HeartIcon className="w-5 h-5 sm:w-7 sm:h-7" />
-                  </div>
-                  {/* Heart 2: Middle Right empty area */}
-                  <div className="absolute top-[28%] right-[12%] z-20 text-brand-pink/50 animate-pulse select-none pointer-events-none">
-                    <HeartIcon className="w-4 h-4 sm:w-6 sm:h-6" />
-                  </div>
-                  {/* Heart 3: Soft small heart near top right */}
-                  <div className="absolute top-[12%] right-[25%] z-20 text-brand-pink/40 animate-pulse select-none pointer-events-none">
-                    <HeartIcon className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
-                  </div>
-
-                  {/* Colorful Hearts on the right side of Slide 1 text */}
-                  {/* Heart 4 (Green): Right of Tagline/Heading top */}
-                  <div className="absolute bottom-[27%] right-[10%] z-20 text-[#4E9F8E]/60 animate-pulse select-none pointer-events-none">
-                    <HeartIcon className="w-4 h-4 sm:w-6 sm:h-6" />
-                  </div>
-                  {/* Heart 5 (Pink): Right of Heading middle */}
-                  <div className="absolute bottom-[20%] right-[18%] z-20 text-[#f0959f]/75 animate-pulse select-none pointer-events-none">
-                    <HeartIcon className="w-5 h-5 sm:w-7 sm:h-7" />
-                  </div>
-                  {/* Heart 6 (Navy): Right of Subtitle/CTA */}
-                  <div className="absolute bottom-[13%] right-[8%] z-20 text-[#1a4263]/40 animate-pulse select-none pointer-events-none">
-                    <HeartIcon className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
-                  </div>
-                </>
-              )}
-
               {/* Text Content Overlay (Slide-specific vertical alignment on mobile) */}
               <div className={`relative z-20 w-full md:max-w-8xl md:mx-auto px-6 h-full flex flex-col items-start text-left ${
                 slide.type === "classic" 
