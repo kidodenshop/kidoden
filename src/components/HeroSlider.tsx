@@ -69,7 +69,7 @@ export default function HeroSlider() {
                       src={slide.mobileImage}
                       alt={slide.type === "classic" ? slide.titlePrefix + slide.titleRest : "Kidoden Kids Collection"}
                       fill
-                      className="object-cover object-center md:hidden"
+                      className={`object-cover md:hidden ${slide.type === "classic" ? "object-bottom" : "object-center"}`}
                       priority={index === 0}
                     />
                     {/* Desktop image */}
