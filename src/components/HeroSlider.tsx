@@ -91,8 +91,8 @@ export default function HeroSlider() {
                 )}
               </div>
 
-              {/* Text Content Overlay */}
-              <div className="relative z-20 w-full md:max-w-8xl md:mx-auto px-6 h-full flex flex-col justify-center items-start text-left">
+              {/* Text Content Overlay (Aligned to top on mobile to avoid overlapping with kids) */}
+              <div className="relative z-20 w-full md:max-w-8xl md:mx-auto px-6 h-full flex flex-col justify-start pt-10 md:justify-center md:pt-0 items-start text-left">
                 <div
                   className={`w-[75%] sm:w-[80%] md:w-[60%] lg:w-[50%] transition-all duration-1000 ease-out delay-150 ${
                     isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -135,8 +135,8 @@ export default function HeroSlider() {
                         </span>
                       </div>
 
-                      {/* Colored Bullets */}
-                      <div className="flex flex-wrap justify-start gap-x-4 gap-y-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-wider mb-5 md:mb-7 select-none">
+                      {/* Colored Bullets (hidden on mobile to keep layout clean) */}
+                      <div className="hidden md:flex flex-wrap justify-start gap-x-4 gap-y-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-wider mb-5 md:mb-7 select-none">
                         {slide.bullets?.map((bullet, idx) => (
                           <span
                             key={idx}
