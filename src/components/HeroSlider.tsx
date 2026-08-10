@@ -27,6 +27,7 @@ const slides = [
     description: "Crafted with soft fabrics, safe materials, and love — perfect for your child's comfort.",
     cta: "Shop Now",
     link: "/shop",
+    badge: undefined,
   },
   {
     type: "kids-collection",
@@ -35,7 +36,6 @@ const slides = [
     tagline: "TREND ON",
     titlePrefix: "style",
     titleRest: " for kids",
-    badge: "2 to 12 years",
     bullets: [
       { text: "Trendy Looks", colorClass: "text-[#1a4263]", dotClass: "bg-[#1a4263]" },
       { text: "Every Age", colorClass: "text-[#f0959f]", dotClass: "bg-[#f0959f]" },
@@ -145,11 +145,13 @@ export default function HeroSlider() {
                       </h1>
                       
                       {/* Age group badge (original colors) */}
-                      <div className="mb-3 md:mb-5">
-                        <span className="inline-block bg-brand-pink/15 text-brand-pink border border-brand-pink/20 font-extrabold text-[10px] sm:text-xs md:text-sm px-4 py-1.5 md:px-5 md:py-2 rounded-full uppercase tracking-wider shadow-xs">
-                          {slide.badge}
-                        </span>
-                      </div>
+                      {slide.badge && (
+                        <div className="mb-3 md:mb-5">
+                          <span className="inline-block bg-brand-pink/15 text-brand-pink border border-brand-pink/20 font-extrabold text-[10px] sm:text-xs md:text-sm px-4 py-1.5 md:px-5 md:py-2 rounded-full uppercase tracking-wider shadow-xs">
+                            {slide.badge}
+                          </span>
+                        </div>
+                      )}
 
                       {/* Colored Bullets (hidden on mobile to keep layout clean) */}
                       <div className="hidden md:flex flex-wrap justify-start gap-x-4 gap-y-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-wider mb-5 md:mb-7 select-none">
