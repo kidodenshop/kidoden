@@ -45,14 +45,6 @@ export default function HeroSlider() {
     return () => clearInterval(timer);
   }, []);
 
-  const handlePrev = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const handleNext = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
   return (
     <div className="relative w-full h-[60vh] sm:h-[65vh] md:h-[60vh] lg:h-[65vh] xl:h-[75vh] overflow-hidden bg-[#fffbf9] select-none group">
       {/* Slides Container */}
@@ -155,25 +147,6 @@ export default function HeroSlider() {
         })}
       </div>
 
-      {/* Navigation Arrows (Visible on hover on desktop, hidden on mobile) */}
-      <button
-        onClick={handlePrev}
-        aria-label="Previous Slide"
-        className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/70 backdrop-blur-xs border border-gray-100 hover:bg-brand-pink hover:text-white items-center justify-center text-brand-navy shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0"
-      >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      <button
-        onClick={handleNext}
-        aria-label="Next Slide"
-        className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/70 backdrop-blur-xs border border-gray-100 hover:bg-brand-pink hover:text-white items-center justify-center text-brand-navy shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0"
-      >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
 
       {/* Pagination Dots */}
       <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
