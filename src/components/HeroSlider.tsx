@@ -46,7 +46,7 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <div className="relative w-full h-[54vh] sm:h-[60vh] md:h-[60vh] lg:h-[65vh] xl:h-[75vh] overflow-hidden bg-[#fffbf9] select-none group">
+    <div className="relative w-full h-[52vh] sm:h-[60vh] md:h-[60vh] lg:h-[65vh] xl:h-[75vh] overflow-hidden bg-[#fffbf9] select-none group">
       {/* Slides Container */}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => {
@@ -66,16 +66,16 @@ export default function HeroSlider() {
                   src={slide.image}
                   alt={slide.type === "classic" ? slide.titlePrefix + slide.titleRest : "Kidoden Kids Collection"}
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-right md:object-center"
                   priority={index === 0}
                 />
-                {/* Mobile light cream overlay for readability, fades to transparent on desktop */}
-                <div className="absolute inset-0 bg-[#fffbf9]/85 md:bg-transparent" />
+                {/* Very subtle gradient from the left for text contrast, invisible on desktop */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#fffbf9]/50 via-[#fffbf9]/10 to-transparent md:hidden" />
               </div>
 
               {/* Text Content Overlay */}
-              <div className="relative z-20 w-full md:max-w-8xl md:mx-auto px-6 h-full flex flex-col justify-center items-center md:items-start text-center md:text-left">
-                <div className="w-full sm:w-[85%] md:w-[60%] lg:w-[50%] animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200">
+              <div className="relative z-20 w-full md:max-w-8xl md:mx-auto px-6 h-full flex flex-col justify-center items-start text-left">
+                <div className="w-[75%] sm:w-[80%] md:w-[60%] lg:w-[50%] animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200">
                   {slide.type === "classic" ? (
                     // Slide 1 Layout (Original style)
                     <>
@@ -89,7 +89,7 @@ export default function HeroSlider() {
                           {slide.subtitle}
                         </span>
                       </h1>
-                      <p className="hidden sm:block text-base md:text-lg text-brand-navy/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0">
+                      <p className="hidden sm:block text-base md:text-lg text-brand-navy/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-0">
                         {slide.description}
                       </p>
                     </>
@@ -99,7 +99,7 @@ export default function HeroSlider() {
                       <span className="text-brand-pink font-bold tracking-[0.2em] text-[10px] sm:text-xs md:text-sm uppercase mb-2 md:mb-3 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-navy mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1] flex flex-wrap items-center justify-center md:justify-start gap-x-1.5 md:gap-x-2">
+                      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-navy mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1] flex flex-wrap items-center justify-start gap-x-1.5 md:gap-x-2">
                         <span className="text-brand-pink font-dancing font-medium normal-case text-4xl sm:text-6xl md:text-7xl lg:text-8xl pr-0.5">
                           {slide.titlePrefix}
                         </span>
@@ -114,7 +114,7 @@ export default function HeroSlider() {
                       </div>
 
                       {/* Colored Bullets */}
-                      <div className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-wider mb-5 md:mb-7 select-none">
+                      <div className="flex flex-wrap justify-start gap-x-4 gap-y-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-wider mb-5 md:mb-7 select-none">
                         {slide.bullets?.map((bullet, idx) => (
                           <span
                             key={idx}
@@ -130,7 +130,7 @@ export default function HeroSlider() {
                         ))}
                       </div>
 
-                      <p className="hidden sm:block text-base md:text-lg text-brand-navy/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0">
+                      <p className="hidden sm:block text-base md:text-lg text-brand-navy/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-0">
                         {slide.description}
                       </p>
                     </>
