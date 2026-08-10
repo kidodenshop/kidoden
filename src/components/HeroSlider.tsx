@@ -54,10 +54,8 @@ export default function HeroSlider() {
           return (
             <div
               key={index}
-              className={`absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${
-                isActive
-                  ? "opacity-100 translate-x-0 scale-100 z-10"
-                  : "opacity-0 translate-x-4 scale-98 z-0 pointer-events-none"
+              className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+                isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
               }`}
             >
               {/* Background Image (Absolute across all screen sizes) */}
@@ -76,7 +74,11 @@ export default function HeroSlider() {
 
               {/* Text Content Overlay */}
               <div className="relative z-20 w-full md:max-w-8xl md:mx-auto px-6 h-full flex flex-col justify-center items-start text-left">
-                <div className="w-[85%] sm:w-[80%] md:w-[60%] lg:w-[50%] animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200">
+                <div
+                  className={`w-[85%] sm:w-[80%] md:w-[60%] lg:w-[50%] transition-all duration-1000 ease-out delay-150 ${
+                    isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                  }`}
+                >
                   {slide.type === "classic" ? (
                     // Slide 1 Layout (Original style with white text)
                     <>
