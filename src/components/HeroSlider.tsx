@@ -46,7 +46,7 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <div className="relative w-full h-[60vh] sm:h-[65vh] md:h-[60vh] lg:h-[65vh] xl:h-[75vh] overflow-hidden bg-[#fffbf9] select-none group">
+    <div className="relative w-full h-[54vh] sm:h-[60vh] md:h-[60vh] lg:h-[65vh] xl:h-[75vh] overflow-hidden bg-[#fffbf9] select-none group">
       {/* Slides Container */}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => {
@@ -54,14 +54,14 @@ export default function HeroSlider() {
           return (
             <div
               key={index}
-              className={`absolute inset-0 w-full h-full flex flex-col md:flex-row transition-all duration-1000 ease-in-out ${
+              className={`absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${
                 isActive
                   ? "opacity-100 translate-x-0 scale-100 z-10"
                   : "opacity-0 translate-x-4 scale-98 z-0 pointer-events-none"
               }`}
             >
-              {/* Responsive Image Wrapper */}
-              <div className="relative w-full h-[40vh] md:absolute md:inset-0 md:h-full">
+              {/* Background Image (Absolute across all screen sizes) */}
+              <div className="absolute inset-0 w-full h-full">
                 <Image
                   src={slide.image}
                   alt={slide.type === "classic" ? slide.titlePrefix + slide.titleRest : "Kidoden Kids Collection"}
@@ -69,68 +69,68 @@ export default function HeroSlider() {
                   className="object-cover object-center"
                   priority={index === 0}
                 />
-                {/* Subtle overlay to enhance text readability on mobile */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent md:hidden" />
+                {/* Mobile light cream overlay for readability, fades to transparent on desktop */}
+                <div className="absolute inset-0 bg-[#fffbf9]/85 md:bg-transparent" />
               </div>
 
-              {/* Text Content Container */}
-              <div className="relative z-20 w-full md:max-w-8xl md:mx-auto px-6 py-8 md:px-8 md:py-0 h-auto md:h-full flex flex-col justify-center items-center md:items-start text-center md:text-left bg-[#fffbf9] md:bg-transparent">
+              {/* Text Content Overlay */}
+              <div className="relative z-20 w-full md:max-w-8xl md:mx-auto px-6 h-full flex flex-col justify-center items-center md:items-start text-center md:text-left">
                 <div className="w-full sm:w-[85%] md:w-[60%] lg:w-[50%] animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200">
                   {slide.type === "classic" ? (
                     // Slide 1 Layout (Original style)
                     <>
-                      <span className="text-brand-pink md:text-brand-navy/60 font-bold tracking-[0.2em] text-[10px] sm:text-xs md:text-sm uppercase mb-2 sm:mb-4 block">
+                      <span className="text-brand-pink md:text-brand-navy/60 font-bold tracking-[0.2em] text-[10px] sm:text-xs md:text-sm uppercase mb-2 md:mb-4 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand-navy mb-2 sm:mb-4 tracking-tight leading-[1.1]">
+                      <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand-navy mb-2 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1]">
                         <span className="text-brand-pink">{slide.titlePrefix}</span>
                         {slide.titleRest}
-                        <span className="block text-brand-navy/80 font-bold text-lg sm:text-2xl md:text-3xl mt-1 sm:mt-2">
+                        <span className="block text-brand-navy/80 font-bold text-sm sm:text-2xl md:text-3xl mt-1 md:mt-2">
                           {slide.subtitle}
                         </span>
                       </h1>
-                      <p className="hidden sm:block text-base md:text-lg text-brand-navy/80 mb-6 sm:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0">
+                      <p className="hidden sm:block text-base md:text-lg text-brand-navy/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0">
                         {slide.description}
                       </p>
                     </>
                   ) : (
                     // Slide 2 Layout (Style For Kids custom layout)
                     <>
-                      <span className="text-brand-pink font-bold tracking-[0.2em] text-xs sm:text-sm uppercase mb-2 sm:mb-3 block">
+                      <span className="text-brand-pink font-bold tracking-[0.2em] text-[10px] sm:text-xs md:text-sm uppercase mb-2 md:mb-3 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-navy mb-4 tracking-tight leading-[1.1] flex flex-wrap items-center justify-center md:justify-start gap-x-2">
-                        <span className="text-brand-pink font-dancing font-medium normal-case text-5xl sm:text-6xl md:text-7xl lg:text-8xl pr-1">
+                      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-navy mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1] flex flex-wrap items-center justify-center md:justify-start gap-x-1.5 md:gap-x-2">
+                        <span className="text-brand-pink font-dancing font-medium normal-case text-4xl sm:text-6xl md:text-7xl lg:text-8xl pr-0.5">
                           {slide.titlePrefix}
                         </span>
                         <span>{slide.titleRest}</span>
                       </h1>
                       
                       {/* Age group badge */}
-                      <div className="mb-4 sm:mb-5">
-                        <span className="inline-block bg-brand-pink/15 text-brand-pink border border-brand-pink/20 font-extrabold text-xs sm:text-sm px-5 py-2 rounded-full uppercase tracking-wider shadow-xs">
+                      <div className="mb-3 md:mb-5">
+                        <span className="inline-block bg-brand-pink/15 text-brand-pink border border-brand-pink/20 font-extrabold text-[10px] sm:text-xs md:text-sm px-4 py-1.5 md:px-5 md:py-2 rounded-full uppercase tracking-wider shadow-xs">
                           {slide.badge}
                         </span>
                       </div>
 
                       {/* Colored Bullets */}
-                      <div className="flex flex-wrap justify-center md:justify-start gap-x-5 gap-y-2.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider mb-6 sm:mb-7 select-none">
+                      <div className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-wider mb-5 md:mb-7 select-none">
                         {slide.bullets?.map((bullet, idx) => (
                           <span
                             key={idx}
                             style={{ color: bullet.color }}
-                            className="flex items-center gap-2"
+                            className="flex items-center gap-1.5"
                           >
                             <span
                               style={{ backgroundColor: bullet.dotColor }}
-                              className="w-2.5 h-2.5 rounded-full shrink-0"
+                              className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full shrink-0"
                             />
                             {bullet.text}
                           </span>
                         ))}
                       </div>
 
-                      <p className="hidden sm:block text-base md:text-lg text-brand-navy/80 mb-6 sm:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0">
+                      <p className="hidden sm:block text-base md:text-lg text-brand-navy/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0">
                         {slide.description}
                       </p>
                     </>
@@ -138,7 +138,7 @@ export default function HeroSlider() {
 
                   <Link
                     href={slide.link}
-                    className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 text-xs sm:text-base font-bold text-white transition-all bg-brand-pink hover:bg-brand-navy rounded-full tracking-wide shadow-md hover:shadow-lg mt-2"
+                    className="inline-flex items-center justify-center px-5 py-2.5 sm:px-8 sm:py-4 text-[11px] sm:text-base font-bold text-white transition-all bg-brand-pink hover:bg-brand-navy rounded-full tracking-wide shadow-md hover:shadow-lg mt-1 md:mt-2"
                   >
                     {slide.cta}
                   </Link>
@@ -148,7 +148,6 @@ export default function HeroSlider() {
           );
         })}
       </div>
-
 
       {/* Pagination Dots */}
       <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
