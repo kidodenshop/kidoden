@@ -92,8 +92,12 @@ export default function HeroSlider() {
                 )}
               </div>
 
-              {/* Text Content Overlay (Aligned to bottom on mobile) */}
-              <div className="relative z-20 w-full md:max-w-8xl md:mx-auto px-6 h-full flex flex-col justify-end pb-14 md:justify-center md:pb-0 items-start text-left">
+              {/* Text Content Overlay (Slide-specific vertical alignment on mobile) */}
+              <div className={`relative z-20 w-full md:max-w-8xl md:mx-auto px-6 h-full flex flex-col items-start text-left ${
+                slide.type === "classic" 
+                  ? "justify-end pb-14 md:justify-center md:pb-0" 
+                  : "justify-start pt-10 md:justify-center md:pt-0"
+              }`}>
                 <div
                   className={`w-[75%] sm:w-[80%] md:w-[60%] lg:w-[50%] transition-all duration-1000 ease-out delay-150 ${
                     isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
