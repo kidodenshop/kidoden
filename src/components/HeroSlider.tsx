@@ -85,7 +85,7 @@ export default function HeroSlider() {
                       <span className="text-white/80 md:text-brand-navy/60 font-bold tracking-[0.2em] text-[10px] sm:text-xs md:text-sm uppercase mb-2 md:mb-4 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white md:text-brand-navy mb-2 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1]">
+                      <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-sans text-white md:text-brand-navy mb-2 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1]">
                         <span className="text-white md:text-brand-pink">{slide.titlePrefix}</span>
                         {slide.titleRest}
                         <span className="block text-white/90 md:text-brand-navy/80 font-bold text-sm sm:text-2xl md:text-3xl mt-1 md:mt-2">
@@ -102,7 +102,7 @@ export default function HeroSlider() {
                       <span className="text-white/80 md:text-brand-pink font-bold tracking-[0.2em] text-[10px] sm:text-xs md:text-sm uppercase mb-2 md:mb-3 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white md:text-brand-navy mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1] flex flex-wrap items-center justify-start gap-x-1.5 md:gap-x-2">
+                      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-sans text-white md:text-brand-navy mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1] flex flex-wrap items-center justify-start gap-x-1.5 md:gap-x-2">
                         <span className="text-white md:text-brand-pink font-dancing font-medium normal-case text-4xl sm:text-6xl md:text-7xl lg:text-8xl pr-0.5">
                           {slide.titlePrefix}
                         </span>
