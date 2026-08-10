@@ -15,6 +15,17 @@ const HeartIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const StarIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 2c-.4 4.8-4.2 8.6-9 9 .4.4 4.2 4.2 9 9 4.8-.4 8.6-4.2 9-9-.4-.4-4.2-4.2-9-9z" />
+  </svg>
+);
+
 const slides = [
   {
     type: "classic",
@@ -117,6 +128,20 @@ export default function HeroSlider() {
                   {/* Heart 3: Soft small heart near top right */}
                   <div className="absolute top-[12%] right-[25%] z-20 text-brand-pink/40 animate-pulse select-none pointer-events-none">
                     <HeartIcon className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+                  </div>
+
+                  {/* Hearts & Stars on the right side of Slide 1 text */}
+                  {/* Star 1: Right of Tagline/Heading top */}
+                  <div className="absolute bottom-[28%] right-[10%] z-20 text-brand-pink/50 animate-pulse select-none pointer-events-none">
+                    <StarIcon className="w-4 h-4 sm:w-6 sm:h-6" />
+                  </div>
+                  {/* Heart 4: Right of Heading middle */}
+                  <div className="absolute bottom-[20%] right-[18%] z-20 text-brand-pink/60 animate-pulse select-none pointer-events-none">
+                    <HeartIcon className="w-5 h-5 sm:w-7 sm:h-7" />
+                  </div>
+                  {/* Star 2: Right of Subtitle/CTA */}
+                  <div className="absolute bottom-[13%] right-[8%] z-20 text-brand-pink/40 animate-pulse select-none pointer-events-none">
+                    <StarIcon className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
                   </div>
                 </>
               )}
