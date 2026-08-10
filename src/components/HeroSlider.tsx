@@ -90,8 +90,10 @@ export default function HeroSlider() {
                     priority={index === 0}
                   />
                 )}
-                {/* Soft top-to-bottom gradient overlay on mobile to enhance text readability on the top section only */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[#fffbf9]/90 via-[#fffbf9]/30 to-transparent md:hidden" />
+                {/* Soft top-to-bottom gradient overlay on mobile to enhance text readability on the top section only (classic slide only) */}
+                {slide.type === "classic" && (
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#fffbf9]/90 via-[#fffbf9]/30 to-transparent md:hidden" />
+                )}
               </div>
 
               {/* Text Content Overlay (Aligned to top on mobile to avoid overlapping with kids) */}
