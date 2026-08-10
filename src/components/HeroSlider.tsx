@@ -8,6 +8,7 @@ const slides = [
   {
     type: "classic",
     image: "/hero_slider/hero-banner.png",
+    mobileImage: "/hero_slider/mobile-hero-banner.png",
     tagline: "Kidoden Collection",
     titlePrefix: "Soft",
     titleRest: " on skin, gentle on smiles",
@@ -76,7 +77,7 @@ export default function HeroSlider() {
                       src={slide.image}
                       alt={slide.type === "classic" ? slide.titlePrefix + slide.titleRest : "Kidoden Kids Collection"}
                       fill
-                      className="object-cover object-center hidden md:block"
+                      className="object-cover object-right md:object-center hidden md:block"
                       priority={index === 0}
                     />
                   </>
