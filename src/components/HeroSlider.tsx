@@ -19,6 +19,7 @@ const slides = [
   {
     type: "kids-collection",
     image: "/hero_slider/2nd-slider.png",
+    mobileImage: "/hero_slider/mobile-2nd-slider.png",
     tagline: "TREND ON",
     titlePrefix: "style",
     titleRest: " for kids",
@@ -58,15 +59,36 @@ export default function HeroSlider() {
                 isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
               }`}
             >
-              {/* Background Image (Absolute across all screen sizes, original with NO overlay) */}
+              {/* Background Image (Absolute across all screen sizes) */}
               <div className="absolute inset-0 w-full h-full">
-                <Image
-                  src={slide.image}
-                  alt={slide.type === "classic" ? slide.titlePrefix + slide.titleRest : "Kidoden Kids Collection"}
-                  fill
-                  className="object-cover object-right md:object-center"
-                  priority={index === 0}
-                />
+                {slide.mobileImage ? (
+                  <>
+                    {/* Mobile image */}
+                    <Image
+                      src={slide.mobileImage}
+                      alt={slide.type === "classic" ? slide.titlePrefix + slide.titleRest : "Kidoden Kids Collection"}
+                      fill
+                      className="object-cover object-center md:hidden"
+                      priority={index === 0}
+                    />
+                    {/* Desktop image */}
+                    <Image
+                      src={slide.image}
+                      alt={slide.type === "classic" ? slide.titlePrefix + slide.titleRest : "Kidoden Kids Collection"}
+                      fill
+                      className="object-cover object-center hidden md:block"
+                      priority={index === 0}
+                    />
+                  </>
+                ) : (
+                  <Image
+                    src={slide.image}
+                    alt={slide.type === "classic" ? slide.titlePrefix + slide.titleRest : "Kidoden Kids Collection"}
+                    fill
+                    className="object-cover object-right md:object-center"
+                    priority={index === 0}
+                  />
+                )}
               </div>
 
               {/* Text Content Overlay */}
