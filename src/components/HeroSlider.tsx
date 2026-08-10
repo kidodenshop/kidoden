@@ -99,20 +99,20 @@ export default function HeroSlider() {
                   : "justify-start pt-10 md:justify-center md:pt-0"
               }`}>
                 <div
-                  className={`w-[75%] sm:w-[80%] md:w-[60%] lg:w-[50%] transition-all duration-1000 ease-out delay-150 ${
+                  className={`w-[85%] sm:w-[80%] md:w-[60%] lg:w-[50%] transition-all duration-1000 ease-out delay-150 ${
                     isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   }`}
                 >
                   {slide.type === "classic" ? (
                     // Slide 1 Layout (Original style, original colors, no overlay)
                     <>
-                      <span className="text-brand-pink md:text-brand-navy/60 font-bold tracking-[0.2em] text-[10px] sm:text-xs md:text-sm uppercase mb-2 md:mb-4 block">
+                      <span className="text-brand-pink md:text-brand-navy/60 font-bold tracking-[0.2em] text-[11px] sm:text-xs md:text-sm uppercase mb-2 md:mb-3 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-sans text-brand-navy mb-2 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1]">
+                      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-sans text-brand-navy mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1]">
                         <span className="text-brand-pink">{slide.titlePrefix}</span>
                         {slide.titleRest}
-                        <span className="block text-brand-navy/80 font-bold text-sm sm:text-2xl md:text-3xl mt-1 md:mt-2">
+                        <span className="block text-brand-navy/80 font-bold text-base sm:text-xl md:text-2xl mt-2 md:mt-2">
                           {slide.subtitle}
                         </span>
                       </h1>
