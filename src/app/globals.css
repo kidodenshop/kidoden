@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  --font-playfair: var(--font-playfair);
+  --font-dancing: var(--font-dancing-script);
+
   --color-brand-navy: #1a4263;
   --color-brand-yellow: #fbcd6a;
   --color-brand-pink: #f0959f;

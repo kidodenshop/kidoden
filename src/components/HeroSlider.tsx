@@ -99,9 +99,11 @@ export default function HeroSlider() {
                       <span className="text-brand-pink font-bold tracking-[0.2em] text-xs sm:text-sm uppercase mb-2 sm:mb-3 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-navy mb-4 tracking-tight leading-[1.1]">
-                        <span className="text-brand-pink italic font-serif lowercase pr-1">{slide.titlePrefix}</span>
-                        {slide.titleRest}
+                      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-navy mb-4 tracking-tight leading-[1.1] flex flex-wrap items-center justify-center md:justify-start gap-x-2">
+                        <span className="text-brand-pink font-dancing font-medium normal-case text-5xl sm:text-6xl md:text-7xl lg:text-8xl pr-1">
+                          {slide.titlePrefix}
+                        </span>
+                        <span>{slide.titleRest}</span>
                       </h1>
                       
                       {/* Age group badge */}

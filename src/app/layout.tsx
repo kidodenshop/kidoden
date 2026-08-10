@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito, Quicksand, Open_Sans } from "next/font/google";
+import { Nunito, Quicksand, Open_Sans, Playfair_Display, Dancing_Script } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -25,6 +25,19 @@ const quicksand = Quicksand({
 const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  style: ["italic", "normal"],
+  weight: ["400", "700", "900"],
+});
+
+const dancingScript = Dancing_Script({
+  variable: "--font-dancing-script",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 const siteUrl =
@@ -65,7 +78,7 @@ export default async function RootLayout({
   const isMvpReleased = await releaseMvp1();
 
   return (
-    <html lang="en" className={`${nunito.variable} ${quicksand.variable} ${openSans.variable} h-full antialiased`}>
+    <html lang="en" className={`${nunito.variable} ${quicksand.variable} ${openSans.variable} ${playfair.variable} ${dancingScript.variable} h-full antialiased`}>
       <body className={`${openSans.className} min-h-full flex flex-col font-sans selection:bg-brand-yellow selection:text-brand-navy`}>
         <CartProvider>
           <PageLoader />
