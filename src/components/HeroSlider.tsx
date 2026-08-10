@@ -24,9 +24,9 @@ const slides = [
     titleRest: " for kids",
     badge: "2 to 12 years",
     bullets: [
-      { text: "Trendy Looks", color: "#ffffff", dotColor: "#ffffff" },
-      { text: "Every Age", color: "#ffffff", dotColor: "#ffffff" },
-      { text: "Every Occasion", color: "#ffffff", dotColor: "#ffffff" },
+      { text: "Trendy Looks", colorClass: "text-white md:text-[#1a4263]", dotClass: "bg-white md:bg-[#1a4263]" },
+      { text: "Every Age", colorClass: "text-white md:text-[#f0959f]", dotClass: "bg-white md:bg-[#f0959f]" },
+      { text: "Every Occasion", colorClass: "text-white md:text-[#4E9F8E]", dotClass: "bg-white md:bg-[#4E9F8E]" },
     ],
     description: "From playful everyday outfits to picture-perfect moments — we've got styles they'll love to wear.",
     cta: "Explore Styles",
@@ -67,9 +67,9 @@ export default function HeroSlider() {
                   className="object-cover object-right md:object-center"
                   priority={index === 0}
                 />
-                {/* Premium Brand Navy overlay for text contrast across all screens */}
-                <div className="absolute inset-0 bg-brand-navy/35 mix-blend-multiply" />
-                <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/60 via-brand-navy/30 to-transparent" />
+                {/* Premium Brand Navy overlay for text contrast on mobile view only */}
+                <div className="absolute inset-0 bg-brand-navy/35 mix-blend-multiply md:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/60 via-brand-navy/30 to-transparent md:hidden" />
               </div>
 
               {/* Text Content Overlay */}
@@ -80,60 +80,58 @@ export default function HeroSlider() {
                   }`}
                 >
                   {slide.type === "classic" ? (
-                    // Slide 1 Layout (Original style with white text)
+                    // Slide 1 Layout (Original style, responsive colors)
                     <>
-                      <span className="text-white/80 font-bold tracking-[0.2em] text-[10px] sm:text-xs md:text-sm uppercase mb-2 md:mb-4 block">
+                      <span className="text-white/80 md:text-brand-navy/60 font-bold tracking-[0.2em] text-[10px] sm:text-xs md:text-sm uppercase mb-2 md:mb-4 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-2 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1]">
-                        <span className="text-white">{slide.titlePrefix}</span>
+                      <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white md:text-brand-navy mb-2 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1]">
+                        <span className="text-white md:text-brand-pink">{slide.titlePrefix}</span>
                         {slide.titleRest}
-                        <span className="block text-white/90 font-bold text-sm sm:text-2xl md:text-3xl mt-1 md:mt-2">
+                        <span className="block text-white/90 md:text-brand-navy/80 font-bold text-sm sm:text-2xl md:text-3xl mt-1 md:mt-2">
                           {slide.subtitle}
                         </span>
                       </h1>
-                      <p className="hidden sm:block text-base md:text-lg text-white/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-0">
+                      <p className="hidden sm:block text-base md:text-lg text-white/80 md:text-brand-navy/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-0">
                         {slide.description}
                       </p>
                     </>
                   ) : (
-                    // Slide 2 Layout (Style For Kids custom layout with white text)
+                    // Slide 2 Layout (Style For Kids custom layout, responsive colors)
                     <>
-                      <span className="text-white/80 font-bold tracking-[0.2em] text-[10px] sm:text-xs md:text-sm uppercase mb-2 md:mb-3 block">
+                      <span className="text-white/80 md:text-brand-pink font-bold tracking-[0.2em] text-[10px] sm:text-xs md:text-sm uppercase mb-2 md:mb-3 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1] flex flex-wrap items-center justify-start gap-x-1.5 md:gap-x-2">
-                        <span className="text-white font-dancing font-medium normal-case text-4xl sm:text-6xl md:text-7xl lg:text-8xl pr-0.5">
+                      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white md:text-brand-navy mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1] flex flex-wrap items-center justify-start gap-x-1.5 md:gap-x-2">
+                        <span className="text-white md:text-brand-pink font-dancing font-medium normal-case text-4xl sm:text-6xl md:text-7xl lg:text-8xl pr-0.5">
                           {slide.titlePrefix}
                         </span>
                         <span>{slide.titleRest}</span>
                       </h1>
                       
-                      {/* Age group badge (white outline styled) */}
+                      {/* Age group badge (responsive styling) */}
                       <div className="mb-3 md:mb-5">
-                        <span className="inline-block bg-white/15 text-white border border-white/20 font-extrabold text-[10px] sm:text-xs md:text-sm px-4 py-1.5 md:px-5 md:py-2 rounded-full uppercase tracking-wider shadow-xs">
+                        <span className="inline-block bg-white/15 text-white border border-white/20 md:bg-brand-pink/15 md:text-brand-pink md:border-brand-pink/20 font-extrabold text-[10px] sm:text-xs md:text-sm px-4 py-1.5 md:px-5 md:py-2 rounded-full uppercase tracking-wider shadow-xs">
                           {slide.badge}
                         </span>
                       </div>
 
-                      {/* Colored Bullets (now clean white bullets) */}
+                      {/* Colored Bullets (clean white on mobile, colored on desktop) */}
                       <div className="flex flex-wrap justify-start gap-x-4 gap-y-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-wider mb-5 md:mb-7 select-none">
                         {slide.bullets?.map((bullet, idx) => (
                           <span
                             key={idx}
-                            style={{ color: bullet.color }}
-                            className="flex items-center gap-1.5"
+                            className={`flex items-center gap-1.5 ${bullet.colorClass}`}
                           >
                             <span
-                              style={{ backgroundColor: bullet.dotColor }}
-                              className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full shrink-0"
+                              className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full shrink-0 ${bullet.dotClass}`}
                             />
                             {bullet.text}
                           </span>
                         ))}
                       </div>
 
-                      <p className="hidden sm:block text-base md:text-lg text-white/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-0">
+                      <p className="hidden sm:block text-base md:text-lg text-white/80 md:text-brand-navy/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-0">
                         {slide.description}
                       </p>
                     </>
@@ -160,7 +158,7 @@ export default function HeroSlider() {
             onClick={() => setCurrentSlide(idx)}
             aria-label={`Go to slide ${idx + 1}`}
             className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-              idx === currentSlide ? "bg-brand-pink w-6 shadow-sm" : "bg-white/40 hover:bg-white/60"
+              idx === currentSlide ? "bg-brand-pink w-6 shadow-sm" : "bg-white/40 hover:bg-white/60 md:bg-brand-navy/20 md:hover:bg-brand-navy/40"
             }`}
           />
         ))}
