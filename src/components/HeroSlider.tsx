@@ -182,7 +182,7 @@ export default function HeroSlider() {
             onClick={() => setCurrentSlide(idx)}
             aria-label={`Go to slide ${idx + 1}`}
             className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-              idx === currentSlide ? "bg-brand-pink w-6 shadow-sm" : "bg-brand-navy/20 hover:bg-brand-navy/40"
+              idx === currentSlide ? "bg-white w-6 shadow-sm" : "bg-white/40 hover:bg-white/60"
             }`}
           />
         ))}
