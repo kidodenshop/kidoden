@@ -8,7 +8,7 @@ const slides = [
   {
     type: "classic",
     image: "/hero_slider/hero-banner.png",
-    mobileImage: "/hero_slider/mobile-hero-banner.png",
+    mobileImage: "/hero_slider/mobile-1st-slider.png",
     tagline: "Kidoden Collection",
     titlePrefix: "Soft",
     titleRest: " on skin, gentle on smiles",
