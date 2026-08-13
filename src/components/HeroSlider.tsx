@@ -19,7 +19,7 @@ const slides = [
   {
     type: "classic",
     image: "/hero_slider/hero-banner.png",
-    mobileImage: "/hero_slider/mobile-1st-slider.png",
+    mobileImage: "/hero_slider/slider-mobile-1st.png",
     tagline: "Kidoden Collection",
     titlePrefix: "Soft",
     titleRest: " on skin, gentle on smiles",
@@ -67,9 +67,8 @@ export default function HeroSlider() {
           return (
             <div
               key={index}
-              className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-                isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-              }`}
+              className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                }`}
             >
               {/* Background Image (Absolute across all screen sizes) */}
               <div className="absolute inset-0 w-full h-full">
@@ -80,7 +79,7 @@ export default function HeroSlider() {
                       src={slide.mobileImage}
                       alt={slide.type === "classic" ? slide.titlePrefix + slide.titleRest : "Kidoden Kids Collection"}
                       fill
-                      className={`object-cover md:hidden ${slide.type === "classic" ? "object-bottom" : "object-center"}`}
+                      className={`object-cover md:hidden ${slide.type === "classic" ? "object-bottom" : "object-[center_15%]"}`}
                       priority={index === 0}
                     />
                     {/* Desktop image */}
@@ -104,46 +103,44 @@ export default function HeroSlider() {
               </div>
 
               {/* Text Content Overlay (Slide-specific vertical alignment on mobile) */}
-              <div className={`relative z-20 w-full md:max-w-8xl md:mx-auto px-6 h-full flex flex-col items-start text-left ${
-                slide.type === "classic" 
-                  ? "justify-end pb-14 md:justify-center md:pb-0" 
-                  : "justify-start pt-10 md:justify-center md:pt-0"
-              }`}>
+              <div className={`relative z-20 w-full md:max-w-8xl md:mx-auto px-6 h-full flex flex-col items-center text-center md:items-start md:text-left ${slide.type === "classic"
+                ? "justify-end pb-14 md:justify-center md:pb-0"
+                : "justify-start pt-10 md:justify-center md:pt-0"
+                }`}>
                 <div
-                  className={`w-[85%] sm:w-[80%] md:w-[60%] lg:w-[50%] transition-all duration-1000 ease-out delay-150 ${
-                    isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                  }`}
+                  className={`w-[85%] sm:w-[80%] md:w-[60%] lg:w-[50%] transition-all duration-1000 ease-out delay-150 ${isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    }`}
                 >
                   {slide.type === "classic" ? (
                     // Slide 1 Layout (Original style, original colors, no overlay)
-                    <>
-                      <span className="text-brand-pink md:text-brand-navy/60 font-bold tracking-[0.2em] text-[11px] sm:text-xs md:text-sm uppercase mb-2 md:mb-3 block">
+                    <div className="bg-white/75 backdrop-blur-xs rounded-[2rem] p-6 border border-white/40 shadow-xs md:bg-transparent md:backdrop-blur-none md:rounded-none md:border-none md:p-0 md:shadow-none">
+                      <span className="text-brand-pink md:text-brand-navy/60 font-black tracking-[0.2em] text-xs sm:text-xs md:text-sm uppercase mb-2 md:mb-3 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-sans text-brand-navy mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1]">
+                      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-sans text-brand-navy mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1]">
                         <span className="text-brand-pink">{slide.titlePrefix}</span>
                         {slide.titleRest}
-                        <span className="block text-brand-navy/80 font-bold text-base sm:text-xl md:text-2xl mt-2 md:mt-2">
+                        <span className="block text-brand-navy/80 font-bold text-lg sm:text-xl md:text-2xl mt-2 md:mt-2">
                           {slide.subtitle}
                         </span>
                       </h1>
-                      <p className="hidden sm:block text-base md:text-lg text-brand-navy/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-0">
+                      <p className="hidden sm:block text-base md:text-lg text-brand-navy/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0">
                         {slide.description}
                       </p>
-                    </>
+                    </div>
                   ) : (
                     // Slide 2 Layout (Style For Kids custom layout, original colors, no overlay)
-                    <>
-                      <span className="text-brand-pink font-bold tracking-[0.2em] text-[10px] sm:text-xs md:text-sm uppercase mb-2 md:mb-3 block">
+                    <div>
+                      <span className="text-brand-pink font-bold tracking-[0.2em] text-xs sm:text-xs md:text-sm uppercase mb-1 md:mb-3 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-sans text-brand-navy mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1] flex flex-wrap items-center justify-start gap-x-1.5 md:gap-x-2">
-                        <span className="text-brand-pink font-dancing font-medium normal-case text-4xl sm:text-6xl md:text-7xl lg:text-8xl pr-0.5">
+                      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-sans text-brand-navy mb-2 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1] flex flex-wrap items-center justify-center md:justify-start gap-x-1.5 md:gap-x-2">
+                        <span className="text-brand-pink font-dancing font-medium normal-case text-5xl sm:text-6xl md:text-7xl lg:text-8xl pr-0.5">
                           {slide.titlePrefix}
                         </span>
                         <span>{slide.titleRest}</span>
                       </h1>
-                      
+
                       {/* Age group badge (original colors) */}
                       {slide.badge && (
                         <div className="mb-3 md:mb-5">
@@ -153,8 +150,8 @@ export default function HeroSlider() {
                         </div>
                       )}
 
-                      {/* Colored Bullets (hidden on mobile to keep layout clean) */}
-                      <div className="hidden md:flex flex-wrap justify-start gap-x-4 gap-y-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-wider mb-5 md:mb-7 select-none">
+                      {/* Colored Bullets */}
+                      <div className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-1.5 text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-wider mb-2.5 md:mb-7 select-none">
                         {slide.bullets?.map((bullet, idx) => (
                           <span
                             key={idx}
@@ -168,15 +165,15 @@ export default function HeroSlider() {
                         ))}
                       </div>
 
-                      <p className="hidden sm:block text-base md:text-lg text-brand-navy/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-0">
+                      <p className="hidden sm:block text-base md:text-lg text-brand-navy/80 mb-6 md:mb-8 leading-relaxed font-semibold max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0">
                         {slide.description}
                       </p>
-                    </>
+                    </div>
                   )}
 
                   <Link
                     href={slide.link}
-                    className="inline-flex items-center justify-center px-5 py-2.5 sm:px-8 sm:py-4 text-[11px] sm:text-base font-bold text-white transition-all bg-brand-pink hover:bg-brand-navy rounded-full tracking-wide shadow-md hover:shadow-lg mt-1 md:mt-2"
+                    className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 text-xs sm:text-base font-bold text-white transition-all bg-brand-pink hover:bg-brand-navy rounded-full tracking-wide shadow-md hover:shadow-lg mt-3 md:mt-2"
                   >
                     {slide.cta}
                   </Link>
@@ -194,9 +191,8 @@ export default function HeroSlider() {
             key={idx}
             onClick={() => setCurrentSlide(idx)}
             aria-label={`Go to slide ${idx + 1}`}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-              idx === currentSlide ? "bg-white w-6 shadow-sm" : "bg-white/40 hover:bg-white/60"
-            }`}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${idx === currentSlide ? "bg-white w-6 shadow-sm" : "bg-white/40 hover:bg-white/60"
+              }`}
           />
         ))}
       </div>
