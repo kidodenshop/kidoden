@@ -100,7 +100,7 @@ export async function sendOrderConfirmationEmail({
                 <div style="background-color: #fafbfc; border: 1px solid #eef2f6; border-radius: 16px; padding: 20px; min-height: 110px;">
                   <div style="font-size: 16px; font-weight: 800; color: #1a4263; margin-bottom: 8px; font-family: 'Segoe UI', sans-serif;">What's next?</div>
                   <div style="font-size: 12px; line-height: 1.6; color: #4b5563; font-family: 'Segoe UI', sans-serif;">
-                    We will send you a confirmation once your order is prepped and ready to ship.
+                    We will send you a confirmation once your order is prepared and ready to ship.
                   </div>
                 </div>
               </td>

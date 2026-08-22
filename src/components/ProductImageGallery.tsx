@@ -31,18 +31,22 @@ export default function ProductImageGallery({ images, name }: ProductImageGaller
     }
   }, []);
 
-  if (!images || images.length === 0) {
+  const galleryImages = (images || []).filter(
+    (img) => img && !img.toLowerCase().includes("placeholder")
+  );
+
+  if (galleryImages.length === 0) {
     return null;
   }
 
-  const showNavigation = images.length > 1;
+  const showNavigation = galleryImages.length > 1;
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    setActiveIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    setActiveIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -81,9 +85,9 @@ export default function ProductImageGallery({ images, name }: ProductImageGaller
       `}</style>
 
       {/* Thumbnails list */}
-      {showNavigation && (
+      {galleryImages.length >= 1 && (
         <div className="flex flex-row md:flex-col gap-3 overflow-x-auto md:overflow-y-auto hide-scrollbar py-1 md:w-20 shrink-0 scroll-smooth snap-x">
-          {images.map((image, index) => {
+          {galleryImages.map((image, index) => {
             const isActive = index === activeIndex;
             return (
               <button
@@ -95,7 +99,7 @@ export default function ProductImageGallery({ images, name }: ProductImageGaller
                     ? "border-brand-pink shadow-md scale-102"
                     : "border-transparent hover:border-brand-pink/40"
                 }`}
-                aria-label={`View image ${index + 1} of ${images.length}`}
+                aria-label={`View image ${index + 1} of ${galleryImages.length}`}
               >
                 <Image
                   src={image}
@@ -130,12 +134,12 @@ export default function ProductImageGallery({ images, name }: ProductImageGaller
 
         <div key={activeIndex} className="w-full h-full relative gallery-fade-in overflow-hidden">
           <Image
-            src={images[activeIndex]}
+            src={galleryImages[activeIndex]}
             alt={name}
             fill
-            sizes="(max-w-768px) 100vw, 40vw"
-            priority={activeIndex === 0}
-            className="object-cover transition-transform duration-75 ease-out"
+            sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 800px"
+            className="object-cover"
+            priority
             style={isHoverable ? zoomStyle : undefined}
           />
         </div>
@@ -180,13 +184,6 @@ export default function ProductImageGallery({ images, name }: ProductImageGaller
               </svg>
             </button>
           </>
-        )}
-
-        {/* Counter indicator */}
-        {showNavigation && (
-          <div className="absolute bottom-12 right-12 bg-black/60 backdrop-blur-xs text-white text-xs font-bold px-3 py-1.5 rounded-full select-none z-10">
-            {activeIndex + 1} / {images.length}
-          </div>
         )}
       </div>
     </div>
