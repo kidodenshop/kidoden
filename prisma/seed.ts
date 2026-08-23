@@ -69,6 +69,49 @@ async function main() {
 
     console.log(`Product upserted: ${createdProduct.name}`);
 
+    // 2b. Seed review records matching the seeded rating/count stats
+    if (product.rating && product.reviewsCount) {
+      const count = product.reviewsCount;
+      const ratingsDistribution = [5, 5, 5, 4, 5, 4, 5]; 
+      const authorNames = ["Anjali S.", "Rohan M.", "Sneha P.", "Karan J.", "Vikram Y.", "Nisha T.", "Deepak C.", "Pooja V.", "Rahul D.", "Aishwarya G."];
+      const comments = [
+        "Absolutely beautiful product! Highly recommend the quality.",
+        "Good quality fabric and very comfortable for the little one.",
+        "Perfect size and super cute design. Will purchase again.",
+        "Pretty good quality, though delivery was delayed by a day.",
+        "Excellent quality, matches the description completely!",
+        "My children loved the comfort, very soft material.",
+        "Very nice fit, exactly as shown in the picture catalog."
+      ];
+
+      for (let i = 0; i < count; i++) {
+        const reviewRating = ratingsDistribution[i % ratingsDistribution.length];
+        const comment = comments[i % comments.length];
+        const authorName = authorNames[i % authorNames.length];
+        const dateOffset = i * 6 * 60 * 60 * 1000; 
+
+        await prisma.review.upsert({
+          where: {
+            id: `seed-rev-${product.id}-${i}`
+          },
+          update: {
+            rating: reviewRating,
+            comment,
+            authorName,
+            createdAt: new Date(Date.now() - dateOffset)
+          },
+          create: {
+            id: `seed-rev-${product.id}-${i}`,
+            productId: createdProduct.id,
+            rating: reviewRating,
+            comment,
+            authorName,
+            createdAt: new Date(Date.now() - dateOffset)
+          }
+        });
+      }
+    }
+
     // 3. Seed sizes and stock quantities
     let sizes: string[] = [];
     if (product.category === "clothing") {

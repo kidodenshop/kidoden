@@ -217,6 +217,14 @@ export default function ProductFormClient({
     setPendingMessage(isEditMode ? "Saving changes to product listing..." : "Publishing new product to storefront catalog...");
     setIsPending(true);
 
+    // Auto-include any feature currently typed in the input box but not added yet
+    const finalFeatures = [...features];
+    if (newFeature.trim() && !finalFeatures.includes(newFeature.trim())) {
+      finalFeatures.push(newFeature.trim());
+      setFeatures(finalFeatures);
+      setNewFeature("");
+    }
+
     const payload = {
       name,
       description,
@@ -226,7 +234,7 @@ export default function ProductFormClient({
       images, // Send the full images array to DB
       ageRange: ageRange || null,
       gender: gender || null,
-      features,
+      features: finalFeatures,
       isFeatured,
       inventory,
     };
@@ -562,7 +570,7 @@ export default function ProductFormClient({
             {/* Bullet Point Features */}
             <div>
               <label className="block text-xs font-black text-brand-navy uppercase tracking-widest mb-2">
-                Features & Fabric details
+                Why You'll Love It (Features & Fabric details)
               </label>
               
               <div className="space-y-3">

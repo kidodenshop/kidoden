@@ -37,14 +37,14 @@ export default function ProductCard({
             <Link href={`/product/${product.id}`} className="block">
               <h3 className="text-xs sm:text-lg md:text-xl font-bold text-brand-navy mb-1 sm:mb-2 hover:text-brand-pink transition-colors line-clamp-2 leading-tight">{product.name}</h3>
             </Link>
-            {product.rating && (
+            {product.rating && product.rating > 0 ? (
               <div className="flex items-center gap-1 mb-2">
                 <div className="flex text-amber-400">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <svg
                       key={i}
                       className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${
-                        i < Math.floor(product.rating || 5)
+                        i < Math.round(product.rating || 5)
                           ? "fill-current"
                           : "text-gray-200"
                       }`}
@@ -56,6 +56,12 @@ export default function ProductCard({
                 </div>
                 <span className="text-[10px] sm:text-xs text-gray-400 font-medium">
                   ({product.reviewsCount} reviews)
+                </span>
+              </div>
+            ) : (
+              <div className="flex items-center gap-1 mb-2">
+                <span className="text-[10px] sm:text-xs text-gray-400 font-medium italic">
+                  No ratings yet
                 </span>
               </div>
             )}
@@ -138,14 +144,14 @@ export default function ProductCard({
       <Link href={`/product/${product.id}`} className="p-3 sm:p-6 flex flex-col flex-1">
         <p className="text-[10px] sm:text-xs font-bold text-brand-pink uppercase tracking-wider mb-1 sm:mb-2">{product.category}</p>
         <h3 className="text-xs sm:text-base md:text-lg font-bold text-brand-navy mb-1.5 sm:mb-2 flex-grow line-clamp-2 leading-tight sm:leading-snug">{product.name}</h3>
-        {product.rating && (
+        {product.rating && product.rating > 0 ? (
           <div className="flex items-center gap-1 mb-2">
             <div className="flex text-amber-400">
               {Array.from({ length: 5 }).map((_, i) => (
                 <svg
                   key={i}
                   className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${
-                    i < Math.floor(product.rating || 5)
+                    i < Math.round(product.rating || 5)
                       ? "fill-current"
                       : "text-gray-200"
                   }`}
@@ -157,6 +163,12 @@ export default function ProductCard({
             </div>
             <span className="text-[10px] sm:text-xs text-gray-400 font-medium">
               ({product.reviewsCount})
+            </span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-1 mb-2">
+            <span className="text-[10px] sm:text-xs text-gray-400 font-medium italic">
+              No ratings yet
             </span>
           </div>
         )}

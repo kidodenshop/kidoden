@@ -1,5 +1,14 @@
 export type Category = 'clothing' | 'gifting';
 
+export interface Review {
+  id: string;
+  productId: string;
+  rating: number;
+  comment: string | null;
+  authorName: string;
+  createdAt: string; // ISO String representation
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -15,6 +24,7 @@ export interface Product {
   rating?: number;
   reviewsCount?: number;
   inventory?: { size: string; stockQuantity: number }[];
+  reviews?: Review[];
 }
 
 export const products: Product[] = [

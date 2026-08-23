@@ -339,7 +339,7 @@ function CheckoutPageContent() {
                   <input
                     id="checkout-name"
                     type="text"
-                    placeholder="Durga Prasad Hota"
+                    placeholder="Recipient's full name"
                     value={name}
                     onChange={(e) => { setName(e.target.value); setErrors(prev => ({ ...prev, name: "" })); }}
                     className={inputClass("name")}

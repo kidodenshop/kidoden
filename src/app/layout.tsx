@@ -94,7 +94,7 @@ export default async function RootLayout({
   );
 
   return (
-    <html lang="en" className={`${nunito.variable} ${quicksand.variable} ${openSans.variable} ${playfair.variable} ${dancingScript.variable} h-full antialiased`}>
+    <html lang="en" className={`${nunito.variable} ${quicksand.variable} ${openSans.variable} ${playfair.variable} ${dancingScript.variable} h-full antialiased scroll-smooth`}>
       <body className={`${openSans.className} min-h-full flex flex-col font-sans selection:bg-brand-yellow selection:text-brand-navy`}>
         <CartProvider>
           <PageLoader />
