@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { getSupabaseClient } from "@/lib/supabase";
-import sharp from "sharp";
 
 export async function POST(request: Request) {
   try {
@@ -31,10 +30,6 @@ export async function POST(request: Request) {
     const supabase = getSupabaseClient();
     const bucketName = process.env.SUPABASE_BUCKET || "product-images";
 
-    let finalBuffer = buffer;
-    let finalContentType = file.type;
-    let finalFilename = file.name;
-
     // Generate unique name components
     const timestamp = Date.now();
     const lastDotIndex = file.name.lastIndexOf(".");
@@ -42,37 +37,14 @@ export async function POST(request: Request) {
       ? file.name.substring(0, lastDotIndex) 
       : file.name;
     const cleanBaseName = rawBaseName.toLowerCase().replace(/[^a-z0-9]/g, "-") || "upload";
-
-    // SVGs do not need raster compression/resizing, keep them as-is
-    if (file.type === "image/svg+xml") {
-      finalFilename = `uploaded-${timestamp}-${cleanBaseName}.svg`;
-    } else {
-      // Process with sharp
-      try {
-        finalBuffer = await sharp(buffer)
-          .resize({
-            width: 1200,
-            withoutEnlargement: true, // Do not upscale if image is smaller than 1200px
-            fit: "inside",
-          })
-          .webp({ quality: 80 })
-          .toBuffer();
-        
-        finalContentType = "image/webp";
-        finalFilename = `uploaded-${timestamp}-${cleanBaseName}.webp`;
-      } catch (sharpError) {
-        console.error("Sharp processing error, falling back to original upload:", sharpError);
-        // Fallback: upload the original image if sharp processing fails
-        const ext = lastDotIndex !== -1 ? file.name.substring(lastDotIndex).toLowerCase() : "";
-        finalFilename = `uploaded-${timestamp}-${cleanBaseName}${ext}`;
-      }
-    }
+    const ext = lastDotIndex !== -1 ? file.name.substring(lastDotIndex).toLowerCase() : "";
+    const finalFilename = `uploaded-${timestamp}-${cleanBaseName}${ext}`;
 
     // Upload to Supabase Storage
     const { error: uploadError } = await supabase.storage
       .from(bucketName)
-      .upload(finalFilename, finalBuffer, {
-        contentType: finalContentType,
+      .upload(finalFilename, buffer, {
+        contentType: file.type,
         upsert: false,
       });
 
