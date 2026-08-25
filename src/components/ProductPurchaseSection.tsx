@@ -241,7 +241,7 @@ export default function ProductPurchaseSection({ product }: { product: Product }
           <p className="text-xs sm:text-sm font-extrabold text-brand-navy truncate">
             {product.name}
           </p>
-          <p className="text-sm font-black text-brand-orange mt-0.5">
+          <p className="text-sm font-bold text-brand-navy mt-0.5">
             ₹{product.price}
           </p>
         </div>
