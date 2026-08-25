@@ -122,20 +122,25 @@ export default function ProductFormClient({
   // Helper function to compress image client-side using Canvas API
   const compressImage = (file: File, maxWidth = 1200, maxHeight = 1200, quality = 0.8): Promise<File> => {
     return new Promise((resolve, reject) => {
+      console.log(`[Image Compress] Original file size: ${(file.size / 1024 / 1024).toFixed(2)} MB`);
+      
       // SVGs do not need raster compression
       if (file.type === "image/svg+xml") {
+        console.log("[Image Compress] SVG detected, bypassing compression.");
         return resolve(file);
       }
 
       const reader = new FileReader();
-      reader.readAsDataURL(file);
       reader.onload = (event) => {
         const img = new window.Image();
-        img.src = event.target?.result as string;
+        
+        // Define onload and onerror BEFORE setting src to avoid synchronous race conditions
         img.onload = () => {
           const canvas = document.createElement("canvas");
           let width = img.width;
           let height = img.height;
+
+          console.log(`[Image Compress] Original dimensions: ${width}x${height}`);
 
           // Calculate new dimensions to fit within maxWidth/maxHeight preserving aspect ratio
           if (width > height) {
@@ -150,12 +155,15 @@ export default function ProductFormClient({
             }
           }
 
+          console.log(`[Image Compress] Rescaled dimensions: ${width}x${height}`);
+
           canvas.width = width;
           canvas.height = height;
 
           const ctx = canvas.getContext("2d");
           if (!ctx) {
-            return resolve(file); // fallback to original file if canvas context is not supported
+            console.warn("[Image Compress] Canvas context not available. Falling back to original file.");
+            return resolve(file);
           }
 
           ctx.drawImage(img, 0, 0, width, height);
@@ -164,25 +172,35 @@ export default function ProductFormClient({
           canvas.toBlob(
             (blob) => {
               if (!blob) {
-                return resolve(file); // fallback to original file
+                console.warn("[Image Compress] Failed to create blob from canvas. Falling back to original file.");
+                return resolve(file);
               }
               const compressedFile = new File([blob], file.name, {
                 type: "image/jpeg",
                 lastModified: Date.now(),
               });
+              console.log(`[Image Compress] Finished. Compressed file size: ${(compressedFile.size / 1024 / 1024).toFixed(2)} MB`);
               resolve(compressedFile);
             },
             "image/jpeg",
             quality
           );
         };
+
         img.onerror = (err) => {
+          console.error("[Image Compress] Image loading failed:", err);
           reject(err);
         };
+
+        img.src = event.target?.result as string;
       };
+
       reader.onerror = (err) => {
+        console.error("[Image Compress] FileReader failed:", err);
         reject(err);
       };
+
+      reader.readAsDataURL(file);
     });
   };
 
