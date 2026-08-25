@@ -119,6 +119,73 @@ export default function ProductFormClient({
     }
   }, [categoryId]);
 
+  // Helper function to compress image client-side using Canvas API
+  const compressImage = (file: File, maxWidth = 1200, maxHeight = 1200, quality = 0.8): Promise<File> => {
+    return new Promise((resolve, reject) => {
+      // SVGs do not need raster compression
+      if (file.type === "image/svg+xml") {
+        return resolve(file);
+      }
+
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (event) => {
+        const img = new window.Image();
+        img.src = event.target?.result as string;
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          let width = img.width;
+          let height = img.height;
+
+          // Calculate new dimensions to fit within maxWidth/maxHeight preserving aspect ratio
+          if (width > height) {
+            if (width > maxWidth) {
+              height = Math.round((height * maxWidth) / width);
+              width = maxWidth;
+            }
+          } else {
+            if (height > maxHeight) {
+              width = Math.round((width * maxHeight) / height);
+              height = maxHeight;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext("2d");
+          if (!ctx) {
+            return resolve(file); // fallback to original file if canvas context is not supported
+          }
+
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Convert to jpeg blob
+          canvas.toBlob(
+            (blob) => {
+              if (!blob) {
+                return resolve(file); // fallback to original file
+              }
+              const compressedFile = new File([blob], file.name, {
+                type: "image/jpeg",
+                lastModified: Date.now(),
+              });
+              resolve(compressedFile);
+            },
+            "image/jpeg",
+            quality
+          );
+        };
+        img.onerror = (err) => {
+          reject(err);
+        };
+      };
+      reader.onerror = (err) => {
+        reject(err);
+      };
+    });
+  };
+
   // Image upload handler
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -126,13 +193,16 @@ export default function ProductFormClient({
 
     setError(null);
     setUploading(true);
-    setPendingMessage("Uploading product image to server...");
+    setPendingMessage("Compressing and uploading product image...");
     setIsPending(true);
 
-    const formData = new FormData();
-    formData.append("file", file);
-
     try {
+      // Compress the image before uploading
+      const compressedFile = await compressImage(file);
+
+      const formData = new FormData();
+      formData.append("file", compressedFile);
+
       const res = await fetch("/api/admin/upload", {
         method: "POST",
         body: formData,
@@ -147,7 +217,8 @@ export default function ProductFormClient({
         setError(data.error || "Image upload failed.");
       }
     } catch (err) {
-      setError("An unexpected error occurred during image upload.");
+      console.error("Upload error:", err);
+      setError("An unexpected error occurred during image compression/upload.");
     } finally {
       setUploading(false);
       setIsPending(false);
