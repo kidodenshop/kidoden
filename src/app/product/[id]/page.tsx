@@ -15,25 +15,28 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const product = await getProductById(id);
+  try {
+    const product = await getProductById(id);
+    if (!product) return { title: "Product Not Found" };
 
-  if (!product) return { title: "Product Not Found" };
-
-  return {
-    title: product.name,
-    description: product.description,
-    openGraph: {
-      title: `${product.name} | Kidoden`,
+    return {
+      title: product.name,
       description: product.description,
-      images: [{ url: product.imageUrl, alt: product.name }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${product.name} | Kidoden`,
-      description: product.description,
-      images: [product.imageUrl],
-    },
-  };
+      openGraph: {
+        title: `${product.name} | Kidoden`,
+        description: product.description,
+        images: [{ url: product.imageUrl, alt: product.name }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${product.name} | Kidoden`,
+        description: product.description,
+        images: [product.imageUrl],
+      },
+    };
+  } catch (error) {
+    return { title: "Database Error" };
+  }
 }
 
 // Next.js 15 requires params to be treated as a Promise
