@@ -5,6 +5,8 @@ import HeroSlider from "@/components/HeroSlider";
 import ProductSlider from "@/components/ProductSlider";
 import ProductCard from "@/components/ProductCard";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const products = await getProducts();
   const featuredProducts = products.filter((p) => p.isFeatured);
