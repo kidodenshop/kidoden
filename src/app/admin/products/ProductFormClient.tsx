@@ -511,13 +511,14 @@ export default function ProductFormClient({
                         Array.from(files).forEach(async (file) => {
                           setError(null);
                           setUploading(true);
-                          setPendingMessage(`Uploading ${file.name}...`);
+                          setPendingMessage(`Compressing and uploading ${file.name}...`);
                           setIsPending(true);
 
-                          const formData = new FormData();
-                          formData.append("file", file);
-
                           try {
+                            const compressedFile = await compressImage(file);
+                            const formData = new FormData();
+                            formData.append("file", compressedFile);
+
                             const res = await fetch("/api/admin/upload", {
                               method: "POST",
                               body: formData,
@@ -529,6 +530,7 @@ export default function ProductFormClient({
                               setError(data.error || `Upload failed for ${file.name}`);
                             }
                           } catch (err) {
+                            console.error("Upload error:", err);
                             setError(`Failed to upload ${file.name}`);
                           } finally {
                             setUploading(false);
