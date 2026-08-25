@@ -9,8 +9,10 @@ export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const products = await getProducts();
-  const featuredProducts = products.filter((p) => p.isFeatured);
-  const bestSellers = products.filter((p) => ["c-1", "c-2", "c-5", "g-1", "g-2"].includes(p.id));
+  // New Arrivals: The latest 8 uploaded products
+  const newArrivals = products.slice(0, 8);
+  // Best Sellers: Products marked as featured in the admin panel
+  const bestSellers = products.filter((p) => p.isFeatured);
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -207,7 +209,7 @@ export default async function Home() {
             </Link>
           </div>
 
-          <ProductSlider products={featuredProducts} />
+          <ProductSlider products={newArrivals} />
 
           <div className="mt-6 text-center md:hidden">
             <Link href="/shop" className="inline-block border-2 border-brand-navy text-brand-navy font-bold py-3 px-8 rounded-full">
