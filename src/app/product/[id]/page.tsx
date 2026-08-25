@@ -74,9 +74,20 @@ export default async function ProductDetailPage({
   return (
     <div className="bg-[#fffbf9] py-12 px-4 sm:px-6 lg:px-8 flex-grow">
       <div className="max-w-8xl mx-auto">
-        <Link href="/shop" className="text-brand-pink hover:text-brand-navy font-bold mb-8 inline-flex items-center gap-2 transition-colors">
-          &larr; Back to Shop
-        </Link>
+        {/* Breadcrumb Navigation */}
+        <nav className="flex items-center gap-2 text-xs md:text-sm text-gray-500 font-semibold mb-8 flex-wrap">
+          <Link href="/" className="hover:text-brand-navy transition-colors">
+            Home
+          </Link>
+          <span className="text-gray-300 font-normal">/</span>
+          <Link href={`/shop?category=${product.category}`} className="capitalize hover:text-brand-navy transition-colors">
+            {product.category}
+          </Link>
+          <span className="text-gray-300 font-normal">/</span>
+          <span className="text-brand-navy font-bold truncate max-w-[200px] sm:max-w-xs md:max-w-sm" title={product.name}>
+            {product.name}
+          </span>
+        </nav>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 md:items-start">
           {/* Image Gallery — sticky on desktop */}
@@ -148,8 +159,6 @@ export default async function ProductDetailPage({
               <ProductPurchaseSection product={product} />
             </div>
 
-            {/* Divider */}
-            <div className="my-6 border-t border-gray-200/60" />
 
             <ProductAccordions
               features={product.features || []}
