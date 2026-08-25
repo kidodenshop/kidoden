@@ -35,6 +35,20 @@ export async function POST(request: Request) {
       );
     }
 
+    // Resolve categoryId to a database UUID if it is a slug
+    let dbCategoryId = categoryId;
+    if (categoryId === "clothing" || categoryId === "gifting") {
+      const category = await prisma.category.upsert({
+        where: { slug: categoryId },
+        update: {},
+        create: {
+          name: categoryId === "clothing" ? "Clothing" : "Gifting",
+          slug: categoryId,
+        },
+      });
+      dbCategoryId = category.id;
+    }
+
     // Create product and inventory in a transaction
     const newProduct = await prisma.$transaction(async (tx) => {
       const product = await tx.product.create({
@@ -42,7 +56,7 @@ export async function POST(request: Request) {
           name,
           description,
           price: priceInPaise,
-          categoryId,
+          categoryId: dbCategoryId,
           imageUrl,
           images: images || [imageUrl],
           ageRange: ageRange || null,

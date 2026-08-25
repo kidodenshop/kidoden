@@ -51,6 +51,20 @@ export async function PUT(
       );
     }
 
+    // Resolve categoryId to a database UUID if it is a slug
+    let dbCategoryId = categoryId;
+    if (categoryId === "clothing" || categoryId === "gifting") {
+      const category = await prisma.category.upsert({
+        where: { slug: categoryId },
+        update: {},
+        create: {
+          name: categoryId === "clothing" ? "Clothing" : "Gifting",
+          slug: categoryId,
+        },
+      });
+      dbCategoryId = category.id;
+    }
+
     // Update in transaction
     const updatedProduct = await prisma.$transaction(async (tx) => {
       const product = await tx.product.update({
@@ -59,7 +73,7 @@ export async function PUT(
           name,
           description,
           price: priceInPaise,
-          categoryId,
+          categoryId: dbCategoryId,
           imageUrl,
           images: images || [imageUrl],
           ageRange: ageRange || null,

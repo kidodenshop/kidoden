@@ -42,6 +42,11 @@ export default function ProductFormClient({
   product,
 }: ProductFormClientProps) {
   const router = useRouter();
+
+  const finalCategories = categories.length > 0 ? categories : [
+    { id: "clothing", name: "Clothing", slug: "clothing" },
+    { id: "gifting", name: "Gifting", slug: "gifting" }
+  ];
   const isEditMode = !!product;
 
   const { setIsPending, setPendingMessage } = useAdminLoader();
@@ -97,7 +102,7 @@ export default function ProductFormClient({
 
   // Pre-load default sizes based on chosen category
   const loadDefaultSizes = () => {
-    const selectedCat = categories.find((c) => c.id === categoryId);
+    const selectedCat = finalCategories.find((c) => c.id === categoryId);
     if (!selectedCat) return;
 
     if (selectedCat.slug === "clothing") {
@@ -431,7 +436,7 @@ export default function ProductFormClient({
                   className="w-full px-5 py-4 bg-white/50 border border-brand-navy/10 rounded-2xl focus:outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 transition-all font-bold text-brand-navy text-sm"
                 >
                   <option value="" disabled>Select Category</option>
-                  {categories.map((cat) => (
+                  {finalCategories.map((cat) => (
                     <option key={cat.id} value={cat.id}>
                       {cat.name}
                     </option>
