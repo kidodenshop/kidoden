@@ -88,6 +88,7 @@ export function mapDbProductToUI(p: any): UIProduct {
     name: p.name,
     description: p.description,
     price: p.price / 100, // paise to rupees
+    discount: p.discount || undefined,
     category: p.category.slug as UICategory,
     imageUrl: p.imageUrl,
     images: p.images || [],

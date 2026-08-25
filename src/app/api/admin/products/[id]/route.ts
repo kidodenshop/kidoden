@@ -12,6 +12,7 @@ export async function PUT(
       name,
       description,
       price, // in Rupees
+      discount,
       categoryId,
       imageUrl,
       images,
@@ -67,12 +68,15 @@ export async function PUT(
 
     // Update in transaction
     const updatedProduct = await prisma.$transaction(async (tx) => {
+      const parsedDiscount = discount !== undefined && discount !== null && discount !== "" ? parseInt(discount) : null;
+
       const product = await tx.product.update({
         where: { id },
         data: {
           name,
           description,
           price: priceInPaise,
+          discount: parsedDiscount,
           categoryId: dbCategoryId,
           imageUrl,
           images: images || [imageUrl],

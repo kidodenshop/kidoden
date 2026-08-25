@@ -27,6 +27,7 @@ model Product {
   name         String
   description  String
   price        Int         // Stored in paise (e.g., 59900 for ₹599)
+  discount     Int?        // Optional discount percentage (e.g., 40 for 40% OFF)
   imageUrl     String      // Primary card image URL
   images       String[]    // Carousel image URLs (native PG array)
   ageRange     String?     // e.g. "2-8 years"

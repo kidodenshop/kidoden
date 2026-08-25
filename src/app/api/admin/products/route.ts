@@ -8,6 +8,7 @@ export async function POST(request: Request) {
       name,
       description,
       price, // in standard Rupees
+      discount,
       categoryId,
       imageUrl,
       images,
@@ -51,11 +52,14 @@ export async function POST(request: Request) {
 
     // Create product and inventory in a transaction
     const newProduct = await prisma.$transaction(async (tx) => {
+      const parsedDiscount = discount !== undefined && discount !== null && discount !== "" ? parseInt(discount) : null;
+
       const product = await tx.product.create({
         data: {
           name,
           description,
           price: priceInPaise,
+          discount: parsedDiscount,
           categoryId: dbCategoryId,
           imageUrl,
           images: images || [imageUrl],

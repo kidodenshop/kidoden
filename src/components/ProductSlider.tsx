@@ -77,7 +77,15 @@ export default function ProductSlider({ products }: { products: Product[] }) {
               <Link href={`/product/${product.id}`} className="text-left px-2 flex flex-col flex-grow">
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{product.category}</p>
                 <h3 className="text-lg font-bold text-brand-navy mb-1 line-clamp-1">{product.name}</h3>
-                <p className="text-lg font-semibold text-brand-pink mt-auto">₹{product.price}</p>
+                <div className="flex items-baseline gap-1.5 mt-auto flex-wrap">
+                  <span className="text-lg font-semibold text-brand-pink">₹{product.price}</span>
+                  {product.discount !== undefined && product.discount !== null && product.discount > 0 && (
+                    <>
+                      <span className="text-xs text-gray-400 line-through">₹{Math.round(product.price / (1 - product.discount / 100))}</span>
+                      <span className="text-xs font-bold text-brand-pink">({product.discount}% OFF)</span>
+                    </>
+                  )}
+                </div>
               </Link>
             </div>
           </div>

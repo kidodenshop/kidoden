@@ -22,6 +22,7 @@ interface ProductInput {
   name: string;
   description: string;
   price: number; // in Rupees
+  discount?: number | null;
   categoryId: string;
   imageUrl: string;
   images?: string[];
@@ -55,6 +56,7 @@ export default function ProductFormClient({
   const [name, setName] = useState(product?.name || "");
   const [description, setDescription] = useState(product?.description || "");
   const [price, setPrice] = useState(product?.price !== undefined ? product.price.toString() : "");
+  const [discount, setDiscount] = useState(product?.discount !== undefined && product?.discount !== null ? product.discount.toString() : "");
   const [categoryId, setCategoryId] = useState(product?.categoryId || "");
   const [imageUrl, setImageUrl] = useState(product?.imageUrl || "");
   const [ageRange, setAgeRange] = useState(product?.ageRange || "");
@@ -323,6 +325,7 @@ export default function ProductFormClient({
       name,
       description,
       price: parseFloat(price),
+      discount: discount ? parseInt(discount) : null,
       categoryId,
       imageUrl,
       images, // Send the full images array to DB
@@ -408,11 +411,11 @@ export default function ProductFormClient({
               />
             </div>
 
-            {/* Price & Category */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Price, Discount & Category */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
                 <label className="block text-xs font-black text-brand-navy uppercase tracking-widest mb-2">
-                  Price (₹) *
+                  Price (Selling Price) (₹) *
                 </label>
                 <input
                   type="number"
@@ -422,6 +425,22 @@ export default function ProductFormClient({
                   required
                   className="w-full px-5 py-4 bg-white/50 border border-brand-navy/10 rounded-2xl focus:outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 transition-all font-semibold text-brand-navy text-sm placeholder-brand-navy/30"
                   placeholder="599.00"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-black text-brand-navy uppercase tracking-widest mb-2">
+                  Discount (%)
+                </label>
+                <input
+                  type="number"
+                  min="0"
+                  max="99"
+                  step="1"
+                  value={discount}
+                  onChange={(e) => setDiscount(e.target.value)}
+                  className="w-full px-5 py-4 bg-white/50 border border-brand-navy/10 rounded-2xl focus:outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 transition-all font-semibold text-brand-navy text-sm placeholder-brand-navy/30"
+                  placeholder="e.g. 40"
                 />
               </div>
 

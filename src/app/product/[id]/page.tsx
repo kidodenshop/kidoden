@@ -118,11 +118,23 @@ export default async function ProductDetailPage({
             </a>
 
             {/* Price with Taxes info */}
-            <div className="mb-6">
-              <span className="text-3xl font-black text-brand-orange block leading-none mb-1">
-                ₹{product.price}
-              </span>
-              <span className="text-[11px] text-gray-400 font-bold tracking-wide">
+            <div className="flex flex-col mb-6">
+              <div className="flex items-center gap-3.5 flex-wrap">
+                <span className="text-3xl sm:text-4xl font-black text-brand-orange leading-none">
+                  ₹{product.price}
+                </span>
+                {product.discount !== undefined && product.discount !== null && product.discount > 0 && (
+                  <>
+                    <span className="text-sm font-semibold text-gray-400 line-through">
+                      MRP: ₹{Math.round(product.price / (1 - product.discount / 100))}
+                    </span>
+                    <span className="text-[10px] font-black text-brand-pink bg-brand-pink/10 px-3 py-1 rounded-full uppercase tracking-wider">
+                      {product.discount}% OFF
+                    </span>
+                  </>
+                )}
+              </div>
+              <span className="text-[11px] text-gray-400 font-bold tracking-wide mt-2">
                 MRP (Inclusive of all Taxes)
               </span>
             </div>

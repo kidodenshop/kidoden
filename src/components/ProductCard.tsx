@@ -71,7 +71,15 @@ export default function ProductCard({
           </div>
           
           <div className="flex justify-between items-center pt-2 sm:pt-4 border-t border-gray-100">
-            <p className="text-base sm:text-2xl font-black text-brand-orange">₹{product.price}</p>
+            <div className="flex items-baseline gap-1.5 flex-wrap">
+              <span className="text-base sm:text-2xl font-black text-brand-orange">₹{product.price}</span>
+              {product.discount !== undefined && product.discount !== null && product.discount > 0 && (
+                <>
+                  <span className="text-[10px] sm:text-xs text-gray-400 line-through">₹{Math.round(product.price / (1 - product.discount / 100))}</span>
+                  <span className="text-[10px] sm:text-xs font-bold text-brand-pink">({product.discount}% OFF)</span>
+                </>
+              )}
+            </div>
             <div className="flex items-center gap-2">
               <button
                 onClick={(e) => {
@@ -176,7 +184,15 @@ export default function ProductCard({
           {product.category === 'clothing' && product.ageRange ? `Age: ${product.ageRange}` : 'All ages'}
         </p>
         <div className="flex justify-between items-center mt-auto pt-2 sm:pt-4 border-t border-gray-100">
-          <p className="text-base sm:text-2xl font-black text-brand-orange">₹{product.price}</p>
+          <div className="flex items-baseline gap-1.5 flex-wrap">
+            <span className="text-base sm:text-2xl font-black text-brand-orange">₹{product.price}</span>
+            {product.discount !== undefined && product.discount !== null && product.discount > 0 && (
+              <>
+                <span className="text-[10px] sm:text-xs text-gray-400 line-through">₹{Math.round(product.price / (1 - product.discount / 100))}</span>
+                <span className="text-[10px] sm:text-xs font-bold text-brand-pink">({product.discount}% OFF)</span>
+              </>
+            )}
+          </div>
           <span className="bg-brand-mint/20 text-brand-navy font-bold px-2.5 py-1 sm:px-4 sm:py-2 rounded-full group-hover:bg-brand-mint transition-colors text-[10px] sm:text-sm">View</span>
         </div>
       </Link>
