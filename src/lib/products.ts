@@ -203,18 +203,7 @@ export async function getProductById(id: string): Promise<UIProduct | null> {
     
     return mapDbProductToUI(dbProduct);
   } catch (error) {
-    console.error(`Database product lookup for ID "${id}" failed, using static mock data. Error details:`, error);
-    const prod = mockProducts.find((p) => p.id === id) || null;
-    if (prod) {
-      return {
-        ...prod,
-        reviewsCount: getMockReviews(id).length || prod.reviewsCount,
-        rating: getMockReviews(id).length 
-          ? parseFloat((getMockReviews(id).reduce((sum, r) => sum + r.rating, 0) / getMockReviews(id).length).toFixed(1)) 
-          : prod.rating,
-        reviews: getMockReviews(id),
-      };
-    }
-    return null;
+    console.error(`Database product lookup for ID "${id}" failed. Error details:`, error);
+    throw error;
   }
 }

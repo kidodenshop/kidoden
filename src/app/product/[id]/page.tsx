@@ -45,7 +45,23 @@ export default async function ProductDetailPage({
   // Await the params object
   const { id } = await params;
 
-  const product = await getProductById(id);
+  let product = null;
+  let dbError = null;
+
+  try {
+    product = await getProductById(id);
+  } catch (err: any) {
+    dbError = err?.stack || err?.message || String(err);
+  }
+
+  if (dbError) {
+    return (
+      <div className="p-8 font-mono bg-red-50 text-red-800 border-2 border-red-200 rounded-3xl m-8">
+        <h2 className="text-xl font-bold mb-4">🔧 Database Debug Error Info:</h2>
+        <pre className="whitespace-pre-wrap overflow-auto p-4 bg-white rounded-xl border border-red-100">{dbError}</pre>
+      </div>
+    );
+  }
 
   if (!product) {
     notFound();
