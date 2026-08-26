@@ -49,7 +49,7 @@ export default function ProductSlider({ products }: { products: Product[] }) {
         `}</style>
         
         {products.map((product) => (
-          <div key={product.id} className="min-w-[280px] sm:min-w-[320px] lg:min-w-[300px] snap-start shrink-0">
+          <div key={product.id} className="w-[280px] sm:w-[320px] lg:w-[300px] snap-start shrink-0">
             <div className="group flex flex-col h-full block relative">
               <Link href={`/product/${product.id}`} className="relative h-80 w-full overflow-hidden bg-[#fafafa] rounded-2xl mb-4 block">
                 <Image src={product.imageUrl} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out mix-blend-multiply" />
