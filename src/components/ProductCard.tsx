@@ -35,7 +35,7 @@ export default function ProductCard({
           <div className="flex-grow">
             <p className="text-[10px] sm:text-xs font-bold text-brand-pink uppercase tracking-wider mb-0.5 sm:mb-1">{product.category}</p>
             <Link href={`/product/${product.id}`} className="block">
-              <h3 className="text-xs sm:text-lg md:text-xl font-bold text-brand-navy mb-1 sm:mb-2 hover:text-brand-pink transition-colors line-clamp-2 leading-tight">{product.name}</h3>
+              <h3 className="text-xs sm:text-lg md:text-xl font-bold text-brand-navy mb-1 sm:mb-2 hover:text-brand-pink transition-colors line-clamp-1 sm:line-clamp-2 leading-tight">{product.name}</h3>
             </Link>
             {product.rating && product.rating > 0 ? (
               <div className="flex items-center gap-1 mb-2">
@@ -151,7 +151,7 @@ export default function ProductCard({
 
       <Link href={`/product/${product.id}`} className="p-3 sm:p-6 flex flex-col flex-1">
         <p className="text-[10px] sm:text-xs font-bold text-brand-pink uppercase tracking-wider mb-1 sm:mb-2">{product.category}</p>
-        <h3 className="text-xs sm:text-base md:text-lg font-bold text-brand-navy mb-1.5 sm:mb-2 flex-grow line-clamp-2 leading-tight sm:leading-snug">{product.name}</h3>
+        <h3 className="text-xs sm:text-base md:text-lg font-bold text-brand-navy mb-1.5 sm:mb-2 flex-grow line-clamp-1 sm:line-clamp-2 leading-tight sm:leading-snug">{product.name}</h3>
         {product.rating && product.rating > 0 ? (
           <div className="flex items-center gap-1 mb-2">
             <div className="flex text-amber-400">

@@ -52,8 +52,39 @@ export default function ShopFilterGrid({ products, category, isPending }: ShopFi
   const [sortBy, setSortBy] = useState("featured");
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<"price" | "size" | "gender" | "sort" | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<"price" | "size" | "gender" | "sort" | "sort-mobile" | null>(null);
   const [colsCount, setColsCount] = useState<4 | 5>(4);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // Show Back to top button once page scrolls past 400px
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > 400) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Add has-sticky-bar class to body on mobile to push the WhatsApp button up
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 768) {
+        document.body.classList.add("has-sticky-bar");
+      } else {
+        document.body.classList.remove("has-sticky-bar");
+      }
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      document.body.classList.remove("has-sticky-bar");
+    };
+  }, []);
 
   const [expandedSections, setExpandedSections] = useState({
     price: true,
@@ -216,7 +247,7 @@ export default function ShopFilterGrid({ products, category, isPending }: ShopFi
   };
 
   return (
-    <div className="w-full flex flex-col gap-6">
+    <div className="w-full flex flex-col gap-6 pb-20 md:pb-0">
       <style>{`
         @keyframes fadeInBackdrop {
           from { opacity: 0; }
@@ -226,16 +257,23 @@ export default function ShopFilterGrid({ products, category, isPending }: ShopFi
           from { transform: translateX(-100%); }
           to { transform: translateX(0); }
         }
+        @keyframes slideUpSheet {
+          from { transform: translateY(100%); }
+          to { transform: translateY(0); }
+        }
         .animate-fade-in-backdrop {
           animation: fadeInBackdrop 0.2s ease-out forwards;
         }
         .animate-slide-in-drawer {
           animation: slideInFromLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
+        .animate-slide-up-sheet {
+          animation: slideUpSheet 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
       `}</style>
 
       {/* Filter and Sort Action Bar */}
-      <div className="flex flex-row justify-between items-center gap-2 py-4 border-b border-gray-100 relative w-full select-none">
+      <div className="flex flex-row justify-between items-center gap-2 py-4 border-b border-gray-100 relative w-full select-none hidden md:flex">
 
         {/* Left Side: Filter Options */}
         <div className="flex items-center gap-2.5 sm:gap-6">
@@ -674,6 +712,117 @@ export default function ShopFilterGrid({ products, category, isPending }: ShopFi
             Clear all filters
           </button>
         </div>
+      )}
+
+      {/* Mobile Sticky Bottom Bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-100 flex md:hidden h-14 items-center shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
+        {/* Filter Button */}
+        <button
+          onClick={() => setIsDrawerOpen(true)}
+          className="flex-1 flex items-center justify-center gap-2 h-full text-xs font-extrabold uppercase tracking-widest text-brand-navy hover:text-brand-pink transition-colors cursor-pointer border-r border-gray-100"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="4" y1="21" x2="4" y2="14" />
+            <line x1="4" y1="10" x2="4" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12" y2="3" />
+            <line x1="20" y1="21" x2="20" y2="16" />
+            <line x1="20" y1="12" x2="20" y2="3" />
+            <line x1="2" y1="14" x2="6" y2="14" />
+            <line x1="10" y1="8" x2="14" y2="8" />
+            <line x1="18" y1="16" x2="22" y2="16" />
+          </svg>
+          Filter
+          {activeFiltersCount > 0 && (
+            <span className="bg-brand-pink text-white rounded-full w-4 h-4 flex items-center justify-center text-[9px] font-bold">
+              {activeFiltersCount}
+            </span>
+          )}
+        </button>
+
+        {/* Sort Button */}
+        <button
+          onClick={() => setActiveDropdown(activeDropdown === "sort-mobile" ? null : "sort-mobile")}
+          className={`flex-1 flex items-center justify-center gap-2 h-full text-xs font-extrabold uppercase tracking-widest transition-colors cursor-pointer ${
+            sortBy !== "featured" ? "text-brand-pink" : "text-brand-navy hover:text-brand-pink"
+          }`}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="6" y1="12" x2="18" y2="12" />
+            <line x1="9" y1="18" x2="15" y2="18" />
+          </svg>
+          Sort by
+        </button>
+      </div>
+
+      {/* Mobile Sort Bottom Sheet */}
+      {activeDropdown === "sort-mobile" && (
+        <>
+          {/* Backdrop Overlay */}
+          <div
+            onClick={() => setActiveDropdown(null)}
+            className="fixed inset-0 bg-black/45 backdrop-blur-xs z-50 animate-fade-in-backdrop md:hidden"
+          />
+
+          {/* Bottom Sheet Element */}
+          <div className="fixed bottom-0 left-0 right-0 bg-white rounded-t-[2rem] z-50 shadow-2xl pb-8 pt-6 px-6 flex flex-col gap-4 animate-slide-up-sheet md:hidden border-t border-gray-100">
+            {/* Header */}
+            <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+              <h3 className="text-sm font-black text-brand-navy uppercase tracking-widest">Sort By</h3>
+              <button
+                onClick={() => setActiveDropdown(null)}
+                className="text-gray-400 hover:text-brand-pink transition-colors p-1 cursor-pointer font-black text-sm"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Options List */}
+            <div className="flex flex-col gap-2">
+              {[
+                { value: "featured", label: "Featured" },
+                { value: "price-low-high", label: "Price: Low to High" },
+                { value: "price-high-low", label: "Price: High to Low" },
+              ].map((opt) => {
+                const isSelected = sortBy === opt.value;
+                return (
+                  <button
+                    key={opt.value}
+                    onClick={() => {
+                      setSortBy(opt.value);
+                      setActiveDropdown(null);
+                    }}
+                    className={`w-full text-left py-3 px-4 rounded-2xl text-xs font-bold transition-all flex justify-between items-center cursor-pointer ${
+                      isSelected
+                        ? "bg-brand-pink/10 text-brand-pink"
+                        : "text-brand-navy hover:bg-gray-50"
+                    }`}
+                  >
+                    {opt.label}
+                    {isSelected && (
+                      <svg className="w-4 h-4 text-brand-pink" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </>
+      )}
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-20 left-1/2 -translate-x-1/2 z-40 bg-white/95 backdrop-blur-xs border border-gray-100 text-brand-navy font-bold py-2 px-5 rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.08)] flex items-center gap-1.5 text-xs transition-all hover:bg-white select-none animate-in fade-in slide-in-from-bottom-3 duration-300 md:hidden cursor-pointer"
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="18 15 12 9 6 15" />
+          </svg>
+          Back to top
+        </button>
       )}
     </div>
   );
