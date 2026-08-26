@@ -121,13 +121,12 @@ export default function ProductCard({
         </div>
       </div>
 
-      <Link href={`/product/${product.id}`} className="p-3 sm:p-6 flex flex-col flex-1">
-        <p className="text-[10px] sm:text-xs font-bold text-brand-pink uppercase tracking-wider mb-1 sm:mb-2">{product.category}</p>
-        <h3 className="text-xs sm:text-base md:text-lg font-bold text-brand-navy mb-1.5 sm:mb-2 flex-grow line-clamp-1 sm:line-clamp-2 leading-tight sm:leading-snug">{product.name}</h3>
-        <p className="text-[10px] sm:text-xs font-semibold text-gray-500 mb-3 sm:mb-4 bg-gray-50 inline-block px-2.5 py-1 rounded-full self-start">
+      <Link href={`/product/${product.id}`} className="p-3 sm:p-4 flex flex-col flex-1">
+        <h3 className="text-xs sm:text-base md:text-lg font-bold text-brand-navy mb-1.5 flex-grow line-clamp-1 sm:line-clamp-2 leading-tight sm:leading-snug">{product.name}</h3>
+        <p className="text-[10px] sm:text-xs font-semibold text-gray-500 mb-2 sm:mb-3 bg-gray-50 inline-block px-2.5 py-0.5 rounded-full self-start">
           {product.category === 'clothing' && product.ageRange ? `Age: ${product.ageRange}` : 'All ages'}
         </p>
-        <div className="flex justify-between items-center mt-auto pt-2 sm:pt-4 border-t border-gray-100">
+        <div className="flex justify-between items-center mt-auto pt-2 sm:pt-3 border-t border-gray-100">
           <div className="flex items-baseline gap-1.5 flex-wrap">
             <span className="text-base sm:text-2xl font-extrabold text-brand-navy">₹{product.price}</span>
             {product.discount !== undefined && product.discount !== null && product.discount > 0 && (
@@ -137,7 +136,6 @@ export default function ProductCard({
               </>
             )}
           </div>
-          <span className="bg-brand-mint/20 text-brand-navy font-bold px-2.5 py-1 sm:px-4 sm:py-2 rounded-full group-hover:bg-brand-mint transition-colors text-[10px] sm:text-sm">View</span>
         </div>
       </Link>
     </div>
