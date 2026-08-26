@@ -37,34 +37,6 @@ export default function ProductCard({
             <Link href={`/product/${product.id}`} className="block">
               <h3 className="text-xs sm:text-lg md:text-xl font-bold text-brand-navy mb-1 sm:mb-2 hover:text-brand-pink transition-colors line-clamp-1 sm:line-clamp-2 leading-tight">{product.name}</h3>
             </Link>
-            {product.rating && product.rating > 0 ? (
-              <div className="flex items-center gap-1 mb-2">
-                <div className="flex text-amber-400">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <svg
-                      key={i}
-                      className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${
-                        i < Math.round(product.rating || 5)
-                          ? "fill-current"
-                          : "text-gray-200"
-                      }`}
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill="currentColor" />
-                    </svg>
-                  ))}
-                </div>
-                <span className="text-[10px] sm:text-xs text-gray-400 font-medium">
-                  ({product.reviewsCount} reviews)
-                </span>
-              </div>
-            ) : (
-              <div className="flex items-center gap-1 mb-2">
-                <span className="text-[10px] sm:text-xs text-gray-400 font-medium italic">
-                  No ratings yet
-                </span>
-              </div>
-            )}
             <p className="text-[10px] sm:text-xs font-semibold text-gray-500 mb-2 bg-gray-50 inline-block px-2.5 py-0.5 rounded-full">
               {product.category === 'clothing' && product.ageRange ? `Age: ${product.ageRange}` : 'All ages'}
             </p>
@@ -152,34 +124,6 @@ export default function ProductCard({
       <Link href={`/product/${product.id}`} className="p-3 sm:p-6 flex flex-col flex-1">
         <p className="text-[10px] sm:text-xs font-bold text-brand-pink uppercase tracking-wider mb-1 sm:mb-2">{product.category}</p>
         <h3 className="text-xs sm:text-base md:text-lg font-bold text-brand-navy mb-1.5 sm:mb-2 flex-grow line-clamp-1 sm:line-clamp-2 leading-tight sm:leading-snug">{product.name}</h3>
-        {product.rating && product.rating > 0 ? (
-          <div className="flex items-center gap-1 mb-2">
-            <div className="flex text-amber-400">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <svg
-                  key={i}
-                  className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${
-                    i < Math.round(product.rating || 5)
-                      ? "fill-current"
-                      : "text-gray-200"
-                  }`}
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" fill="currentColor" />
-                </svg>
-              ))}
-            </div>
-            <span className="text-[10px] sm:text-xs text-gray-400 font-medium">
-              ({product.reviewsCount})
-            </span>
-          </div>
-        ) : (
-          <div className="flex items-center gap-1 mb-2">
-            <span className="text-[10px] sm:text-xs text-gray-400 font-medium italic">
-              No ratings yet
-            </span>
-          </div>
-        )}
         <p className="text-[10px] sm:text-xs font-semibold text-gray-500 mb-3 sm:mb-4 bg-gray-50 inline-block px-2.5 py-1 rounded-full self-start">
           {product.category === 'clothing' && product.ageRange ? `Age: ${product.ageRange}` : 'All ages'}
         </p>
