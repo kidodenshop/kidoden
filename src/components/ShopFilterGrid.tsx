@@ -56,6 +56,10 @@ export default function ShopFilterGrid({ products, category, isPending }: ShopFi
   const [colsCount, setColsCount] = useState<4 | 5>(4);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const ITEMS_PER_PAGE = 12;
+
   // Show Back to top button once page scrolls past 400px
   useEffect(() => {
     function handleScroll() {
@@ -85,6 +89,19 @@ export default function ShopFilterGrid({ products, category, isPending }: ShopFi
       document.body.classList.remove("has-sticky-bar");
     };
   }, []);
+
+  // Reset page to 1 when filters or products change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [products, minPrice, maxPrice, selectedSizes, selectedGenders, sortBy]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    setTimeout(() => {
+      // scroll grid container to visible viewport area with smooth behavior
+      gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
 
   const [expandedSections, setExpandedSections] = useState({
     price: true,
@@ -236,6 +253,11 @@ export default function ShopFilterGrid({ products, category, isPending }: ShopFi
     }
     return 0; // Featured
   });
+
+  // 3. Paginate sorted products list
+  const totalPages = Math.ceil(sortedProducts.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedProducts = sortedProducts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   // Size Label formatting
   const formatSizeLabel = (size: string) => {
@@ -685,19 +707,77 @@ export default function ShopFilterGrid({ products, category, isPending }: ShopFi
           ))}
         </div>
       ) : sortedProducts.length > 0 ? (
-        colsCount === 4 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 animate-in fade-in duration-300">
-            {sortedProducts.map((product) => (
-              <ProductCard key={product.id} product={product} viewMode="grid" />
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 animate-in fade-in duration-300">
-            {sortedProducts.map((product) => (
-              <ProductCard key={product.id} product={product} viewMode="grid" />
-            ))}
-          </div>
-        )
+        <div ref={gridRef} className="scroll-mt-28 flex flex-col gap-8">
+          {colsCount === 4 ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 animate-in fade-in duration-300">
+              {paginatedProducts.map((product) => (
+                <ProductCard key={product.id} product={product} viewMode="grid" />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 animate-in fade-in duration-300">
+              {paginatedProducts.map((product) => (
+                <ProductCard key={product.id} product={product} viewMode="grid" />
+              ))}
+            </div>
+          )}
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-2 mt-8 select-none">
+              {/* Previous Button */}
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
+                  currentPage === 1
+                    ? "border-gray-100 text-gray-300 pointer-events-none bg-gray-50/30"
+                    : "border-gray-200 text-brand-navy hover:border-brand-pink hover:text-brand-pink bg-white shadow-xs"
+                }`}
+                aria-label="Previous page"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+
+              {/* Page Numbers */}
+              {Array.from({ length: totalPages }).map((_, idx) => {
+                const pageNum = idx + 1;
+                const isActive = currentPage === pageNum;
+                return (
+                  <button
+                    key={pageNum}
+                    onClick={() => handlePageChange(pageNum)}
+                    className={`w-10 h-10 rounded-full text-xs font-black transition-all cursor-pointer ${
+                      isActive
+                        ? "bg-brand-navy text-white shadow-md border-brand-navy"
+                        : "bg-white border border-gray-200 text-brand-navy hover:border-brand-pink hover:text-brand-pink shadow-xs"
+                    }`}
+                  >
+                    {pageNum}
+                  </button>
+                );
+              })}
+
+              {/* Next Button */}
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
+                  currentPage === totalPages
+                    ? "border-gray-100 text-gray-300 pointer-events-none bg-gray-50/30"
+                    : "border-gray-200 text-brand-navy hover:border-brand-pink hover:text-brand-pink bg-white shadow-xs"
+                }`}
+                aria-label="Next page"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            </div>
+          )}
+        </div>
       ) : (
         <div className="w-full text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-xs flex flex-col items-center justify-center p-8">
           <span className="text-5xl mb-4">🔍</span>
