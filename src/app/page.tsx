@@ -235,7 +235,7 @@ export default async function Home() {
       {/* Launch Offer Banner Section */}
       <section className="w-full relative h-[350px] md:h-[450px] overflow-hidden bg-[#faf6f0] border-t border-b border-gray-100">
         <Image
-          src="/Banner/launch-banner.png"
+          src="/Banner/new-launch-offer.png"
           alt="Launching Offer Sale"
           fill
           className="object-cover object-center"
