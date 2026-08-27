@@ -259,7 +259,7 @@ export default async function Home() {
               href="/shop"
               className="bg-white hover:bg-white/95 text-brand-navy font-black py-4 px-10 rounded-full text-xs md:text-sm tracking-widest uppercase transition-all duration-300 shadow-lg shadow-gray-200/50 hover:scale-105 active:scale-95 border border-gray-100"
             >
-              Explore Gifts
+              Shop Now
             </Link>
           </div>
         </div>
