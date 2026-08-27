@@ -59,8 +59,8 @@ export default function ProductAccordions({
             <div className="bg-brand-yellow/10 p-5 rounded-2xl border border-brand-yellow/20">
               <ul className="space-y-2.5">
                 {features.map((feature, index) => (
-                  <li key={index} className="flex items-center gap-3 text-gray-700 font-medium text-xs md:text-sm">
-                    <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow flex-shrink-0" />
+                  <li key={index} className="flex items-start gap-3 text-gray-700 font-medium text-xs md:text-sm">
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow flex-shrink-0 mt-1.5" />
                     {feature}
                   </li>
                 ))}
