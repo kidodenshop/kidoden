@@ -232,26 +232,26 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Bundles of Love Banner Section */}
-      <section className="w-full relative h-[350px] md:h-[450px] overflow-hidden bg-[#f0959f] border-t border-b border-gray-100">
+      {/* Launch Offer Banner Section */}
+      <section className="w-full relative h-[350px] md:h-[450px] overflow-hidden bg-[#faf6f0] border-t border-b border-gray-100">
         <Image
-          src="/Banner/baby-gift.png"
-          alt="Hampers of Joy"
+          src="/Banner/launch-banner.png"
+          alt="Launching Offer Sale"
           fill
           className="object-cover object-center"
+          priority
         />
-        <div className="absolute inset-y-0 left-0 w-full md:w-[50%] bg-gradient-to-r from-brand-navy/85 via-brand-navy/55 to-transparent z-10" />
         <div className="absolute inset-0 flex items-center justify-start max-w-8xl mx-auto px-6 sm:px-8 lg:px-12 z-20">
-          <div className="w-full md:w-[45%] flex flex-col justify-center items-start text-left">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-wide mb-3 leading-tight" style={{ fontFamily: 'var(--font-quicksand), sans-serif' }}>
-              Hampers of <span className="text-[#fbcd6a]">Joy</span>
-            </h2>
-            <p className="text-base md:text-lg lg:text-xl text-white font-semibold mb-8 max-w-sm">
-              Thoughtfully curated newborn boxes & milestone gift hampers.
+          <div className="w-full md:w-[50%] flex flex-col justify-center items-start text-left">
+            <p className="text-sm md:text-base font-bold text-gray-700 tracking-wide mb-2">
+              Launching Offer Sale!
             </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#967455] tracking-wide mb-6 leading-tight" style={{ fontFamily: 'var(--font-quicksand), sans-serif' }}>
+              UP TO 20% OFF
+            </h2>
             <Link
-              href="/shop?category=gifting"
-              className="bg-white hover:bg-[#fafafa] text-brand-navy font-bold py-3.5 px-8 rounded-full text-xs md:text-sm tracking-widest uppercase transition-colors shadow-lg"
+              href="/shop"
+              className="bg-white hover:bg-gray-50 text-brand-navy font-black py-3.5 px-8 rounded-full text-xs md:text-sm tracking-widest uppercase transition-all shadow-lg shadow-gray-200/50 hover:scale-[1.02] active:scale-95 border border-gray-100"
             >
               Explore Gifts
             </Link>
