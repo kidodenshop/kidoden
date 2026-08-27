@@ -242,16 +242,22 @@ export default async function Home() {
           priority
         />
         <div className="absolute inset-0 flex items-center justify-start max-w-8xl mx-auto px-6 sm:px-8 lg:px-12 z-20">
-          <div className="w-full md:w-[50%] flex flex-col justify-center items-start text-left">
-            <p className="text-sm md:text-base font-bold text-gray-700 tracking-wide mb-2">
+          <div className="w-full md:w-[60%] flex flex-col justify-center items-start text-left">
+            <span 
+              className="text-2xl md:text-4.5xl font-bold text-brand-pink mb-3 block"
+              style={{ fontFamily: 'var(--font-dancing-script), cursive' }}
+            >
               Launching Offer Sale!
-            </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#967455] tracking-wide mb-6 leading-tight" style={{ fontFamily: 'var(--font-quicksand), sans-serif' }}>
-              UP TO 20% OFF
+            </span>
+            <h2 
+              className="text-5xl md:text-7xl lg:text-8xl font-black text-brand-navy tracking-tight mb-8 leading-none uppercase"
+              style={{ fontFamily: 'var(--font-quicksand), sans-serif' }}
+            >
+              UP TO <span className="bg-gradient-to-r from-brand-orange via-brand-orange to-[#b58c54] bg-clip-text text-transparent">20% OFF</span>
             </h2>
             <Link
               href="/shop"
-              className="bg-white hover:bg-gray-50 text-brand-navy font-black py-3.5 px-8 rounded-full text-xs md:text-sm tracking-widest uppercase transition-all shadow-lg shadow-gray-200/50 hover:scale-[1.02] active:scale-95 border border-gray-100"
+              className="bg-white hover:bg-brand-navy text-brand-navy hover:text-white font-black py-4 px-10 rounded-full text-xs md:text-sm tracking-widest uppercase transition-all duration-300 shadow-lg shadow-gray-200/50 hover:scale-105 active:scale-95 border border-gray-100"
             >
               Explore Gifts
             </Link>
