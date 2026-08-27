@@ -75,6 +75,33 @@ export function addMockReview(productId: string, review: { rating: number; comme
   return newReview;
 }
 
+export function sortInventory(items: any[]) {
+  const getScore = (size: string): number => {
+    const s = size.toLowerCase().trim();
+    if (s === "newborn" || s === "nb") return 0.01;
+    if (s === "standard") return 1000;
+    
+    const monthMatch = s.match(/(\d+)\s*(?:-\s*\d+)?\s*month/);
+    if (monthMatch) {
+      return parseInt(monthMatch[1]) / 12;
+    }
+    
+    const yearMatch = s.match(/(\d+)\s*(?:-\s*\d+)?\s*year/);
+    if (yearMatch) {
+      return parseInt(yearMatch[1]);
+    }
+    
+    const numMatch = s.match(/(\d+)/);
+    if (numMatch) {
+      return parseInt(numMatch[1]);
+    }
+    
+    return 999;
+  };
+
+  return [...items].sort((a, b) => getScore(a.size) - getScore(b.size));
+}
+
 export function mapDbProductToUI(p: any): UIProduct {
   const dbReviews = p.reviews || [];
   // Use actual reviews array if populated, otherwise fallback to database column values
@@ -98,10 +125,10 @@ export function mapDbProductToUI(p: any): UIProduct {
     isFeatured: p.isFeatured,
     rating: rating !== undefined ? rating : undefined,
     reviewsCount: reviewsCount !== undefined ? reviewsCount : undefined,
-    inventory: p.inventory ? p.inventory.map((inv: any) => ({
+    inventory: p.inventory ? sortInventory(p.inventory.map((inv: any) => ({
       size: inv.size,
       stockQuantity: inv.stockQuantity,
-    })) : undefined,
+    }))) : undefined,
     reviews: p.reviews ? p.reviews.map((rev: any) => ({
       id: rev.id,
       productId: rev.productId,

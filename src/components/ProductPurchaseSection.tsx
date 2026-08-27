@@ -5,11 +5,38 @@ import { useCart } from "@/context/CartContext";
 import { Product } from "@/data/products";
 import Image from "next/image";
 
+function sortInventory(items: any[]) {
+  const getScore = (size: string): number => {
+    const s = size.toLowerCase().trim();
+    if (s === "newborn" || s === "nb") return 0.01;
+    if (s === "standard") return 1000;
+    
+    const monthMatch = s.match(/(\d+)\s*(?:-\s*\d+)?\s*month/);
+    if (monthMatch) {
+      return parseInt(monthMatch[1]) / 12;
+    }
+    
+    const yearMatch = s.match(/(\d+)\s*(?:-\s*\d+)?\s*year/);
+    if (yearMatch) {
+      return parseInt(yearMatch[1]);
+    }
+    
+    const numMatch = s.match(/(\d+)/);
+    if (numMatch) {
+      return parseInt(numMatch[1]);
+    }
+    
+    return 999;
+  };
+
+  return [...items].sort((a, b) => getScore(a.size) - getScore(b.size));
+}
+
 export default function ProductPurchaseSection({ product }: { product: Product }) {
   const { addToCart } = useCart();
 
   // 1. Get inventory lists. Fallback to mock sizes if database is missing
-  const inventoryItems = product.inventory || (
+  const rawInventoryItems = product.inventory || (
     product.category === "clothing"
       ? [
         { size: "2-3 Years", stockQuantity: 5 },
@@ -19,6 +46,8 @@ export default function ProductPurchaseSection({ product }: { product: Product }
       ]
       : [{ size: "Standard", stockQuantity: 10 }]
   );
+
+  const inventoryItems = sortInventory(rawInventoryItems);
 
   // Pre-select the first in-stock size by default
   const [selectedSize, setSelectedSize] = useState<string>(() => {
