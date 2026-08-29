@@ -57,16 +57,16 @@ export async function POST(
         },
       });
 
-      // 2. Fetch all reviews for this product to recalculate rating metrics
+      // 2. Fetch all reviews for this product to recalculate rating metrics (only approved ones)
       const productReviews = await tx.review.findMany({
-        where: { productId: id },
+        where: { productId: id, isApproved: true },
         select: { rating: true },
       });
 
       const count = productReviews.length;
       const averageRating = count > 0 
         ? productReviews.reduce((sum, r) => sum + r.rating, 0) / count
-        : rating;
+        : 0;
 
       // 3. Update the Product model with the pre-calculated aggregates
       await tx.product.update({

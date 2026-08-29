@@ -98,6 +98,7 @@ async function main() {
             rating: reviewRating,
             comment,
             authorName,
+            isApproved: true,
             createdAt: new Date(Date.now() - dateOffset)
           },
           create: {
@@ -106,6 +107,7 @@ async function main() {
             rating: reviewRating,
             comment,
             authorName,
+            isApproved: true,
             createdAt: new Date(Date.now() - dateOffset)
           }
         });

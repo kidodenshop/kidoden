@@ -207,6 +207,9 @@ export async function getProductById(id: string): Promise<UIProduct | null> {
         category: true,
         inventory: true,
         reviews: {
+          where: {
+            isApproved: true,
+          },
           orderBy: {
             createdAt: "desc",
           },

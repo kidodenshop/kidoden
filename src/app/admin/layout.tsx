@@ -74,6 +74,15 @@ function AdminLayoutContent({ children }: AdminLayoutProps) {
         </svg>
       ),
     },
+    {
+      name: "Reviews",
+      href: "/admin/reviews",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3h9m-9 3h3m-6.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 17.25 4.5h-10.5A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Z" />
+        </svg>
+      ),
+    },
   ];
 
   const handleLogout = async () => {
