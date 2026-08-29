@@ -33,8 +33,8 @@ export async function POST(request: Request) {
       }
     }
 
-    // Fallback to default single-user credentials
-    if (!isValid) {
+    // Fallback to default single-user credentials ONLY if ADMIN_USERS is NOT set
+    if (!isValid && !ADMIN_USERS_RAW) {
       isValid = username === ADMIN_USERNAME && password === ADMIN_PASSWORD;
     }
 
