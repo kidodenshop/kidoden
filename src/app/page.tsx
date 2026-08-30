@@ -122,7 +122,7 @@ export default async function Home() {
               {
                 title: "Little Gentlemen",
                 image: "/clothe/Homepage/shop-for-boy.png",
-                link: "/shop?category=clothing",
+                link: "/shop?category=clothing&gender=boy",
                 position: "object-[center_15%]",
                 icon: (
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1a4263" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -135,7 +135,7 @@ export default async function Home() {
               {
                 title: "Little Princess",
                 image: "/clothe/Homepage/shop-for-baby-girl.png",
-                link: "/shop?category=clothing",
+                link: "/shop?category=clothing&gender=girl",
                 position: "object-[center_15%]",
                 icon: (
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e88fa2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
