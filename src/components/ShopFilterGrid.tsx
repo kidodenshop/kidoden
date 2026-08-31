@@ -780,10 +780,10 @@ export default function ShopFilterGrid({ products, category, isPending }: ShopFi
         </div>
       ) : (
         <div className="w-full text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-xs flex flex-col items-center justify-center p-8">
-          <span className="text-5xl mb-4">🔍</span>
-          <h3 className="text-xl font-bold text-brand-navy mb-2">No matching products found</h3>
+          <span className="text-5xl mb-4">🧸</span>
+          <h3 className="text-xl font-bold text-brand-navy mb-2">We are finding the best products for you!</h3>
           <p className="text-gray-500 text-sm mb-6 max-w-sm">
-            We couldn't find any products matching your current price or size filters. Try widening your criteria.
+            Coming soon for this category. Stay tuned as we curate the finest options for your little ones.
           </p>
           <button
             onClick={handleClearAll}
