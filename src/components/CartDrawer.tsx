@@ -67,7 +67,7 @@ export default function CartDrawer() {
                   onClick={() => setIsCartOpen(false)}
                   className="relative w-24 h-24 rounded-xl overflow-hidden bg-gray-50 flex-shrink-0 border border-gray-100 hover:opacity-90 transition-opacity"
                 >
-                  <Image src={item.imageUrl} alt={item.name} fill className="object-cover" />
+                  <Image src={item.imageUrl} alt={item.name} fill unoptimized className="object-cover" />
                 </Link>
                 <div className="flex flex-col flex-grow">
                   <div className="flex justify-between items-start">

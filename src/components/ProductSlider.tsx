@@ -52,7 +52,7 @@ export default function ProductSlider({ products }: { products: Product[] }) {
           <div key={product.id} className="w-[280px] sm:w-[320px] lg:w-[300px] snap-start shrink-0">
             <div className="group flex flex-col h-full block relative">
               <Link href={`/product/${product.id}`} className="relative h-80 w-full overflow-hidden bg-[#fafafa] rounded-2xl mb-4 block">
-                <Image src={product.imageUrl} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out mix-blend-multiply" />
+                <Image src={product.imageUrl} alt={product.name} fill unoptimized className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out mix-blend-multiply" />
               </Link>
               <div className="absolute bottom-24 left-4 right-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
                 {product.category === 'clothing' ? (

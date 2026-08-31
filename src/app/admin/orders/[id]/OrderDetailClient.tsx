@@ -275,6 +275,7 @@ export default function OrderDetailClient({ order: initialOrder }: OrderDetailCl
                         src={item.product.imageUrl}
                         alt={item.product.name}
                         fill
+                        unoptimized
                         className="object-cover"
                       />
                     </div>

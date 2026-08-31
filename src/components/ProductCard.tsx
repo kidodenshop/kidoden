@@ -24,6 +24,7 @@ export default function ProductCard({
               src={product.imageUrl}
               alt={product.name}
               fill
+              unoptimized
               sizes="(max-w-768px) 100px, 200px"
               className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
             />
@@ -92,6 +93,7 @@ export default function ProductCard({
             src={product.imageUrl}
             alt={product.name}
             fill
+            unoptimized
             sizes="(max-w-768px) 50vw, 30vw"
             className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
           />

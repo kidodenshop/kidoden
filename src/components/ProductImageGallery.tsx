@@ -105,6 +105,7 @@ export default function ProductImageGallery({ images, name }: ProductImageGaller
                   src={image}
                   alt={`${name} thumbnail ${index + 1}`}
                   fill
+                  unoptimized
                   sizes="(max-w-768px) 64px, 80px"
                   className="object-cover"
                 />
@@ -137,6 +138,7 @@ export default function ProductImageGallery({ images, name }: ProductImageGaller
             src={galleryImages[activeIndex]}
             alt={name}
             fill
+            unoptimized
             sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 800px"
             className="object-cover"
             priority

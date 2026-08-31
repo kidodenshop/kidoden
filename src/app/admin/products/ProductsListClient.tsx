@@ -183,6 +183,7 @@ export default function ProductsListClient({
                             src={product.imageUrl}
                             alt={product.name}
                             fill
+                            unoptimized
                             className="object-cover"
                           />
                         </div>

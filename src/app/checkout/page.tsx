@@ -478,7 +478,7 @@ function CheckoutPageContent() {
               {checkoutItems.map((item) => (
                 <div key={`${item.id}-${item.selectedSize || 'default'}`} className="flex gap-4 py-4 first:pt-0 last:pb-0">
                   <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-gray-50 flex-shrink-0 border border-gray-100">
-                    <Image src={item.imageUrl} alt={item.name} fill className="object-cover" />
+                    <Image src={item.imageUrl} alt={item.name} fill unoptimized className="object-cover" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-brand-navy text-sm truncate">{item.name}</h4>
