@@ -76,7 +76,7 @@ export default function AboutPage() {
             <div className="bg-white/60 backdrop-blur-md p-8 rounded-[2rem] shadow-sm border border-white/50">
               <h2 className="text-3xl font-bold text-brand-navy mb-4">What We Do</h2>
               <p className="text-gray-600 leading-relaxed text-lg">
-                We thoughtfully curate a wide range of premium kids clothing, delicate jewellery, adorable nail accessories, and complete newborn gift sets. Every piece in our collection is selected with love, ensuring it meets our high standards for comfort, safety, and style.
+                We thoughtfully curate a wide range of premium kids clothing and complete newborn gift sets. Every piece in our collection is selected with love, ensuring it meets our high standards for comfort, safety, and style.
               </p>
             </div>
           </div>

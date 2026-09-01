@@ -299,7 +299,7 @@ export default async function Home() {
             Quality without compromise.
           </h2>
           <p className="text-lg md:text-2xl text-gray-500 leading-relaxed max-w-3xl mx-auto font-medium mb-16">
-            At Kidoden, we believe every child deserves the best. From soft fabrics to safe accessories, every product is carefully selected.
+            At Kidoden, we believe every child deserves the best. From soft, breathable fabrics to thoughtful designs, every piece is carefully selected.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">

@@ -10,7 +10,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { category, search, gender, collection, giftType } = await searchParams;
   let title = "Shop";
-  let description = "Explore Kidoden's premium collections of baby clothing, accessories, and curated gift boxes.";
+  let description = "Explore Kidoden's premium collections of baby clothing and curated gift boxes.";
 
   if (search) {
     title = `Search results for "${search}"`;

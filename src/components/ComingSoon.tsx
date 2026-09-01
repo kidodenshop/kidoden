@@ -401,14 +401,14 @@ export default function ComingSoonPage() {
           </h1>
 
           <p className="cs-subheading">
-            Soft fabrics, safe accessories &amp; loads of love —<br />
+            Soft fabrics &amp; loads of love —<br />
             crafted for your little ones. Launching very soon! 🎀
           </p>
 
           {/* Category pills */}
           <div className="cs-features">
             <div className="cs-feature-pill"><span>👗</span> Kids Clothing</div>
-            <div className="cs-feature-pill"><span>🎒</span> Kids Accessories</div>
+            <div className="cs-feature-pill"><span>🎁</span> Curated Gift Sets</div>
             <div className="cs-feature-pill"><span>🍼</span> Newborn Essentials</div>
           </div>
 
