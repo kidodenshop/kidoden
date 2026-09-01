@@ -19,7 +19,7 @@ export default function Footer() {
               <li><Link href="/shop?category=clothing" className="hover:text-brand-pink transition-colors">Clothing</Link></li>
               <li><Link href="/shop?category=gifting" className="hover:text-brand-pink transition-colors">Gifting</Link></li>
 
-              <li><Link href="/contact" className="hover:text-brand-pink transition-colors">Contact</Link></li>
+              <li><Link href="/contact-us" className="hover:text-brand-pink transition-colors">Contact</Link></li>
             </ul>
           </div>
           <div>
@@ -45,9 +45,9 @@ export default function Footer() {
         <div className="border-t border-gray-300 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <p>© {new Date().getFullYear()} Kidoden. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-            <Link href="/privacy" className="hover:text-brand-pink transition-colors">Privacy Policy</Link>
+            <Link href="/privacy-policy" className="hover:text-brand-pink transition-colors">Privacy Policy</Link>
             <Link href="/terms-and-conditions" className="hover:text-brand-pink transition-colors">Terms & Conditions</Link>
-            <Link href="/shipping-returns" className="hover:text-brand-pink transition-colors">Shipping & Returns</Link>
+            <Link href="/shipping-returns-policy" className="hover:text-brand-pink transition-colors">Shipping & Returns</Link>
           </div>
         </div>
       </div>

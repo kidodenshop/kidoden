@@ -12,10 +12,10 @@ module.exports = {
       '/',
       '/shop',
       '/about',
-      '/contact',
-      '/privacy',
+      '/contact-us',
+      '/privacy-policy',
       '/terms-and-conditions',
-      '/shipping-returns',
+      '/shipping-returns-policy',
     ];
     return routes.map((route) => ({
       loc: route,

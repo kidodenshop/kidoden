@@ -95,7 +95,7 @@ function SuccessPageContent() {
           Continue Shopping
         </Link>
         <Link 
-          href="/contact" 
+          href="/contact-us" 
           className="px-8 py-4 bg-gray-50 border border-gray-200 text-gray-700 hover:bg-gray-100 font-bold rounded-full transition-all text-sm tracking-wider uppercase"
         >
           Contact Support

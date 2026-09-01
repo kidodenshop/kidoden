@@ -97,7 +97,7 @@ export default function Header() {
               </div>
               <Link href="/shop?category=clothing" className="text-brand-navy hover:text-brand-mint font-bold transition-colors">Clothing</Link>
               <Link href="/shop?category=gifting" className="text-brand-navy hover:text-brand-pink font-bold transition-colors">Gifting</Link>
-              <Link href="/contact" className="text-brand-navy hover:text-brand-pink font-bold transition-colors">Contact</Link>
+              <Link href="/contact-us" className="text-brand-navy hover:text-brand-pink font-bold transition-colors">Contact</Link>
             </nav>
           </div>
 

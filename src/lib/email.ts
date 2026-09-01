@@ -112,7 +112,7 @@ export async function sendOrderConfirmationEmail({
                   </svg>
                   <div style="font-size: 16px; font-weight: 800; color: #1a4263; margin-bottom: 8px; font-family: 'Segoe UI', sans-serif;">Need help?</div>
                   <div style="font-size: 12px; line-height: 1.6; color: #4b5563; font-family: 'Segoe UI', sans-serif;">
-                    For queries, or any assistance <a href="${siteUrl}/contact" style="color: #FF6B8B; text-decoration: none; font-weight: 700;">contact us</a>.
+                    For queries, or any assistance <a href="${siteUrl}/contact-us" style="color: #FF6B8B; text-decoration: none; font-weight: 700;">contact us</a>.
                   </div>
                 </div>
               </td>

@@ -21,6 +21,21 @@ const nextConfig: NextConfig = {
         destination: "/terms-and-conditions",
         permanent: true,
       },
+      {
+        source: "/contact",
+        destination: "/contact-us",
+        permanent: true,
+      },
+      {
+        source: "/privacy",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
+      {
+        source: "/shipping-returns",
+        destination: "/shipping-returns-policy",
+        permanent: true,
+      },
     ];
   },
   async headers() {
