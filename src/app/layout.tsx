@@ -52,6 +52,14 @@ export const metadata: Metadata = {
   },
   description:
     "Discover premium baby clothing, kidswear and thoughtful gift boxes for little ones. Soft fabrics, adorable designs and Pan-India delivery.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/icon.svg",
+  },
   openGraph: {
     type: "website",
     siteName: "Kidoden",
