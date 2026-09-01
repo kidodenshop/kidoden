@@ -46,7 +46,7 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} Kidoden. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <Link href="/privacy" className="hover:text-brand-pink transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-brand-pink transition-colors">Terms & Conditions</Link>
+            <Link href="/terms-and-conditions" className="hover:text-brand-pink transition-colors">Terms & Conditions</Link>
             <Link href="/shipping-returns" className="hover:text-brand-pink transition-colors">Shipping & Returns</Link>
           </div>
         </div>
