@@ -1,4 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions",
+  description:
+    "Read Kidoden's terms and conditions covering orders, payments, shipping, returns, cancellations and use of our website.",
+  openGraph: {
+    title: "Terms & Conditions | Kidoden",
+    description:
+      "Read Kidoden's terms and conditions covering orders, payments, shipping, returns, cancellations and use of our website.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms & Conditions | Kidoden",
+    description:
+      "Read Kidoden's terms and conditions covering orders, payments, shipping, returns, cancellations and use of our website.",
+  },
+};
 
 export default function TermsAndConditionsPage() {
   return (

@@ -1,4 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "Read Kidoden's privacy policy to understand how we collect, use, protect and handle your personal data and privacy.",
+  openGraph: {
+    title: "Privacy Policy | Kidoden",
+    description:
+      "Read Kidoden's privacy policy to understand how we collect, use, protect and handle your personal data and privacy.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy | Kidoden",
+    description:
+      "Read Kidoden's privacy policy to understand how we collect, use, protect and handle your personal data and privacy.",
+  },
+};
 
 export default function PrivacyPolicyPage() {
   return (

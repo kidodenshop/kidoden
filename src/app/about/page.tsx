@@ -1,5 +1,23 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Discover the Kidoden story — crafting soft, stylish, and premium clothing & curated gift boxes made with love for little ones.",
+  openGraph: {
+    title: "About Us | Kidoden",
+    description:
+      "Discover the Kidoden story — crafting soft, stylish, and premium clothing & curated gift boxes made with love for little ones.",
+  },
+  twitter: {
+    card: "summary",
+    title: "About Us | Kidoden",
+    description:
+      "Discover the Kidoden story — crafting soft, stylish, and premium clothing & curated gift boxes made with love for little ones.",
+  },
+};
 
 export default function AboutPage() {
   return (

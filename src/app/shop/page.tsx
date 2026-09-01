@@ -1,6 +1,72 @@
+import type { Metadata } from "next";
 import { Category } from "@/data/products";
 import { getProducts } from "@/lib/products";
 import ShopPageClient from "@/components/ShopPageClient";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string; search?: string; gender?: string; collection?: string; giftType?: string }>;
+}): Promise<Metadata> {
+  const { category, search, gender, collection, giftType } = await searchParams;
+  let title = "Shop";
+  let description = "Explore Kidoden's premium collections of baby clothing, accessories, and curated gift boxes.";
+
+  if (search) {
+    title = `Search results for "${search}"`;
+    description = `Browse items matching "${search}" at Kidoden.`;
+  } else if (category === "clothing") {
+    if (gender === "boy") {
+      title = "Little Gentlemen - Boys Clothing";
+      description = "Shop stylish, comfortable and breathable clothing for boys at Kidoden.";
+    } else if (gender === "girl") {
+      title = "Little Princess - Girls Clothing";
+      description = "Shop adorable, soft and elegant dresses & sets for girls at Kidoden.";
+    } else {
+      title = "Kids Clothing";
+      description = "Shop premium, skin-friendly outfits made for little adventures.";
+    }
+  } else if (category === "gifting") {
+    if (giftType === "gift-boxes") {
+      title = "Gift Boxes";
+      description = "Curated gift boxes packed with love for newborns and toddlers.";
+    } else if (giftType === "birthday-gifts") {
+      title = "Birthday Gifts";
+      description = "Delightful birthday gifts and milestone sets for little ones.";
+    } else if (giftType === "baby-shower-gifts") {
+      title = "Baby Shower Gifts";
+      description = "Thoughtful baby shower gift hampers for welcoming newborns.";
+    } else {
+      title = "Curated Gift Sets";
+      description = "Premium curated gift boxes and hampers for special milestones.";
+    }
+  } else if (collection) {
+    if (collection === "new-arrivals") {
+      title = "New Arrivals";
+      description = "Discover the newest additions to Kidoden's clothing and gifting collections.";
+    } else if (collection === "best-sellers") {
+      title = "Best Sellers";
+      description = "Explore our most loved and popular kidswear and gift hampers.";
+    } else if (collection === "premium-picks") {
+      title = "Premium Picks";
+      description = "Our finest, high-quality selections for special occasions.";
+    }
+  }
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} | Kidoden`,
+      description,
+    },
+    twitter: {
+      card: "summary",
+      title: `${title} | Kidoden`,
+      description,
+    },
+  };
+}
 
 function parseAgeRange(rangeStr: string): [number, number] | null {
   const s = rangeStr.toLowerCase();
