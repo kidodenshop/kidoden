@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import MobileMenu from "@/components/MobileMenu";
 import SearchInput from "@/components/SearchInput";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import { useCart } from "@/context/CartContext";
 
 export default function Header() {
@@ -11,10 +12,8 @@ export default function Header() {
 
   return (
     <>
-      {/* Announcement Bar */}
-      <div className="bg-brand-pink text-white text-center py-2.5 px-4 text-xs sm:text-xs font-black tracking-widest uppercase flex items-center justify-center gap-2 select-none shadow-xs">
-        ✨ We are live now! ✨
-      </div>
+      {/* Sliding Announcement Ribbon */}
+      <AnnouncementBar />
       
       <header className="sticky top-0 z-50 bg-white md:bg-white/80 md:backdrop-blur-md border-b border-brand-mint/20">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,6 +94,7 @@ export default function Header() {
 
                 </div>
               </div>
+              <Link href="/shop?category=infants" className="text-brand-navy hover:text-brand-pink font-bold transition-colors">Infants</Link>
               <Link href="/shop?category=clothing" className="text-brand-navy hover:text-brand-mint font-bold transition-colors">Clothing</Link>
               <Link href="/shop?category=gifting" className="text-brand-navy hover:text-brand-pink font-bold transition-colors">Gifting</Link>
               <Link href="/contact-us" className="text-brand-navy hover:text-brand-pink font-bold transition-colors">Contact</Link>

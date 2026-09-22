@@ -26,6 +26,9 @@ export async function generateMetadata({
       title = "Kids Clothing";
       description = "Shop premium, skin-friendly outfits made for little adventures.";
     }
+  } else if (category === "infants") {
+    title = "Infants Clothing";
+    description = "Shop gentle, ultra-soft, breathable and adorable outfits for newborns and infants at Kidoden.";
   } else if (category === "gifting") {
     if (giftType === "gift-boxes") {
       title = "Gift Boxes";
@@ -99,7 +102,7 @@ export default async function ShopPage({
 }) {
   const { category, search, gender, age, collection, giftType } = await searchParams;
 
-  const validCategories: Category[] = ["clothing", "gifting"];
+  const validCategories: Category[] = ["clothing", "gifting", "infants"];
   const isValidCategory = category && validCategories.includes(category as Category);
 
   const products = await getProducts();
@@ -113,7 +116,19 @@ export default async function ShopPage({
         p.category.toLowerCase().includes(s)
     );
   } else if (isValidCategory) {
-    displayedProducts = displayedProducts.filter((p) => p.category === category);
+    if (category === "infants") {
+      displayedProducts = displayedProducts.filter(
+        (p) =>
+          p.category === "infants" ||
+          (p.category === "clothing" &&
+            (p.ageRange?.toLowerCase().includes("0-1") ||
+              p.ageRange?.toLowerCase().includes("newborn") ||
+              p.name.toLowerCase().includes("baby") ||
+              p.name.toLowerCase().includes("infant")))
+      );
+    } else {
+      displayedProducts = displayedProducts.filter((p) => p.category === category);
+    }
   }
 
   // Gender filter

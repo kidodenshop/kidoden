@@ -54,12 +54,17 @@ export async function PUT(
 
     // Resolve categoryId to a database UUID if it is a slug
     let dbCategoryId = categoryId;
-    if (categoryId === "clothing" || categoryId === "gifting") {
+    if (categoryId === "clothing" || categoryId === "gifting" || categoryId === "infants") {
+      const categoryNames: Record<string, string> = {
+        clothing: "Clothing",
+        gifting: "Gifting",
+        infants: "Infants",
+      };
       const category = await prisma.category.upsert({
         where: { slug: categoryId },
         update: {},
         create: {
-          name: categoryId === "clothing" ? "Clothing" : "Gifting",
+          name: categoryNames[categoryId] || categoryId,
           slug: categoryId,
         },
       });

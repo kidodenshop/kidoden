@@ -1,4 +1,4 @@
-export type Category = 'clothing' | 'gifting';
+export type Category = 'clothing' | 'gifting' | 'infants';
 
 export interface Review {
   id: string;
@@ -143,5 +143,35 @@ export const products: Product[] = [
     isFeatured: true,
     rating: 4.9,
     reviewsCount: 21
+  },
+  {
+    id: "inf-1",
+    name: "Cozy Bear Infant Romper",
+    description: "Ultra-soft, breathable organic cotton romper crafted especially for delicate infant skin with easy-snap buttons.",
+    price: 699,
+    category: "infants",
+    imageUrl: "/clothe/Homepage/shop-for-infants-new.png",
+    images: ["/clothe/Homepage/shop-for-infants-new.png"],
+    ageRange: "0-1 year",
+    gender: "unisex",
+    features: ["100% Organic Soft Cotton", "Easy Snap Buttons", "Hypoallergenic Dyes"],
+    isFeatured: true,
+    rating: 4.9,
+    reviewsCount: 18
+  },
+  {
+    id: "inf-2",
+    name: "Pure Comfort Newborn Sleepsuit",
+    description: "Gentle pastel sleepsuit designed to keep infants cozy and peaceful through sleep and play.",
+    price: 749,
+    category: "infants",
+    imageUrl: "/clothe/Homepage/shop-for-infants-new.png",
+    images: ["/clothe/Homepage/shop-for-infants-new.png"],
+    ageRange: "0-6 months",
+    gender: "unisex",
+    features: ["Fold-over mitten cuffs", "Two-way zipper for easy diaper changes", "Super breathable"],
+    isFeatured: false,
+    rating: 5.0,
+    reviewsCount: 11
   }
 ];

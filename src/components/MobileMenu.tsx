@@ -53,13 +53,20 @@ export default function MobileMenu() {
 
         {/* Nav links */}
         <nav className="flex-1 px-4 py-6 flex flex-col gap-6 overflow-y-auto">
+          {/* Main Categories */}
+          <div className="grid grid-cols-3 gap-2 pb-2 border-b border-gray-100">
+            <Link href="/shop?category=clothing" onClick={() => setOpen(false)} className="text-center py-2.5 px-2 rounded-xl bg-gray-50 text-xs font-bold text-brand-navy hover:bg-brand-pink/10 hover:text-brand-pink transition-colors">Clothing</Link>
+            <Link href="/shop?category=infants" onClick={() => setOpen(false)} className="text-center py-2.5 px-2 rounded-xl bg-pink-50/80 text-xs font-bold text-brand-pink hover:bg-brand-pink hover:text-white transition-colors">Infants</Link>
+            <Link href="/shop?category=gifting" onClick={() => setOpen(false)} className="text-center py-2.5 px-2 rounded-xl bg-gray-50 text-xs font-bold text-brand-navy hover:bg-brand-pink/10 hover:text-brand-pink transition-colors">Gifting</Link>
+          </div>
+
           {/* Section 1: Shop by Age */}
           <div>
             <p className="text-xs font-black text-gray-400 uppercase tracking-widest px-4 mb-2 select-none">
               Shop by Age
             </p>
             <div className="flex flex-col gap-1">
-              <Link href="/shop?category=clothing&age=0-1" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">0–1 Year</Link>
+              <Link href="/shop?category=infants" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">0–1 Year (Infants)</Link>
               <Link href="/shop?category=clothing&age=1-3" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">1–3 Years</Link>
               <Link href="/shop?category=clothing&age=3-5" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">3–5 Years</Link>
               <Link href="/shop?category=clothing&age=5-7" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-2.5 rounded-2xl font-bold text-brand-navy hover:bg-brand-pink/5 hover:text-brand-pink transition-colors">5–7 Years</Link>

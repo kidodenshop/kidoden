@@ -168,6 +168,9 @@ export default function ShopFilterGrid({ products, category, isPending }: ShopFi
     if (category === "gifting") {
       return giftingGroups;
     }
+    if (category === "infants") {
+      return ["0-1", "1-3"];
+    }
     if (category === "clothing") {
       return clothingGroups;
     }

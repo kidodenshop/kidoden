@@ -30,7 +30,7 @@ export default function ShopPageClient({
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  const isValidCategory = category && ["clothing", "gifting"].includes(category);
+  const isValidCategory = category && ["clothing", "gifting", "infants"].includes(category);
 
   // Helper to build URL query strings preservation
   const getFilterLink = (params: { 
@@ -146,6 +146,9 @@ export default function ShopPageClient({
     if (category === "clothing") {
       bannerTitle = "Our Little Wardrobe";
       bannerDesc = "Soft, skin-friendly outfits made for little adventures.";
+    } else if (category === "infants") {
+      bannerTitle = "Infants Clothing";
+      bannerDesc = "Ultra-soft, pure & gentle fabrics specially crafted for your little infant's tender skin.";
     } else {
       bannerTitle = "Curated Gift Sets";
       bannerDesc = "Curated comfort and milestone moments your little one will love.";
@@ -160,6 +163,15 @@ export default function ShopPageClient({
           <Image
             src="/Banner/clothing_banner.jpg"
             alt="Clothing Collection Banner"
+            fill
+            className="w-full h-full object-cover object-center"
+            priority
+          />
+        )}
+        {category === 'infants' && (
+          <Image
+            src="/clothe/Homepage/shop-for-infants-new.png"
+            alt="Infants Collection Banner"
             fill
             className="w-full h-full object-cover object-center"
             priority
@@ -204,8 +216,9 @@ export default function ShopPageClient({
 
       <div className={`w-full ${!isValidCategory ? 'bg-[#fffbf9]' :
         category === 'clothing' ? 'bg-gradient-to-b from-brand-mint/10 to-white' :
-          category === 'gifting' ? 'bg-gradient-to-b from-brand-pink/10 to-white' :
-            'bg-gradient-to-b from-brand-purple/10 to-white'
+          category === 'infants' ? 'bg-gradient-to-b from-brand-pink/10 to-white' :
+            category === 'gifting' ? 'bg-gradient-to-b from-brand-pink/10 to-white' :
+              'bg-gradient-to-b from-brand-purple/10 to-white'
       }`}>
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full flex flex-col md:flex-row gap-8 lg:gap-12">
 
@@ -229,6 +242,7 @@ export default function ShopPageClient({
                 <div className="flex flex-col gap-3">
                   {[
                     { id: 'all', label: 'All Products', href: getFilterLink({ category: null, gender: null, age: null, collection: null, giftType: null }), count: products.length, active: !isValidCategory },
+                    { id: 'infants', label: 'Infants', href: getFilterLink({ category: 'infants' }), count: products.filter(p => p.category === 'infants' || (p.category === 'clothing' && (p.ageRange?.toLowerCase().includes('0-1') || p.ageRange?.toLowerCase().includes('newborn') || p.name.toLowerCase().includes('baby') || p.name.toLowerCase().includes('infant')))).length, active: category === 'infants' },
                     { id: 'clothing', label: 'Clothing', href: getFilterLink({ category: 'clothing' }), count: products.filter(p => p.category === 'clothing').length, active: category === 'clothing' },
                     { id: 'gifting', label: 'Gifting', href: getFilterLink({ category: 'gifting' }), count: products.filter(p => p.category === 'gifting').length, active: category === 'gifting' }
                   ].map((item) => (

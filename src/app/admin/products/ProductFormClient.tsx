@@ -46,6 +46,7 @@ export default function ProductFormClient({
 
   const finalCategories = categories.length > 0 ? categories : [
     { id: "clothing", name: "Clothing", slug: "clothing" },
+    { id: "infants", name: "Infants", slug: "infants" },
     { id: "gifting", name: "Gifting", slug: "gifting" }
   ];
   const isEditMode = !!product;
@@ -107,7 +108,14 @@ export default function ProductFormClient({
     const selectedCat = finalCategories.find((c) => c.id === categoryId);
     if (!selectedCat) return;
 
-    if (selectedCat.slug === "clothing") {
+    if (selectedCat.slug === "infants") {
+      setInventory([
+        { size: "0-3 Months", stockQuantity: 10 },
+        { size: "3-6 Months", stockQuantity: 10 },
+        { size: "6-12 Months", stockQuantity: 10 },
+        { size: "1-2 Years", stockQuantity: 10 },
+      ]);
+    } else if (selectedCat.slug === "clothing") {
       setInventory([
         { size: "2-3 Years", stockQuantity: 10 },
         { size: "3-4 Years", stockQuantity: 10 },

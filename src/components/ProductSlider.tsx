@@ -39,7 +39,7 @@ export default function ProductSlider({ products }: { products: Product[] }) {
       {/* Slider Container */}
       <div 
         ref={sliderRef}
-        className="flex gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 pt-4 px-4 -mx-4 sm:px-0 sm:mx-0"
+        className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 pt-1.5 -mx-4 sm:mx-0 scroll-pl-4 sm:scroll-pl-0"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <style jsx>{`
@@ -49,7 +49,7 @@ export default function ProductSlider({ products }: { products: Product[] }) {
         `}</style>
         
         {products.map((product) => (
-          <div key={product.id} className="w-[280px] sm:w-[320px] lg:w-[300px] snap-start shrink-0">
+          <div key={product.id} className="w-[280px] sm:w-[320px] lg:w-[300px] snap-start shrink-0 first:ml-4 sm:first:ml-0 last:mr-4 sm:last:mr-0">
             <div className="group flex flex-col h-full block relative">
               <Link href={`/product/${product.id}`} className="relative h-80 w-full overflow-hidden bg-[#fafafa] rounded-2xl mb-4 block">
                 <Image src={product.imageUrl} alt={product.name} fill unoptimized className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out mix-blend-multiply" />

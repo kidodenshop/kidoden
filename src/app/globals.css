@@ -3,6 +3,8 @@
 @theme {
   --font-playfair: var(--font-playfair);
   --font-dancing: var(--font-dancing-script);
+  --font-quicksand: var(--font-quicksand);
+  --font-nunito: var(--font-nunito);
 
   --color-brand-navy: #1a4263;
   --color-brand-yellow: #fbcd6a;
@@ -92,5 +94,58 @@ body {
 
 body.has-sticky-bar .whatsapp-button {
   bottom: 84px !important;
+}
+
+/* Home Page Scroll Reveal - Smooth Upward Transition (Exclusively on Homepage) */
+.home-scroll-container .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.home-scroll-container .reveal-on-scroll.revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Staggered transition delays for natural waterfall reveal */
+.home-scroll-container .delay-100 { transition-delay: 100ms; }
+.home-scroll-container .delay-150 { transition-delay: 150ms; }
+.home-scroll-container .delay-200 { transition-delay: 200ms; }
+.home-scroll-container .delay-250 { transition-delay: 250ms; }
+.home-scroll-container .delay-300 { transition-delay: 300ms; }
+.home-scroll-container .delay-400 { transition-delay: 400ms; }
+
+/* Announcement Bar Vertical Bottom-to-Top Transitions */
+@keyframes announcementSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes announcementSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.animate-announcement-in {
+  animation: announcementSlideIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-announcement-out {
+  animation: announcementSlideOut 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
