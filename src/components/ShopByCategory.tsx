@@ -79,7 +79,7 @@ const categories = [
   {
     title: "Girls",
     subtitle: "Playful looks for every adventure",
-    image: "/clothe/Homepage/shop-for-girl-new.png",
+    image: "/clothe/Homepage/shop-for-baby-girl.png",
     link: "/shop?category=clothing&gender=girl",
     position: "object-[center_20%]",
     bgColor: "#FCEEF0",
