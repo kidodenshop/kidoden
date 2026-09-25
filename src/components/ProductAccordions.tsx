@@ -66,7 +66,9 @@ export default function ProductAccordions({
                 ))}
                 <li className="flex items-center gap-3 text-gray-700 font-medium text-xs md:text-sm pt-1.5">
                   <span className="font-bold text-brand-navy">Age Range:</span>{" "}
-                  {category === "clothing" && ageRange ? ageRange : "All ages"}
+                  {(category === "clothing" || category === "infants")
+                    ? (ageRange || (category === "infants" ? "0–2 Years" : "All ages"))
+                    : (ageRange || "All ages")}
                 </li>
               </ul>
             </div>

@@ -119,7 +119,7 @@ export function mapDbProductToUI(p: any): UIProduct {
     category: p.category.slug as UICategory,
     imageUrl: p.imageUrl,
     images: p.images || [],
-    ageRange: p.ageRange || undefined,
+    ageRange: p.ageRange || (p.category?.slug === "infants" ? "0–2 Years" : undefined),
     gender: p.gender as "boy" | "girl" | "unisex" | undefined,
     features: p.features || [],
     isFeatured: p.isFeatured,

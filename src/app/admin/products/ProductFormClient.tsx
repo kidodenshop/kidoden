@@ -115,6 +115,9 @@ export default function ProductFormClient({
         { size: "6-12 Months", stockQuantity: 10 },
         { size: "1-2 Years", stockQuantity: 10 },
       ]);
+      if (!ageRange) {
+        setAgeRange("0–2 Years");
+      }
     } else if (selectedCat.slug === "clothing") {
       setInventory([
         { size: "2-3 Years", stockQuantity: 10 },

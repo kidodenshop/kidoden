@@ -195,6 +195,9 @@ export async function POST(req: Request) {
         },
       });
       console.log("[VERIFY API] Tx: Database records updated.");
+    }, {
+      maxWait: 15000,
+      timeout: 30000,
     });
 
     // 5. Asynchronously send order confirmation email using Resend

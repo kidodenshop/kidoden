@@ -39,7 +39,7 @@ export default function SearchInput() {
       {/* Desktop Search: Always visible */}
       <form 
         onSubmit={handleSubmit} 
-        className="hidden md:relative md:flex items-center w-72 lg:w-80"
+        className="hidden md:relative md:flex items-center w-56 lg:w-72 xl:w-80"
       >
         <input
           type="text"

@@ -32,7 +32,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden md:flex gap-8 items-center ml-8 lg:ml-12">
+            <nav className="hidden md:flex gap-5 lg:gap-8 items-center ml-6 lg:ml-10">
               {/* All Categories Mega Menu */}
               <div className="relative group">
                 <button className="flex items-center gap-1 text-brand-navy hover:text-brand-pink font-bold transition-colors py-4">
@@ -95,7 +95,8 @@ export default function Header() {
                 </div>
               </div>
               <Link href="/shop?category=infants" className="text-brand-navy hover:text-brand-pink font-bold transition-colors">Infants</Link>
-              <Link href="/shop?category=clothing" className="text-brand-navy hover:text-brand-mint font-bold transition-colors">Clothing</Link>
+              <Link href="/shop?category=clothing&gender=boy" className="text-brand-navy hover:text-brand-pink font-bold transition-colors">Boys</Link>
+              <Link href="/shop?category=clothing&gender=girl" className="text-brand-navy hover:text-brand-pink font-bold transition-colors">Girls</Link>
               <Link href="/shop?category=gifting" className="text-brand-navy hover:text-brand-pink font-bold transition-colors">Gifting</Link>
               <Link href="/contact-us" className="text-brand-navy hover:text-brand-pink font-bold transition-colors">Contact</Link>
             </nav>

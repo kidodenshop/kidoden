@@ -14,6 +14,11 @@ export default function ProductCard({
 }) {
   const { addToCart } = useCart();
 
+  const hasSizes = product.category === "clothing" || product.category === "infants" || (product.inventory && product.inventory.some(i => i.size !== "Standard"));
+  const ageDisplay = (product.category === "clothing" || product.category === "infants")
+    ? (product.ageRange ? `Age: ${product.ageRange}` : (product.category === "infants" ? "Age: 0–2 Years" : "All ages"))
+    : (product.ageRange ? `Age: ${product.ageRange}` : "All ages");
+
   if (viewMode === "list") {
     return (
       <div className="bg-white rounded-none sm:rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all group border border-gray-100 flex flex-row h-full relative p-4 gap-4 sm:gap-6">
@@ -39,7 +44,7 @@ export default function ProductCard({
               <h3 className="text-xs sm:text-lg md:text-xl font-bold text-brand-navy mb-1 sm:mb-2 hover:text-brand-pink transition-colors line-clamp-1 sm:line-clamp-2 leading-tight">{product.name}</h3>
             </Link>
             <p className="text-[10px] sm:text-xs font-semibold text-gray-500 mb-2 bg-gray-50 inline-block px-2.5 py-0.5 rounded-full">
-              {product.category === 'clothing' && product.ageRange ? `Age: ${product.ageRange}` : 'All ages'}
+              {ageDisplay}
             </p>
           </div>
           
@@ -54,24 +59,26 @@ export default function ProductCard({
               )}
             </div>
             <div className="flex items-center gap-2">
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (product.category === 'clothing') {
-                    window.location.href = `/product/${product.id}`;
-                  } else {
-                    addToCart(product, 1, "Standard");
-                  }
-                }}
-                className="bg-brand-navy hover:bg-brand-pink text-white font-bold p-2 rounded-full shadow-md transition-colors cursor-pointer"
-                title={product.category === 'clothing' ? "Select Size" : "Add to Cart"}
-              >
-                {product.category === 'clothing' ? (
+              {hasSizes ? (
+                <Link
+                  href={`/product/${product.id}`}
+                  className="bg-brand-navy hover:bg-brand-pink text-white font-bold p-2 rounded-full shadow-md transition-colors cursor-pointer flex items-center justify-center"
+                  title="Select Size"
+                >
                   <span className="text-xs px-1 font-bold">Size</span>
-                ) : (
+                </Link>
+              ) : (
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    addToCart(product, 1, "Standard");
+                  }}
+                  className="bg-brand-navy hover:bg-brand-pink text-white font-bold p-2 rounded-full shadow-md transition-colors cursor-pointer"
+                  title="Add to Cart"
+                >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="sm:w-4 sm:h-4"><path d="M8 8V6a4 4 0 0 1 8 0v2"/><path d="M6 8h12l1.5 12a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2L6 8Z"/></svg>
-                )}
-              </button>
+                </button>
+              )}
               <Link
                 href={`/product/${product.id}`}
                 className="bg-brand-mint/20 text-brand-navy font-bold px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full hover:bg-brand-mint transition-colors text-[10px] sm:text-sm"
@@ -101,7 +108,7 @@ export default function ProductCard({
         
         {/* Quick Add Overlay */}
         <div className="absolute bottom-3 left-0 right-0 px-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto z-10 flex justify-center">
-          {product.category === 'clothing' ? (
+          {hasSizes ? (
             <Link 
               href={`/product/${product.id}`}
               className="bg-brand-navy hover:bg-brand-pink text-white font-bold py-1.5 px-4 rounded-full shadow-md transition-colors text-xs flex items-center gap-1.5 cursor-pointer"
@@ -126,7 +133,7 @@ export default function ProductCard({
       <Link href={`/product/${product.id}`} className="p-3 sm:p-4 flex flex-col flex-1">
         <h3 className="text-xs sm:text-base md:text-lg font-bold text-brand-navy mb-1.5 flex-grow line-clamp-1 sm:line-clamp-2 leading-tight sm:leading-snug">{product.name}</h3>
         <p className="text-[10px] sm:text-xs font-semibold text-gray-500 mb-2 sm:mb-3 bg-gray-50 inline-block px-2.5 py-0.5 rounded-full self-start">
-          {product.category === 'clothing' && product.ageRange ? `Age: ${product.ageRange}` : 'All ages'}
+          {ageDisplay}
         </p>
         <div className="flex justify-between items-center mt-auto pt-2 sm:pt-3 border-t border-gray-100">
           <div className="flex items-baseline gap-1.5 flex-wrap">

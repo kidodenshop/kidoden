@@ -172,6 +172,9 @@ export async function POST(req: Request) {
       });
 
       console.log(`[WEBHOOK API] Order ${order.orderNumber} successfully finalized via webhook.`);
+    }, {
+      maxWait: 15000,
+      timeout: 30000,
     });
 
     // 7. Send order confirmation email asynchronously only if order was NOT already paid

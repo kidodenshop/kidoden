@@ -55,7 +55,7 @@ export default function ProductSlider({ products }: { products: Product[] }) {
                 <Image src={product.imageUrl} alt={product.name} fill unoptimized className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out mix-blend-multiply" />
               </Link>
               <div className="absolute bottom-24 left-4 right-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-                {product.category === 'clothing' ? (
+                {product.category === 'clothing' || product.category === 'infants' ? (
                   <Link 
                     href={`/product/${product.id}`}
                     className="block w-full text-center bg-white hover:bg-brand-navy hover:text-white text-brand-navy font-bold py-3 rounded-xl shadow-lg transition-colors text-sm"

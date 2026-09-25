@@ -194,6 +194,9 @@ export async function POST(req: Request) {
         payment,
         amount: totalAmountInPaise,
       };
+    }, {
+      maxWait: 15000,
+      timeout: 30000,
     });
 
     // 4. For COD, return success immediately and trigger confirmation email

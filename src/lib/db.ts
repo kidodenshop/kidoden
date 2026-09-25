@@ -21,18 +21,24 @@ if (isMock) {
   prisma = globalThis.prismaGlobal;
 } else {
   if (!globalThis.prismaGlobal) {
-    // 1. Create a single pool with limited connections to prevent Supabase connection exhaustion
+    // 1. Create a connection pool configured for Supabase Transaction Pooler
     const pool = new Pool({ 
       connectionString,
-      max: 2, // Limit pool size to 2 connections per instance to avoid exhausting Supabase limits in dev mode
-      idleTimeoutMillis: 15000, // Close idle connections after 15 seconds
-      connectionTimeoutMillis: 5000, // Timeout after 5 seconds if connection cannot be made
+      max: 10, // Increased from 2 to 10 to prevent connection starvation during interactive transactions
+      idleTimeoutMillis: 30000, // Close idle connections after 30 seconds
+      connectionTimeoutMillis: 10000, // Timeout after 10 seconds if connection cannot be established
     });
     globalThis.pgPoolGlobal = pool;
     
     // 2. Wrap the pool in Prisma Pg adapter
     const adapter = new PrismaPg(pool);
-    globalThis.prismaGlobal = new PrismaClient({ adapter });
+    globalThis.prismaGlobal = new PrismaClient({ 
+      adapter,
+      transactionOptions: {
+        maxWait: 15000, // 15s to acquire a connection from the pool (prevents P2028 on remote poolers)
+        timeout: 30000, // 30s transaction execution timeout
+      },
+    });
   }
   prisma = globalThis.prismaGlobal;
 }

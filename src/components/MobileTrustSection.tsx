@@ -73,35 +73,49 @@ const duplicatedItems = [
 export default function MobileTrustSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const isPausedRef = useRef(false);
+  const isInteractingRef = useRef(false);
+  const currentPosRef = useRef(0);
   const resumeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
-    // Start with offset into the second set so backward touch swipes work seamlessly
-    const oneSetWidth = el.scrollWidth / 4;
-    el.scrollLeft = oneSetWidth;
+    // Initialize position to the second set to allow bidirectional swiping
+    const initPosition = () => {
+      if (!el) return;
+      const setWidth = el.scrollWidth > 0 ? el.scrollWidth / 4 : (trustItems.length * 148);
+      if (setWidth > 0 && currentPosRef.current === 0) {
+        currentPosRef.current = setWidth;
+        el.scrollLeft = setWidth;
+      }
+    };
+
+    initPosition();
+    const t = setTimeout(initPosition, 150);
 
     let rafId: number;
     let lastTime = performance.now();
 
     const animate = (time: number) => {
-      const delta = time - lastTime;
+      const delta = Math.min(time - lastTime, 100);
       lastTime = time;
 
-      if (!isPausedRef.current && el) {
-        // ~28px per second smooth scroll
-        el.scrollLeft += (28 * delta) / 1000;
+      if (!isPausedRef.current && !isInteractingRef.current && el) {
+        // Continuous auto-sliding at ~32px/s
+        currentPosRef.current += (32 * delta) / 1000;
 
-        const setWidth = el.scrollWidth / 4;
+        const setWidth = el.scrollWidth > 0 ? el.scrollWidth / 4 : (trustItems.length * 148);
         if (setWidth > 0) {
-          if (el.scrollLeft >= setWidth * 2) {
-            el.scrollLeft -= setWidth;
-          } else if (el.scrollLeft <= 5) {
-            el.scrollLeft += setWidth;
+          if (currentPosRef.current >= setWidth * 2) {
+            currentPosRef.current -= setWidth;
+          } else if (currentPosRef.current <= 5) {
+            currentPosRef.current += setWidth;
           }
         }
+
+        // Apply position to DOM
+        el.scrollLeft = currentPosRef.current;
       }
 
       rafId = requestAnimationFrame(animate);
@@ -111,20 +125,31 @@ export default function MobileTrustSection() {
 
     return () => {
       cancelAnimationFrame(rafId);
+      clearTimeout(t);
       if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
     };
   }, []);
 
-  const handleTouchStart = () => {
-    isPausedRef.current = true;
+  const handleInteractionStart = () => {
+    isInteractingRef.current = true;
     if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
   };
 
-  const handleTouchEnd = () => {
+  const handleInteractionEnd = () => {
     if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
     resumeTimeoutRef.current = setTimeout(() => {
-      isPausedRef.current = false;
-    }, 1500);
+      if (scrollRef.current) {
+        currentPosRef.current = scrollRef.current.scrollLeft;
+      }
+      isInteractingRef.current = false;
+    }, 1800);
+  };
+
+  const handleScroll = () => {
+    // If the user is swiping or scrolling manually, keep our float position in sync
+    if (isInteractingRef.current && scrollRef.current) {
+      currentPosRef.current = scrollRef.current.scrollLeft;
+    }
   };
 
   return (
@@ -145,8 +170,15 @@ export default function MobileTrustSection() {
 
         <div
           ref={scrollRef}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+          onTouchStart={handleInteractionStart}
+          onTouchEnd={handleInteractionEnd}
+          onPointerDown={handleInteractionStart}
+          onPointerUp={handleInteractionEnd}
+          onPointerCancel={handleInteractionEnd}
+          onMouseEnter={() => { isPausedRef.current = true; }}
+          onMouseLeave={() => { isPausedRef.current = false; }}
+          onScroll={handleScroll}
+          style={{ scrollBehavior: "auto" }}
           className="flex gap-3 overflow-x-auto hide-scrollbar px-3 py-1 cursor-grab active:cursor-grabbing select-none"
         >
           {duplicatedItems.map((item, index) => (

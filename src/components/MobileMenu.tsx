@@ -53,11 +53,17 @@ export default function MobileMenu() {
 
         {/* Nav links */}
         <nav className="flex-1 px-4 py-6 flex flex-col gap-6 overflow-y-auto">
-          {/* Main Categories */}
-          <div className="grid grid-cols-3 gap-2 pb-2 border-b border-gray-100">
-            <Link href="/shop?category=clothing" onClick={() => setOpen(false)} className="text-center py-2.5 px-2 rounded-xl bg-gray-50 text-xs font-bold text-brand-navy hover:bg-brand-pink/10 hover:text-brand-pink transition-colors">Clothing</Link>
-            <Link href="/shop?category=infants" onClick={() => setOpen(false)} className="text-center py-2.5 px-2 rounded-xl bg-pink-50/80 text-xs font-bold text-brand-pink hover:bg-brand-pink hover:text-white transition-colors">Infants</Link>
-            <Link href="/shop?category=gifting" onClick={() => setOpen(false)} className="text-center py-2.5 px-2 rounded-xl bg-gray-50 text-xs font-bold text-brand-navy hover:bg-brand-pink/10 hover:text-brand-pink transition-colors">Gifting</Link>
+          {/* Section: Shop by Category */}
+          <div className="pb-4 border-b border-gray-100">
+            <p className="text-xs font-black text-gray-400 uppercase tracking-widest px-1 mb-2.5 select-none">
+              Shop by Category
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              <Link href="/shop?category=infants" onClick={() => setOpen(false)} className="text-center py-2.5 px-2 rounded-xl bg-pink-50/80 text-xs font-bold text-brand-pink hover:bg-brand-pink hover:text-white transition-colors">Infants</Link>
+              <Link href="/shop?category=clothing&gender=boy" onClick={() => setOpen(false)} className="text-center py-2.5 px-2 rounded-xl bg-gray-50 text-xs font-bold text-brand-navy hover:bg-brand-pink/10 hover:text-brand-pink transition-colors">Boys</Link>
+              <Link href="/shop?category=clothing&gender=girl" onClick={() => setOpen(false)} className="text-center py-2.5 px-2 rounded-xl bg-gray-50 text-xs font-bold text-brand-navy hover:bg-brand-pink/10 hover:text-brand-pink transition-colors">Girls</Link>
+              <Link href="/shop?category=gifting" onClick={() => setOpen(false)} className="text-center py-2.5 px-2 rounded-xl bg-gray-50 text-xs font-bold text-brand-navy hover:bg-brand-pink/10 hover:text-brand-pink transition-colors">Gifting</Link>
+            </div>
           </div>
 
           {/* Section 1: Shop by Age */}

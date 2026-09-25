@@ -158,13 +158,13 @@ export default function ShopPageClient({
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header Section with Category-specific Background */}
-      <div className={`relative overflow-hidden flex flex-col justify-center min-h-[220px] sm:min-h-[300px] bg-[#e4dfd1]`}>
+      <div className={`relative overflow-hidden flex flex-col justify-center min-h-[190px] sm:min-h-[280px] md:min-h-[300px] bg-[#f6eedf]`}>
         {category === 'clothing' && (
           <Image
             src="/Banner/clothing_banner.jpg"
             alt="Clothing Collection Banner"
             fill
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-top sm:object-center"
             priority
           />
         )}
@@ -173,7 +173,7 @@ export default function ShopPageClient({
             src="/clothe/Homepage/shop-for-infants-new.png"
             alt="Infants Collection Banner"
             fill
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-[center_20%] sm:object-center"
             priority
           />
         )}
@@ -182,7 +182,7 @@ export default function ShopPageClient({
             src="/Banner/baby-gift.png"
             alt="Gifting Collection Banner"
             fill
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-[center_35%] sm:object-center"
             priority
           />
         )}
@@ -191,21 +191,21 @@ export default function ShopPageClient({
             src="/Banner/all-categories.png"
             alt="All Categories Banner"
             fill
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-top sm:object-center"
             priority
           />
         )}
 
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full py-8">
-          <div className="inline-block bg-white/60 backdrop-blur-md px-8 py-6 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full py-6 sm:py-8">
+          <div className="inline-block bg-white/75 backdrop-blur-md px-5 py-4 sm:px-8 sm:py-6 rounded-2xl sm:rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white/60">
             <h1
-              className="text-4xl sm:text-5xl font-extrabold mb-4 text-gray-900 tracking-tight capitalize"
+              className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-1.5 sm:mb-3 text-brand-navy tracking-tight capitalize"
               style={{ fontFamily: 'var(--font-quicksand), sans-serif' }}
             >
               {bannerTitle}
             </h1>
             <p
-              className="max-w-2xl mx-auto text-gray-800 text-lg font-medium"
+              className="max-w-2xl mx-auto text-gray-700 text-xs sm:text-base md:text-lg font-medium"
               style={{ fontFamily: 'var(--font-nunito), sans-serif' }}
             >
               {bannerDesc}
