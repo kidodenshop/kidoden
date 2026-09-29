@@ -63,6 +63,9 @@ export default function Header() {
                       Collections
                     </h4>
                     <div className="flex flex-col gap-2">
+                      <Link href="/shop?collection=winter-collection" className="text-sm font-bold text-brand-pink hover:text-brand-navy transition-colors flex items-center gap-1">
+                        Winter Collection <span className="text-xs">❄️</span>
+                      </Link>
                       <Link href="/shop?collection=new-arrivals" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors">New Arrivals</Link>
                       <Link href="/shop?collection=best-sellers" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors">Best Sellers</Link>
                       <Link href="/shop?collection=premium-picks" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors">Premium Picks</Link>

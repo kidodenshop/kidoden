@@ -157,36 +157,22 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Launch Offer Banner Section */}
-      <section className="w-full relative h-[350px] md:h-[450px] overflow-hidden bg-[#faf6f0] border-t border-b border-gray-100 reveal-on-scroll">
-        <Image
-          src="/Banner/new-launch-offer.png"
-          alt="Launching Offer Sale"
-          fill
-          className="object-cover object-center"
-          priority
-        />
-        <div className="absolute inset-0 flex items-center justify-start max-w-8xl mx-auto px-6 sm:px-8 lg:px-12 z-20">
-          <div className="w-full md:w-[60%] flex flex-col justify-center items-start text-left">
-            <span 
-              className="text-2xl md:text-4.5xl font-bold text-brand-pink mb-3 block"
-              style={{ fontFamily: 'var(--font-dancing-script), cursive' }}
-            >
-              Launching Offer Sale!
-            </span>
-            <h2 
-              className="text-5xl md:text-7xl lg:text-8xl font-black text-brand-navy tracking-tight mb-8 leading-none uppercase"
-              style={{ fontFamily: 'var(--font-quicksand), sans-serif' }}
-            >
-              UP TO <span className="bg-gradient-to-r from-brand-orange via-brand-orange to-[#b58c54] bg-clip-text text-transparent">20% OFF</span>
-            </h2>
-            <Link
-              href="/shop"
-              className="bg-white hover:bg-white/95 text-brand-navy font-black py-4 px-10 rounded-full text-xs md:text-sm tracking-widest uppercase transition-all duration-300 shadow-lg shadow-gray-200/50 hover:scale-105 active:scale-95 border border-gray-100"
-            >
-              Shop Now
-            </Link>
-          </div>
+      {/* Winter Collection Banner Section */}
+      <section className="w-full relative py-2 sm:py-6 md:py-8 px-0 sm:px-4 md:px-6 lg:px-8 bg-white reveal-on-scroll">
+        <div className="max-w-8xl mx-auto">
+          <Link
+            href="/shop?collection=winter-collection"
+            className="block relative w-full aspect-[16/10] sm:aspect-[16/9] md:h-[420px] lg:h-[480px] sm:rounded-3xl overflow-hidden group cursor-pointer"
+            aria-label="Explore Kidoden's Winter Collection"
+          >
+            <Image
+              src="/Banner/winter-collection.png"
+              alt="Kidoden Winter Collection"
+              fill
+              className="object-cover object-[24%_center] md:object-center transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+              priority
+            />
+          </Link>
         </div>
       </section>
 

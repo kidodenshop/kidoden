@@ -125,6 +125,13 @@ function MobileNavItems({
         </p>
         <div className="flex flex-col gap-1">
           <Link
+            href="/shop?collection=winter-collection"
+            onClick={onClose}
+            className={getItemClass(params.isShop && params.collection === "winter-collection")}
+          >
+            Winter Collection ❄️
+          </Link>
+          <Link
             href="/shop?collection=new-arrivals"
             onClick={onClose}
             className={getItemClass(params.isShop && params.collection === "new-arrivals")}

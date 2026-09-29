@@ -53,6 +53,9 @@ export async function generateMetadata({
     } else if (collection === "premium-picks") {
       title = "Premium Picks";
       description = "Our finest, high-quality selections for special occasions.";
+    } else if (collection === "winter-collection") {
+      title = "Winter Collection";
+      description = "Discover Kidoden's cozy winter wear, gentle knits, and warm layers for little ones.";
     }
   }
 
@@ -161,6 +164,21 @@ export default async function ShopPage({
     } else if (collection === "premium-picks") {
       // Premium Picks: price >= 1000 INR
       displayedProducts = displayedProducts.filter((p) => p.price >= 1000);
+    } else if (collection === "winter-collection") {
+      displayedProducts = displayedProducts.filter(
+        (p) =>
+          p.name.toLowerCase().includes("winter") ||
+          p.description.toLowerCase().includes("winter") ||
+          p.description.toLowerCase().includes("warm") ||
+          p.description.toLowerCase().includes("cozy") ||
+          (p.features && p.features.some(
+            (f) =>
+              f.toLowerCase().includes("winter") ||
+              f.toLowerCase().includes("warm") ||
+              f.toLowerCase().includes("wool") ||
+              f.toLowerCase().includes("fleece")
+          ))
+      );
     } else if (collection === "summer-collection") {
       displayedProducts = displayedProducts.filter(
         (p) => p.category === "clothing" && (p.description.toLowerCase().includes("summer") || p.description.toLowerCase().includes("sunshine") || p.description.toLowerCase().includes("sunny"))

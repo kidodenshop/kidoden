@@ -112,7 +112,7 @@ export const products: Product[] = [
     imageUrl: "/clothe/gift-set-1.png",
     images: ["/clothe/gift-set-1.png", "/clothe/placeholder.png"],
     ageRange: "Newborn - 6 months",
-    features: ["100% Organic Cotton Bodysuit", "Safe hand-crafted wooden rattle", "Premium hardboard gift box packaging"],
+    features: ["Winter Collection", "100% Organic Cotton Bodysuit", "Safe hand-crafted wooden rattle", "Premium hardboard gift box packaging"],
     isFeatured: true,
     rating: 5.0,
     reviewsCount: 32
@@ -154,7 +154,7 @@ export const products: Product[] = [
     images: ["/clothe/Homepage/shop-for-infants-new.png"],
     ageRange: "0-1 year",
     gender: "unisex",
-    features: ["100% Organic Soft Cotton", "Easy Snap Buttons", "Hypoallergenic Dyes"],
+    features: ["Winter Collection", "100% Organic Soft Cotton", "Easy Snap Buttons", "Hypoallergenic Dyes"],
     isFeatured: true,
     rating: 4.9,
     reviewsCount: 18

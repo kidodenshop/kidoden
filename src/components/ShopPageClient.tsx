@@ -124,6 +124,9 @@ export default function ShopPageClient({
     } else if (collection === "premium-picks") {
       bannerTitle = "Premium Picks";
       bannerDesc = "Our finest, high-quality selections for special occasions.";
+    } else if (collection === "winter-collection") {
+      bannerTitle = "Winter Collection ❄️";
+      bannerDesc = "Cozy fabrics, gentle layers, and snuggly outfits for chilly days.";
     } else if (collection === "summer-collection") {
       bannerTitle = "Summer Collection";
       bannerDesc = "Breezy and bright outfits perfect for sunny days.";
@@ -159,7 +162,15 @@ export default function ShopPageClient({
     <div className="flex flex-col min-h-screen">
       {/* Header Section with Category-specific Background */}
       <div className={`relative overflow-hidden flex flex-col justify-center min-h-[190px] sm:min-h-[280px] md:min-h-[300px] bg-[#f6eedf]`}>
-        {category === 'clothing' && (
+        {collection === 'winter-collection' ? (
+          <Image
+            src="/Banner/winter-collection.png"
+            alt="Winter Collection Banner"
+            fill
+            className="w-full h-full object-cover object-[center_30%]"
+            priority
+          />
+        ) : category === 'clothing' ? (
           <Image
             src="/Banner/clothing_banner.jpg"
             alt="Clothing Collection Banner"
@@ -167,8 +178,7 @@ export default function ShopPageClient({
             className="w-full h-full object-cover object-top sm:object-center"
             priority
           />
-        )}
-        {category === 'infants' && (
+        ) : category === 'infants' ? (
           <Image
             src="/clothe/Homepage/shop-for-infants-new.png"
             alt="Infants Collection Banner"
@@ -176,8 +186,7 @@ export default function ShopPageClient({
             className="w-full h-full object-cover object-[center_20%] sm:object-center"
             priority
           />
-        )}
-        {category === 'gifting' && (
+        ) : category === 'gifting' ? (
           <Image
             src="/Banner/baby-gift.png"
             alt="Gifting Collection Banner"
@@ -185,8 +194,7 @@ export default function ShopPageClient({
             className="w-full h-full object-cover object-[center_35%] sm:object-center"
             priority
           />
-        )}
-        {!isValidCategory && (
+        ) : (
           <Image
             src="/Banner/all-categories.png"
             alt="All Categories Banner"
@@ -322,6 +330,7 @@ export default function ShopPageClient({
                 <h3 className="font-extrabold text-brand-navy text-sm mb-4 tracking-tight">Collections</h3>
                 <div className="flex flex-col gap-3">
                   {[
+                    { id: 'winter-collection', label: 'Winter Collection ❄️', href: collection === 'winter-collection' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'winter-collection' }), active: collection === 'winter-collection' },
                     { id: 'new-arrivals', label: 'New Arrivals', href: collection === 'new-arrivals' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'new-arrivals' }), active: collection === 'new-arrivals' },
                     { id: 'best-sellers', label: 'Best Sellers', href: collection === 'best-sellers' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'best-sellers' }), active: collection === 'best-sellers' },
                     { id: 'premium-picks', label: 'Premium Picks', href: collection === 'premium-picks' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'premium-picks' }), active: collection === 'premium-picks' }
