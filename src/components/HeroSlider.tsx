@@ -22,7 +22,7 @@ const slides = [
     mobileImage: "/hero_slider/slider-mobile-1st.png",
     tagline: "Soft on skin, gentle on smiles",
     titlePrefix: "Kidoden",
-    titleRest: " Premium Kids Clothing",
+    titleRest: " Kids Clothing",
     subtitle: "Made with love for little ones",
     description: "Soft, comfortable and thoughtfully designed clothing for babies and kids, from everyday essentials to special occasions.",
     cta: "Shop Now",
