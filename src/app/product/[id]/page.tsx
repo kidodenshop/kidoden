@@ -22,6 +22,9 @@ export async function generateMetadata({
     return {
       title: product.name,
       description: product.description,
+      alternates: {
+        canonical: `https://www.kidoden.in/product/${id}`,
+      },
       openGraph: {
         title: `${product.name} | Kidoden`,
         description: product.description,
@@ -70,9 +73,73 @@ export default async function ProductDetailPage({
     notFound();
   }
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "image": product.imageUrl.startsWith("http") ? product.imageUrl : `https://www.kidoden.in${product.imageUrl}`,
+    "description": product.description,
+    "brand": {
+      "@type": "Brand",
+      "name": "Kidoden"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://www.kidoden.in/product/${product.id}`,
+      "priceCurrency": "INR",
+      "price": product.price,
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Kidoden"
+      }
+    },
+    ...(product.rating ? {
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": product.rating,
+        "reviewCount": product.reviewsCount || 1,
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    } : {})
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.kidoden.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": product.category ? product.category.charAt(0).toUpperCase() + product.category.slice(1) : "Shop",
+        "item": `https://www.kidoden.in/shop?category=${product.category}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": product.name,
+        "item": `https://www.kidoden.in/product/${product.id}`
+      }
+    ]
+  };
 
   return (
     <div className="bg-[#fffbf9] py-12 px-4 sm:px-6 lg:px-8 flex-grow">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="max-w-8xl mx-auto">
         {/* Breadcrumb Navigation */}
         <nav className="flex items-center gap-2 text-xs md:text-sm text-gray-500 font-semibold mb-8 flex-wrap">

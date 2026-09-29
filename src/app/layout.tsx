@@ -40,18 +40,19 @@ const dancingScript = Dancing_Script({
   weight: ["400", "700"],
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.kidoden.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Kidoden | Premium Kidswear & Baby Gift Boxes in India",
+    default: "Kidoden | Premium Kids Clothing, Babywear & Gifts in India",
     template: "%s | Kidoden",
   },
   description:
-    "Discover premium baby clothing, kidswear and thoughtful gift boxes for little ones. Soft fabrics, adorable designs and Pan-India delivery.",
+    "Shop Kidoden for premium kids clothing, babywear and thoughtful gifts in India. Discover soft fabrics, playful styles and comfortable outfits made with love for little ones.",
+  alternates: {
+    canonical: "https://www.kidoden.in",
+  },
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -67,20 +68,73 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   openGraph: {
     type: "website",
+    locale: "en_IN",
+    url: "https://www.kidoden.in",
     siteName: "Kidoden",
-    title: "Kidoden | Premium Kidswear & Baby Gift Boxes in India",
+    title: "Kidoden | Premium Kids Clothing, Babywear & Gifts in India",
     description:
-      "Discover premium baby clothing, kidswear and thoughtful gift boxes for little ones. Soft fabrics, adorable designs and Pan-India delivery.",
+      "Shop Kidoden for premium kids clothing, babywear and thoughtful gifts in India. Discover soft fabrics, playful styles and comfortable outfits made with love for little ones.",
     images: [{ url: "/brand_logo-new.png", width: 800, height: 400, alt: "Kidoden" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kidoden | Premium Kidswear & Baby Gift Boxes in India",
+    title: "Kidoden | Premium Kids Clothing, Babywear & Gifts in India",
     description:
-      "Discover premium baby clothing, kidswear and thoughtful gift boxes for little ones. Soft fabrics, adorable designs and Pan-India delivery.",
+      "Shop Kidoden for premium kids clothing, babywear and thoughtful gifts in India. Discover soft fabrics, playful styles and comfortable outfits made with love for little ones.",
     images: ["/brand_logo-new.png"],
   },
   robots: { index: true, follow: true },
+};
+
+const jsonLdSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.kidoden.in/#organization",
+      "name": "Kidoden",
+      "alternateName": ["Kidoden India", "Kidoden Kidswear"],
+      "url": "https://www.kidoden.in",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://www.kidoden.in/#logo",
+        "url": "https://www.kidoden.in/brand_logo-new.png",
+        "caption": "Kidoden"
+      },
+      "image": "https://www.kidoden.in/brand_logo-new.png",
+      "description":
+        "Kidoden is a premium Indian brand for kids clothing, babywear, and curated gift boxes designed with love for little ones.",
+      "sameAs": [
+        "https://www.instagram.com/kidoden.in",
+        "https://www.facebook.com/kidoden.in"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9606969128",
+        "contactType": "customer service",
+        "areaServed": "IN",
+        "availableLanguage": ["en", "hi"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.kidoden.in/#website",
+      "url": "https://www.kidoden.in",
+      "name": "Kidoden",
+      "description": "Premium Kids Clothing, Babywear & Gifts in India",
+      "publisher": {
+        "@id": "https://www.kidoden.in/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.kidoden.in/shop?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
 };
 
 import StoreLayoutWrapper from "@/components/StoreLayoutWrapper";
@@ -108,6 +162,12 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={`${nunito.variable} ${quicksand.variable} ${openSans.variable} ${playfair.variable} ${dancingScript.variable} h-full antialiased scroll-smooth`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
+        />
+      </head>
       <body className={`${openSans.className} min-h-full flex flex-col font-sans selection:bg-brand-yellow selection:text-brand-navy`}>
         <CartProvider>
           <PageLoader />

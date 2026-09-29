@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "Discover the Kidoden story — crafting soft, stylish, and premium clothing & curated gift boxes made with love for little ones.",
+  alternates: {
+    canonical: "https://www.kidoden.in/about",
+  },
   openGraph: {
     title: "About Us | Kidoden",
     description:

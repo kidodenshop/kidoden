@@ -1,9 +1,14 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /api/*
+Disallow: /checkout
+Disallow: /checkout/*
 
 # Host
-Host: kidoden.in
+Host: www.kidoden.in
 
 # Sitemaps
-Sitemap: https://kidoden.in/sitemap.xml
+Sitemap: https://www.kidoden.in/sitemap.xml

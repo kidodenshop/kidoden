@@ -210,7 +210,7 @@ export default function ShopByCategory() {
                 <div className="relative w-full aspect-[4/4.6] overflow-hidden bg-[#f0eee9]">
                   <Image
                     src={cat.image}
-                    alt={cat.title}
+                    alt={`Kidoden ${cat.title} - ${cat.subtitle}`}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
                     className={`object-cover ${cat.position} group-hover:scale-105 transition-transform duration-700 ease-out`}

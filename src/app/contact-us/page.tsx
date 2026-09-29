@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Have questions about your order, sizing, or collections? Get in touch with the Kidoden team via email, phone, or WhatsApp.",
+  alternates: {
+    canonical: "https://www.kidoden.in/contact-us",
+  },
   openGraph: {
     title: "Contact Us | Kidoden",
     description:

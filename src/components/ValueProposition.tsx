@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import TitleDivider from "@/components/TitleDivider";
 
 interface ValueItem {
@@ -161,11 +162,20 @@ export default function ValueProposition() {
           Quality without compromise.
         </h2>
         <TitleDivider className="mb-4 md:mb-6" />
-        <p className="text-sm sm:text-base md:text-xl text-gray-500 leading-relaxed max-w-3xl mx-auto font-medium mb-8 md:mb-16 px-2">
+        <p className="text-sm sm:text-base md:text-xl text-gray-500 leading-relaxed max-w-3xl mx-auto font-medium mb-3 px-2">
           At Kidoden, we believe every child deserves the best. From soft,
           breathable fabrics to thoughtful designs, every piece is carefully
-          selected.
+          selected for comfort and joy.
         </p>
+        <div className="mb-8 md:mb-12">
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-pink hover:text-brand-navy transition-colors"
+          >
+            <span>Learn more about the Kidoden story</span>
+            <span>&rarr;</span>
+          </Link>
+        </div>
 
         {/* Desktop 3-Column Grid */}
         <div className="hidden md:grid md:grid-cols-3 gap-10">

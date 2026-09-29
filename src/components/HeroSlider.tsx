@@ -20,11 +20,11 @@ const slides = [
     type: "classic",
     image: "/hero_slider/hero-banner.png",
     mobileImage: "/hero_slider/slider-mobile-1st.png",
-    tagline: "Kidoden Collection",
-    titlePrefix: "Soft",
-    titleRest: " on skin, gentle on smiles",
-    subtitle: "made for your little ones",
-    description: "Crafted with soft fabrics, safe materials, and love — perfect for your child's comfort.",
+    tagline: "Soft on skin, gentle on smiles",
+    titlePrefix: "Kidoden",
+    titleRest: " — Premium Kids Clothing",
+    subtitle: "Made with love for little ones",
+    description: "Soft, comfortable and thoughtfully designed clothing for babies and kids, from everyday essentials to special occasions.",
     cta: "Shop Now",
     link: "/shop",
     badge: undefined,
@@ -117,10 +117,10 @@ export default function HeroSlider() {
                       <span className="text-brand-pink md:text-brand-navy/60 font-black tracking-[0.2em] text-xs sm:text-xs md:text-sm uppercase mb-2 md:mb-3 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-sans text-brand-navy mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1]">
+                      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-sans text-brand-navy mb-3 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1]">
                         <span className="text-brand-pink">{slide.titlePrefix}</span>
                         {slide.titleRest}
-                        <span className="block text-brand-navy/80 font-bold text-lg sm:text-xl md:text-2xl mt-2 md:mt-2">
+                        <span className="block text-brand-navy/80 font-bold text-base sm:text-xl md:text-2xl mt-1.5 md:mt-2">
                           {slide.subtitle}
                         </span>
                       </h1>
@@ -134,12 +134,12 @@ export default function HeroSlider() {
                       <span className="text-brand-pink font-bold tracking-[0.2em] text-xs sm:text-xs md:text-sm uppercase mb-1 md:mb-3 block">
                         {slide.tagline}
                       </span>
-                      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-sans text-brand-navy mb-2 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1] flex flex-wrap items-center justify-center md:justify-start gap-x-1.5 md:gap-x-2">
+                      <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-sans text-brand-navy mb-2 md:mb-4 tracking-tight leading-[1.15] md:leading-[1.1] flex flex-wrap items-center justify-center md:justify-start gap-x-1.5 md:gap-x-2">
                         <span className="text-brand-pink font-dancing font-medium normal-case text-5xl sm:text-6xl md:text-7xl lg:text-8xl pr-0.5">
                           {slide.titlePrefix}
                         </span>
                         <span>{slide.titleRest}</span>
-                      </h1>
+                      </h2>
 
                       {/* Age group badge (original colors) */}
                       {slide.badge && (

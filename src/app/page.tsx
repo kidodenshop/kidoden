@@ -158,22 +158,20 @@ export default async function Home() {
       </section>
 
       {/* Winter Collection Banner Section */}
-      <section className="w-full relative py-2 sm:py-6 md:py-8 px-0 sm:px-4 md:px-6 lg:px-8 bg-white reveal-on-scroll">
-        <div className="max-w-8xl mx-auto">
-          <Link
-            href="/shop?collection=winter-collection"
-            className="block relative w-full aspect-[16/10] sm:aspect-[16/9] md:h-[420px] lg:h-[480px] sm:rounded-3xl overflow-hidden group cursor-pointer"
-            aria-label="Explore Kidoden's Winter Collection"
-          >
-            <Image
-              src="/Banner/winter-collection.png"
-              alt="Kidoden Winter Collection"
-              fill
-              className="object-cover object-[24%_center] md:object-center transition-transform duration-700 ease-out group-hover:scale-[1.01]"
-              priority
-            />
-          </Link>
-        </div>
+      <section className="w-full relative py-0 sm:py-2 md:py-4 bg-white reveal-on-scroll">
+        <Link
+          href="/shop?collection=winter-collection"
+          className="block relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[2/1] max-h-[720px] overflow-hidden group cursor-pointer"
+          aria-label="Explore Kidoden's Winter Collection"
+        >
+          <Image
+            src="/Banner/winter-collection.png"
+            alt="Kidoden Winter Collection"
+            fill
+            className="object-cover object-[24%_center] md:object-center transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+            priority
+          />
+        </Link>
       </section>
 
       {/* Quality without compromise section with mobile auto-scroll */}

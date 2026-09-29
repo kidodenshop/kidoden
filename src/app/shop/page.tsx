@@ -59,9 +59,20 @@ export async function generateMetadata({
     }
   }
 
+  let canonicalUrl = "https://www.kidoden.in/shop";
+  if (category) {
+    canonicalUrl = `https://www.kidoden.in/shop?category=${category}`;
+    if (gender) canonicalUrl += `&gender=${gender}`;
+  } else if (collection) {
+    canonicalUrl = `https://www.kidoden.in/shop?collection=${collection}`;
+  }
+
   return {
     title,
     description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: `${title} | Kidoden`,
       description,
