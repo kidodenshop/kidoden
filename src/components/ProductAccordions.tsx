@@ -150,7 +150,7 @@ export default function ProductAccordions({
           <div className="flex items-center gap-4 bg-brand-pink/10 border border-brand-pink/25 rounded-2xl p-4">
             <span className="text-2xl flex-shrink-0">↩️</span>
             <div>
-              <p className="font-extrabold text-brand-navy text-xs md:text-sm">10-Day Easy Returns</p>
+              <p className="font-extrabold text-brand-navy text-xs md:text-sm">7-Day Easy Returns</p>
               <p className="text-[11px] text-gray-500 font-medium mt-0.5 leading-relaxed">
                 Not happy? Contact us within 7 days of delivery and we&apos;ll make it right — no questions asked.
               </p>

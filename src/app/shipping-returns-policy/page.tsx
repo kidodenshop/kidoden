@@ -4,17 +4,17 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Shipping & Returns",
   description:
-    "Learn about Kidoden's shipping timelines, delivery across India, and simple 10-day return & refund policies.",
+    "Learn about Kidoden's shipping timelines, delivery across India, and simple 7-day return & refund policies.",
   openGraph: {
     title: "Shipping & Returns | Kidoden",
     description:
-      "Learn about Kidoden's shipping timelines, delivery across India, and simple 10-day return & refund policies.",
+      "Learn about Kidoden's shipping timelines, delivery across India, and simple 7-day return & refund policies.",
   },
   twitter: {
     card: "summary",
     title: "Shipping & Returns | Kidoden",
     description:
-      "Learn about Kidoden's shipping timelines, delivery across India, and simple 10-day return & refund policies.",
+      "Learn about Kidoden's shipping timelines, delivery across India, and simple 7-day return & refund policies.",
   },
 };
 
