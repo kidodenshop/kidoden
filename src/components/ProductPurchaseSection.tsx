@@ -10,22 +10,22 @@ function sortInventory(items: any[]) {
     const s = size.toLowerCase().trim();
     if (s === "newborn" || s === "nb") return 0.01;
     if (s === "standard") return 1000;
-    
+
     const monthMatch = s.match(/(\d+)\s*(?:-\s*\d+)?\s*month/);
     if (monthMatch) {
       return parseInt(monthMatch[1]) / 12;
     }
-    
+
     const yearMatch = s.match(/(\d+)\s*(?:-\s*\d+)?\s*year/);
     if (yearMatch) {
       return parseInt(yearMatch[1]);
     }
-    
+
     const numMatch = s.match(/(\d+)/);
     if (numMatch) {
       return parseInt(numMatch[1]);
     }
-    
+
     return 999;
   };
 
@@ -54,7 +54,7 @@ export default function ProductPurchaseSection({ product }: { product: Product }
     const firstInStock = inventoryItems.find(item => item.stockQuantity > 0);
     return firstInStock ? firstInStock.size : (inventoryItems[0]?.size || "");
   });
-  
+
   const [error, setError] = useState<string>("");
   const [isStickyBarVisible, setIsStickyBarVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -239,7 +239,7 @@ export default function ProductPurchaseSection({ product }: { product: Product }
             { src: "/icons/1.svg", text: "Gentle on Delicate Skin" },
             { src: "/icons/2.svg", text: "Delivery In 3–5 Days Across India" },
             { src: "/icons/3.svg", text: "Cash On Delivery Available" },
-            { src: "/icons/4.svg", text: "10 Days Easy Returns" },
+            { src: "/icons/4.svg", text: "7 Days Easy Returns" },
           ].map((badge, idx) => (
             <div key={idx} className="flex flex-col items-center text-center">
               <div className="relative w-10 h-10 sm:w-12 sm:h-12 mb-1.5 flex-shrink-0">
@@ -260,11 +260,10 @@ export default function ProductPurchaseSection({ product }: { product: Product }
       </div>
 
       {/* Sticky Bottom Bar for Mobile & Desktop */}
-      <div 
+      <div
         onClick={scrollToSection}
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-100 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] transition-all duration-300 ease-in-out px-4 py-3 sm:py-3.5 flex items-center justify-between cursor-pointer md:px-8 ${
-          isStickyBarVisible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
-        }`}
+        className={`fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-100 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] transition-all duration-300 ease-in-out px-4 py-3 sm:py-3.5 flex items-center justify-between cursor-pointer md:px-8 ${isStickyBarVisible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
+          }`}
       >
         <div className="flex-1 min-w-0 pr-4 text-left">
           <p className="text-xs sm:text-sm font-extrabold text-brand-navy truncate">

@@ -39,7 +39,7 @@ export default function ProductSlider({ products }: { products: Product[] }) {
       {/* Slider Container */}
       <div 
         ref={sliderRef}
-        className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 pt-1.5 -mx-4 sm:mx-0 scroll-pl-4 sm:scroll-pl-0"
+        className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 pt-0.5 -mx-4 sm:mx-0 scroll-pl-4 sm:scroll-pl-0"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <style jsx>{`

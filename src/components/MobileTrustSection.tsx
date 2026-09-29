@@ -154,13 +154,13 @@ export default function MobileTrustSection() {
 
   return (
     <section className="block md:hidden py-6 px-4 bg-white text-center relative overflow-hidden">
+      <p className="text-[11px] sm:text-xs font-bold tracking-[0.22em] text-[#69859A] uppercase mb-1.5">
+        LOVED BY 100+ FAMILIES ACROSS INDIA
+      </p>
       <h2 className="text-2xl font-extrabold text-brand-navy tracking-tight mb-1">
         Why Parents Trust Kidoden
       </h2>
-      <TitleDivider className="mt-1.5 mb-2" />
-      <p className="text-xs text-gray-500 mb-4">
-        Loved by 100+ families across India
-      </p>
+      <TitleDivider className="mt-1.5 mb-5" />
 
       {/* Auto Horizontal Scroll Carousel */}
       <div className="relative w-full overflow-hidden">

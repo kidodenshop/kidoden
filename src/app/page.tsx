@@ -8,12 +8,17 @@ import MobileTrustSection from "@/components/MobileTrustSection";
 import ShopByCategory from "@/components/ShopByCategory";
 import TitleDivider from "@/components/TitleDivider";
 import ValueProposition from "@/components/ValueProposition";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import HomeScrollReveal from "@/components/HomeScrollReveal";
+import { getApprovedTestimonials } from "@/lib/testimonials";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const products = await getProducts();
+  const [products, testimonials] = await Promise.all([
+    getProducts(),
+    getApprovedTestimonials(6),
+  ]);
   // New Arrivals: The latest 8 uploaded products
   const newArrivals = products.slice(0, 8);
   // Best Sellers: Products marked as featured in the admin panel
@@ -35,12 +40,14 @@ export default async function Home() {
       {/* Desktop-only Trust Section: Original full design preserved */}
       <section className="hidden md:block py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-white text-center relative overflow-hidden">
         <div className="max-w-8xl mx-auto relative z-10">
-          <div className="reveal-on-scroll">
+          <div className="reveal-on-scroll mb-10 md:mb-12">
+            <p className="text-[11px] sm:text-xs md:text-sm font-bold tracking-[0.22em] text-[#69859A] uppercase mb-2">
+              LOVED BY 100+ FAMILIES ACROSS INDIA
+            </p>
             <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-2">
               Why Parents Trust Kidoden
             </h2>
-            <TitleDivider className="mt-2 mb-3" />
-            <p className="text-gray-500 mb-8">Loved by 100+ families across India</p>
+            <TitleDivider className="mt-2" />
           </div>
 
           {/* Feature Cards with Staggered Upward Reveal */}
@@ -120,11 +127,11 @@ export default async function Home() {
       </section>
 
       {/* Modernized Featured Products */}
-      <section className="pt-10 md:pt-14 pb-4 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="pt-8 md:pt-12 pb-4 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-8xl mx-auto">
-          <div className="text-center mb-5 md:mb-7 relative flex flex-col items-center reveal-on-scroll">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-2">New Arrivals</h2>
-            <TitleDivider className="mt-2" />
+          <div className="text-center mb-3 md:mb-4 relative flex flex-col items-center reveal-on-scroll">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-1">New Arrivals</h2>
+            <TitleDivider className="mt-1" />
             <Link href="/shop" className="hidden md:inline-flex absolute right-0 top-1/2 -translate-y-1/2 items-center gap-2 text-brand-navy font-bold hover:text-brand-pink transition-colors">
               View All <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>
@@ -134,9 +141,15 @@ export default async function Home() {
             <ProductSlider products={newArrivals} />
           </div>
 
-          <div className="mt-6 text-center md:hidden reveal-on-scroll delay-200">
-            <Link href="/shop" className="inline-block border-2 border-brand-navy text-brand-navy font-bold py-3 px-8 rounded-full">
-              View All
+          <div className="mt-1 text-center md:hidden reveal-on-scroll delay-200">
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-1.5 border border-brand-navy/35 hover:border-brand-pink text-brand-navy hover:text-brand-pink font-bold text-xs py-2 px-5 rounded-full transition-all duration-200 active:scale-95 bg-white shadow-2xs"
+            >
+              <span>View All</span>
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
         </div>
@@ -146,9 +159,9 @@ export default async function Home() {
       {/* Best Sellers Section */}
       <section className="pt-6 pb-10 md:pb-14 px-4 sm:px-6 lg:px-8 bg-white border-t border-gray-100">
         <div className="max-w-8xl mx-auto">
-          <div className="text-center mb-5 md:mb-7 relative flex flex-col items-center reveal-on-scroll">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-2">Best Sellers</h2>
-            <TitleDivider className="mt-2" />
+          <div className="text-center mb-3 md:mb-4 relative flex flex-col items-center reveal-on-scroll">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-1">Best Sellers</h2>
+            <TitleDivider className="mt-1" />
           </div>
 
           <div className="reveal-on-scroll delay-150">
@@ -177,6 +190,11 @@ export default async function Home() {
       {/* Quality without compromise section with mobile auto-scroll */}
       <div className="reveal-on-scroll">
         <ValueProposition />
+      </div>
+
+      {/* Testimonials Section */}
+      <div className="reveal-on-scroll">
+        <TestimonialsSection testimonials={testimonials} />
       </div>
     </HomeScrollReveal>
   );

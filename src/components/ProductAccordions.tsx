@@ -152,7 +152,7 @@ export default function ProductAccordions({
             <div>
               <p className="font-extrabold text-brand-navy text-xs md:text-sm">10-Day Easy Returns</p>
               <p className="text-[11px] text-gray-500 font-medium mt-0.5 leading-relaxed">
-                Not happy? Contact us within 10 days of delivery and we&apos;ll make it right — no questions asked.
+                Not happy? Contact us within 7 days of delivery and we&apos;ll make it right — no questions asked.
               </p>
             </div>
           </div>

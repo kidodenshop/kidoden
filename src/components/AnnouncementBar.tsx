@@ -64,9 +64,8 @@ export default function AnnouncementBar() {
       {/* Incoming / active item: slides in from bottom to center */}
       <div
         key={`curr-${current}`}
-        className={`absolute inset-0 flex items-center justify-center px-4 gap-2 text-center ${
-          prev !== null ? "animate-announcement-in" : ""
-        }`}
+        className={`absolute inset-0 flex items-center justify-center px-4 gap-2 text-center ${prev !== null ? "animate-announcement-in" : ""
+          }`}
       >
         <span className="text-xs sm:text-[13px] select-none" aria-hidden="true">
           {currentItem.icon}
