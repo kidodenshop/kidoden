@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Nunito, Quicksand, Open_Sans, Playfair_Display, Dancing_Script } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -10,35 +9,6 @@ import { releaseMvp1 } from "@/flags";
 import ComingSoonPage from "@/components/ComingSoon";
 import PageLoader from "@/components/PageLoader";
 import ScrollToTop from "@/components/ScrollToTop";
-
-const nunito = Nunito({
-  variable: "--font-nunito",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
-
-const quicksand = Quicksand({
-  variable: "--font-quicksand",
-  subsets: ["latin"],
-});
-
-const openSans = Open_Sans({
-  variable: "--font-open-sans",
-  subsets: ["latin"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  style: ["italic", "normal"],
-  weight: ["400", "700", "900"],
-});
-
-const dancingScript = Dancing_Script({
-  variable: "--font-dancing-script",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.kidoden.in";
 
@@ -161,14 +131,20 @@ export default async function RootLayout({
   );
 
   return (
-    <html lang="en" className={`${nunito.variable} ${quicksand.variable} ${openSans.variable} ${playfair.variable} ${dancingScript.variable} h-full antialiased scroll-smooth`}>
+    <html lang="en" className="h-full antialiased scroll-smooth">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Nunito:wght@400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Quicksand:wght@300..700&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
         />
       </head>
-      <body className={`${openSans.className} min-h-full flex flex-col font-sans selection:bg-brand-yellow selection:text-brand-navy`}>
+      <body className="min-h-full flex flex-col font-sans selection:bg-brand-yellow selection:text-brand-navy">
         <CartProvider>
           <PageLoader />
           <ScrollToTop />
