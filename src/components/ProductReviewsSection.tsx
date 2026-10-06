@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { Product, Review } from "@/data/products";
+import { getMobilePaginationItems, getDesktopPaginationItems } from "@/lib/pagination";
 
 interface ProductReviewsSectionProps {
   product: Product;
@@ -26,6 +27,15 @@ export default function ProductReviewsSection({ product }: ProductReviewsSection
   const totalPages = Math.ceil(reviewsWithComments.length / COMMENTS_PER_PAGE);
   const startIndex = (currentPage - 1) * COMMENTS_PER_PAGE;
   const paginatedComments = reviewsWithComments.slice(startIndex, startIndex + COMMENTS_PER_PAGE);
+
+  const mobilePageItems = useMemo(
+    () => getMobilePaginationItems(currentPage, totalPages),
+    [currentPage, totalPages]
+  );
+  const desktopPageItems = useMemo(
+    () => getDesktopPaginationItems(currentPage, totalPages),
+    [currentPage, totalPages]
+  );
 
   const totalCount = reviews.length > 0 ? reviews.length : (product.reviewsCount || 0);
   const averageRating = reviews.length > 0
@@ -356,52 +366,126 @@ export default function ProductReviewsSection({ product }: ProductReviewsSection
             ))}
 
             {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-2 mt-10">
-                {/* Previous Page */}
-                <button
-                  type="button"
-                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                  disabled={currentPage === 1}
-                  className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:text-brand-pink hover:border-brand-pink/40 disabled:opacity-40 disabled:hover:text-gray-500 disabled:hover:border-gray-200 transition-all duration-300 cursor-pointer disabled:cursor-not-allowed bg-white"
-                  aria-label="Previous Page"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
+              <div className="mt-10 select-none">
+                {/* Mobile Pagination View (< sm) */}
+                <div className="flex sm:hidden items-center justify-center gap-1.5">
+                  {/* Previous Page */}
+                  <button
+                    type="button"
+                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="w-9 h-9 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:text-brand-pink hover:border-brand-pink/40 disabled:opacity-40 disabled:hover:text-gray-500 disabled:hover:border-gray-200 transition-all duration-300 shrink-0 cursor-pointer disabled:cursor-not-allowed bg-white"
+                    aria-label="Previous Page"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
 
-                {/* Page Numbers */}
-                {Array.from({ length: totalPages }).map((_, i) => {
-                  const pageNum = i + 1;
-                  const isCurrent = pageNum === currentPage;
-                  return (
-                    <button
-                      key={pageNum}
-                      type="button"
-                      onClick={() => setCurrentPage(pageNum)}
-                      className={`w-10 h-10 rounded-xl font-extrabold text-sm flex items-center justify-center transition-all duration-300 cursor-pointer ${
-                        isCurrent
-                          ? "bg-brand-pink text-white shadow-md shadow-brand-pink/15"
-                          : "border border-gray-200 text-gray-600 hover:text-brand-pink hover:border-brand-pink/40 bg-white"
-                      }`}
-                    >
-                      {pageNum}
-                    </button>
-                  );
-                })}
+                  {/* Mobile Page Numbers */}
+                  {mobilePageItems.map((item) => {
+                    if (item.type === "ellipsis") {
+                      return (
+                        <span
+                          key={item.key}
+                          className="w-6 flex items-center justify-center text-xs font-bold text-gray-400 select-none shrink-0"
+                          aria-hidden="true"
+                        >
+                          ...
+                        </span>
+                      );
+                    }
 
-                {/* Next Page */}
-                <button
-                  type="button"
-                  onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                  disabled={currentPage === totalPages}
-                  className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:text-brand-pink hover:border-brand-pink/40 disabled:opacity-40 disabled:hover:text-gray-500 disabled:hover:border-gray-200 transition-all duration-300 cursor-pointer disabled:cursor-not-allowed bg-white"
-                  aria-label="Next Page"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
+                    const isCurrent = item.page === currentPage;
+                    return (
+                      <button
+                        key={item.page}
+                        type="button"
+                        onClick={() => setCurrentPage(item.page)}
+                        className={`w-9 h-9 rounded-xl font-extrabold text-xs flex items-center justify-center transition-all duration-300 shrink-0 cursor-pointer ${
+                          isCurrent
+                            ? "bg-brand-pink text-white shadow-md shadow-brand-pink/15"
+                            : "border border-gray-200 text-gray-600 hover:text-brand-pink hover:border-brand-pink/40 bg-white"
+                        }`}
+                      >
+                        {item.page}
+                      </button>
+                    );
+                  })}
+
+                  {/* Next Page */}
+                  <button
+                    type="button"
+                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                    className="w-9 h-9 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:text-brand-pink hover:border-brand-pink/40 disabled:opacity-40 disabled:hover:text-gray-500 disabled:hover:border-gray-200 transition-all duration-300 shrink-0 cursor-pointer disabled:cursor-not-allowed bg-white"
+                    aria-label="Next Page"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Desktop Pagination View (>= sm) */}
+                <div className="hidden sm:flex items-center justify-center gap-2">
+                  {/* Previous Page */}
+                  <button
+                    type="button"
+                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                    className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:text-brand-pink hover:border-brand-pink/40 disabled:opacity-40 disabled:hover:text-gray-500 disabled:hover:border-gray-200 transition-all duration-300 shrink-0 cursor-pointer disabled:cursor-not-allowed bg-white"
+                    aria-label="Previous Page"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+
+                  {/* Desktop Page Numbers */}
+                  {desktopPageItems.map((item) => {
+                    if (item.type === "ellipsis") {
+                      return (
+                        <span
+                          key={item.key}
+                          className="w-8 flex items-center justify-center text-sm font-bold text-gray-400 select-none shrink-0"
+                          aria-hidden="true"
+                        >
+                          ...
+                        </span>
+                      );
+                    }
+
+                    const isCurrent = item.page === currentPage;
+                    return (
+                      <button
+                        key={item.page}
+                        type="button"
+                        onClick={() => setCurrentPage(item.page)}
+                        className={`w-10 h-10 rounded-xl font-extrabold text-sm flex items-center justify-center transition-all duration-300 shrink-0 cursor-pointer ${
+                          isCurrent
+                            ? "bg-brand-pink text-white shadow-md shadow-brand-pink/15"
+                            : "border border-gray-200 text-gray-600 hover:text-brand-pink hover:border-brand-pink/40 bg-white"
+                        }`}
+                      >
+                        {item.page}
+                      </button>
+                    );
+                  })}
+
+                  {/* Next Page */}
+                  <button
+                    type="button"
+                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                    className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:text-brand-pink hover:border-brand-pink/40 disabled:opacity-40 disabled:hover:text-gray-500 disabled:hover:border-gray-200 transition-all duration-300 shrink-0 cursor-pointer disabled:cursor-not-allowed bg-white"
+                    aria-label="Next Page"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             )}
           </div>

@@ -167,17 +167,17 @@ export default async function ProductDetailPage({
 
           {/* Details */}
           <div className="md:col-span-6 lg:col-span-5 flex flex-col mt-4 md:mt-0 md:pl-2">
-            <p className="text-xs font-black text-brand-pink uppercase tracking-widest mb-3">
+            <p className="text-[11px] sm:text-xs font-black text-brand-pink uppercase tracking-widest mb-1.5 sm:mb-2.5">
               {product.category}
             </p>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-brand-navy mb-2 tracking-tight leading-tight">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-brand-navy mb-2 tracking-tight leading-snug sm:leading-tight">
               {product.name}
             </h1>
 
             {/* Review Section Link */}
             <a 
               href="#reviews-section" 
-              className="flex items-center gap-1.5 mb-5 hover:opacity-85 transition-opacity cursor-pointer group w-fit"
+              className="flex items-center gap-1.5 mb-3.5 sm:mb-5 hover:opacity-85 transition-opacity cursor-pointer group w-fit"
             >
               <div className="flex text-amber-400">
                 {Array.from({ length: 5 }).map((_, i) => (
