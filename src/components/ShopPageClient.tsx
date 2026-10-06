@@ -127,6 +127,9 @@ export default function ShopPageClient({
     } else if (collection === "winter-collection") {
       bannerTitle = "Winter Collection ❄️";
       bannerDesc = "Cozy fabrics, gentle layers, and snuggly outfits for chilly days.";
+    } else if (collection === "night-suits") {
+      bannerTitle = "Kidoden Night Suits 🌙";
+      bannerDesc = "Ultra-soft, breathable nightwear and cozy sets for sweet dreams and restful sleep.";
     } else if (collection === "summer-collection") {
       bannerTitle = "Summer Collection";
       bannerDesc = "Breezy and bright outfits perfect for sunny days.";
@@ -331,6 +334,7 @@ export default function ShopPageClient({
                 <div className="flex flex-col gap-3">
                   {[
                     { id: 'winter-collection', label: 'Winter Collection ❄️', href: collection === 'winter-collection' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'winter-collection' }), active: collection === 'winter-collection' },
+                    { id: 'night-suits', label: 'Night Suits 🌙', href: collection === 'night-suits' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'night-suits' }), active: collection === 'night-suits' },
                     { id: 'new-arrivals', label: 'New Arrivals', href: collection === 'new-arrivals' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'new-arrivals' }), active: collection === 'new-arrivals' },
                     { id: 'best-sellers', label: 'Best Sellers', href: collection === 'best-sellers' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'best-sellers' }), active: collection === 'best-sellers' },
                     { id: 'premium-picks', label: 'Premium Picks', href: collection === 'premium-picks' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'premium-picks' }), active: collection === 'premium-picks' }

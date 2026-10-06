@@ -56,6 +56,9 @@ export async function generateMetadata({
     } else if (collection === "winter-collection") {
       title = "Winter Collection";
       description = "Discover Kidoden's cozy winter wear, gentle knits, and warm layers for little ones.";
+    } else if (collection === "night-suits") {
+      title = "Kidoden Night Suits";
+      description = "Discover Kidoden's ultra-soft, breathable nightwear, sleepsuits, and cozy pajama sets for little ones.";
     }
   }
 
@@ -188,6 +191,25 @@ export default async function ShopPage({
               f.toLowerCase().includes("warm") ||
               f.toLowerCase().includes("wool") ||
               f.toLowerCase().includes("fleece")
+          ))
+      );
+    } else if (collection === "night-suits") {
+      displayedProducts = displayedProducts.filter(
+        (p) =>
+          p.name.toLowerCase().includes("night") ||
+          p.name.toLowerCase().includes("sleepsuit") ||
+          p.description.toLowerCase().includes("night") ||
+          p.description.toLowerCase().includes("sleep") ||
+          p.description.toLowerCase().includes("pajama") ||
+          p.description.toLowerCase().includes("pyjama") ||
+          (p.features && p.features.some(
+            (f) =>
+              f.toLowerCase().includes("night") ||
+              f.toLowerCase().includes("night-suit") ||
+              f.toLowerCase().includes("night suit") ||
+              f.toLowerCase().includes("sleepsuit") ||
+              f.toLowerCase().includes("pajama") ||
+              f.toLowerCase().includes("pyjama")
           ))
       );
     } else if (collection === "summer-collection") {

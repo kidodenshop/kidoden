@@ -169,9 +169,25 @@ export const products: Product[] = [
     images: ["/clothe/Homepage/shop-for-infants-new.png"],
     ageRange: "0-6 months",
     gender: "unisex",
-    features: ["Fold-over mitten cuffs", "Two-way zipper for easy diaper changes", "Super breathable"],
+    features: ["Kidoden Night Suits", "Night Suit", "Fold-over mitten cuffs", "Two-way zipper for easy diaper changes", "Super breathable"],
     isFeatured: false,
     rating: 5.0,
     reviewsCount: 11
+  },
+  {
+    id: "c-6",
+    name: "Starry Night Organic Night Suit Set",
+    description: "Ultra-soft cotton two-piece night suit set with playful star prints and gentle elastic waistband for peaceful bedtime sleep.",
+    price: 899,
+    discount: 15,
+    category: "clothing",
+    imageUrl: "/clothe/clo-1.jpeg",
+    images: ["/clothe/clo-1.jpeg"],
+    ageRange: "2-8 years",
+    gender: "unisex",
+    features: ["Kidoden Night Suits", "Night Suit", "100% Breathable Organic Cotton", "Comfort Stretch Waistband", "Snug Bedtime Fit"],
+    isFeatured: true,
+    rating: 4.9,
+    reviewsCount: 22
   }
 ];

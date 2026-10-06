@@ -132,6 +132,13 @@ function MobileNavItems({
             Winter Collection ❄️
           </Link>
           <Link
+            href="/shop?collection=night-suits"
+            onClick={onClose}
+            className={getItemClass(params.isShop && params.collection === "night-suits")}
+          >
+            Night Suits 🌙
+          </Link>
+          <Link
             href="/shop?collection=new-arrivals"
             onClick={onClose}
             className={getItemClass(params.isShop && params.collection === "new-arrivals")}

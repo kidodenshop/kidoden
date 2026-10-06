@@ -41,7 +41,7 @@ export default function Header() {
                 </button>
                 
                 {/* Mega Menu Dropdown Container */}
-                <div className="absolute top-full -left-24 mt-2 w-[720px] bg-white rounded-[2rem] p-8 shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-3 group-hover:translate-y-0 grid grid-cols-4 gap-6">
+                <div className="absolute top-full -left-24 mt-2 w-[760px] bg-white rounded-[2rem] p-8 shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-3 group-hover:translate-y-0 grid grid-cols-4 gap-6">
                   
                   {/* Column 1: Shop by Age */}
                   <div className="flex flex-col gap-3">
@@ -49,11 +49,11 @@ export default function Header() {
                       Shop by Age
                     </h4>
                     <div className="flex flex-col gap-2">
-                      <Link href="/shop?category=clothing&age=0-1" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors">0–1 Year</Link>
-                      <Link href="/shop?category=clothing&age=1-3" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors">1–3 Years</Link>
-                      <Link href="/shop?category=clothing&age=3-5" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors">3–5 Years</Link>
-                      <Link href="/shop?category=clothing&age=5-7" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors">5–7 Years</Link>
-                      <Link href="/shop?category=clothing&age=7-12" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors">7–12 Years</Link>
+                      <Link href="/shop?category=clothing&age=0-1" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">0–1 Year</Link>
+                      <Link href="/shop?category=clothing&age=1-3" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">1–3 Years</Link>
+                      <Link href="/shop?category=clothing&age=3-5" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">3–5 Years</Link>
+                      <Link href="/shop?category=clothing&age=5-7" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">5–7 Years</Link>
+                      <Link href="/shop?category=clothing&age=7-12" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">7–12 Years</Link>
                     </div>
                   </div>
 
@@ -63,12 +63,15 @@ export default function Header() {
                       Collections
                     </h4>
                     <div className="flex flex-col gap-2">
-                      <Link href="/shop?collection=winter-collection" className="text-sm font-bold text-brand-pink hover:text-brand-navy transition-colors flex items-center gap-1">
+                      <Link href="/shop?collection=winter-collection" className="text-sm font-bold text-brand-pink hover:text-brand-navy transition-colors flex items-center gap-1 whitespace-nowrap">
                         Winter Collection <span className="text-xs">❄️</span>
                       </Link>
-                      <Link href="/shop?collection=new-arrivals" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors">New Arrivals</Link>
-                      <Link href="/shop?collection=best-sellers" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors">Best Sellers</Link>
-                      <Link href="/shop?collection=premium-picks" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors">Premium Picks</Link>
+                      <Link href="/shop?collection=night-suits" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors flex items-center gap-1 whitespace-nowrap">
+                        Night Suits <span className="text-xs">🌙</span>
+                      </Link>
+                      <Link href="/shop?collection=new-arrivals" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">New Arrivals</Link>
+                      <Link href="/shop?collection=best-sellers" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">Best Sellers</Link>
+                      <Link href="/shop?collection=premium-picks" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">Premium Picks</Link>
                     </div>
                   </div>
 
