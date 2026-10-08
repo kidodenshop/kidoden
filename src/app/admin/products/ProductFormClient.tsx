@@ -723,6 +723,38 @@ export default function ProductFormClient({
                   </button>
                 </div>
 
+                {/* Quick Tag Bullets for Collections */}
+                <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+                  <span className="text-[10px] font-bold text-brand-navy/50 uppercase tracking-wider">Quick tag:</span>
+                  {[
+                    "Top Wear",
+                    "Bottom Wear",
+                    "Top & Bottom Set"
+                  ].map((preset) => {
+                    const isAdded = features.includes(preset);
+                    return (
+                      <button
+                        key={preset}
+                        type="button"
+                        onClick={() => {
+                          if (isAdded) {
+                            setFeatures(features.filter((f) => f !== preset));
+                          } else {
+                            setFeatures([...features, preset]);
+                          }
+                        }}
+                        className={`text-[10px] font-bold px-2.5 py-1 rounded-full border transition-all ${
+                          isAdded
+                            ? "bg-brand-navy text-white border-brand-navy shadow-xs"
+                            : "bg-white/80 hover:bg-brand-navy/5 text-brand-navy border-brand-navy/15 hover:border-brand-navy/30"
+                        }`}
+                      >
+                        {isAdded ? "✓ " : "+ "}{preset}
+                      </button>
+                    );
+                  })}
+                </div>
+
                 {features.length > 0 && (
                   <div className="flex flex-wrap gap-2 p-4 bg-brand-navy/2 border border-brand-navy/5 rounded-2xl max-h-48 overflow-y-auto">
                     {features.map((feature, idx) => (

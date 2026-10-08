@@ -39,7 +39,7 @@ export const products: Product[] = [
     images: ["/clothe/clo-1.jpeg", "/clothe/placeholder.png"],
     ageRange: "2-8 years",
     gender: "boy",
-    features: ["Kidoden Top Wear", "Top Wear", "100% Breathable Cotton", "Machine Washable", "Skin-friendly dyes"],
+    features: ["Top Wear", "100% Breathable Cotton", "Machine Washable", "Skin-friendly dyes"],
     isFeatured: true,
     rating: 4.9,
     reviewsCount: 24
@@ -69,7 +69,7 @@ export const products: Product[] = [
     images: ["/clothe/clo-3.jpeg", "/clothe/placeholder.png"],
     ageRange: "4-10 years",
     gender: "girl",
-    features: ["Top & Bottom Sets", "Co-ord Set", "Kidoden Bottom Wear", "Bottom Wear", "Soft Cotton Blend", "Tag-less design", "Relaxed fit"],
+    features: ["Top & Bottom Set", "Co-ord Set", "Soft Cotton Blend", "Tag-less design", "Relaxed fit"],
     rating: 4.7,
     reviewsCount: 9
   },
@@ -83,7 +83,7 @@ export const products: Product[] = [
     images: ["/clothe/clo-4.jpeg", "/clothe/placeholder.png"],
     ageRange: "2-8 years",
     gender: "girl",
-    features: ["Top & Bottom Sets", "Co-ord Set", "Kidoden Bottom Wear", "Bottom Wear", "Soft Cotton", "Machine washable", "Comfortable fit"],
+    features: ["Top & Bottom Set", "Co-ord Set", "Soft Cotton", "Machine washable", "Comfortable fit"],
     isFeatured: true,
     rating: 5.0,
     reviewsCount: 12
@@ -98,7 +98,7 @@ export const products: Product[] = [
     images: ["/clothe/clo-5.jpeg", "/clothe/placeholder.png"],
     ageRange: "2-8 years",
     gender: "girl",
-    features: ["Top & Bottom Sets", "Co-ord Set", "Kidoden Bottom Wear", "Bottom Wear", "Breathable fabric", "Machine washable", "Comfortable fit"],
+    features: ["Top & Bottom Set", "Co-ord Set", "Breathable fabric", "Machine washable", "Comfortable fit"],
     isFeatured: true,
     rating: 4.9,
     reviewsCount: 16
@@ -185,7 +185,7 @@ export const products: Product[] = [
     images: ["/clothe/clo-1.jpeg"],
     ageRange: "2-8 years",
     gender: "unisex",
-    features: ["Top & Bottom Sets", "Co-ord Set", "Kidoden Night Suits", "Night Suit", "100% Breathable Organic Cotton", "Comfort Stretch Waistband", "Snug Bedtime Fit"],
+    features: ["Top & Bottom Set", "Night Suit", "100% Breathable Organic Cotton", "Comfort Stretch Waistband", "Snug Bedtime Fit"],
     isFeatured: true,
     rating: 4.9,
     reviewsCount: 22
@@ -201,7 +201,7 @@ export const products: Product[] = [
     images: ["/clothe/clo-1.jpeg", "/clothe/placeholder.png"],
     ageRange: "1-7 years",
     gender: "unisex",
-    features: ["Kidoden Bottom Wear", "Bottom Wear", "100% Breathable Organic Cotton", "Gentle Elastic Ribbed Waistband", "Deep Pockets & Durable Stitching"],
+    features: ["Bottom Wear", "100% Breathable Organic Cotton", "Gentle Elastic Ribbed Waistband", "Deep Pockets & Durable Stitching"],
     isFeatured: true,
     rating: 4.9,
     reviewsCount: 19
@@ -217,7 +217,7 @@ export const products: Product[] = [
     images: ["/clothe/clo-4.jpeg", "/clothe/placeholder.png"],
     ageRange: "2-8 years",
     gender: "unisex",
-    features: ["Kidoden Bottom Wear", "Bottom Wear", "100% Soft Stretch Cotton", "Comfort Elasticated Waist", "Tag-free Breathable Fabric"],
+    features: ["Bottom Wear", "100% Soft Stretch Cotton", "Comfort Elasticated Waist", "Tag-free Breathable Fabric"],
     isFeatured: true,
     rating: 4.8,
     reviewsCount: 14
@@ -233,7 +233,7 @@ export const products: Product[] = [
     images: ["/clothe/clo-1.jpeg", "/clothe/placeholder.png"],
     ageRange: "1-6 years",
     gender: "unisex",
-    features: ["Kidoden Top Wear", "Top Wear", "100% Breathable Organic Cotton", "Ribbed Stretch Crew Neck", "Fade-resistant Non-toxic Prints"],
+    features: ["Top Wear", "100% Breathable Organic Cotton", "Ribbed Stretch Crew Neck", "Fade-resistant Non-toxic Prints"],
     isFeatured: true,
     rating: 4.9,
     reviewsCount: 17
@@ -249,7 +249,7 @@ export const products: Product[] = [
     images: ["/clothe/clo-1.jpeg", "/clothe/placeholder.png"],
     ageRange: "1-6 years",
     gender: "unisex",
-    features: ["Top & Bottom Sets", "Co-ord Set", "Kidoden Top Wear", "Kidoden Bottom Wear", "100% Breathable Organic Cotton", "Comfort Stretch Waistband", "Snug Playtime Fit"],
+    features: ["Top & Bottom Set", "Co-ord Set", "100% Breathable Organic Cotton", "Comfort Stretch Waistband", "Snug Playtime Fit"],
     isFeatured: true,
     rating: 5.0,
     reviewsCount: 16

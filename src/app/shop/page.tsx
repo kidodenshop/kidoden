@@ -224,88 +224,39 @@ export default async function ShopPage({
     } else if (collection === "top-wear" || collection === "kidoden-top-wear") {
       displayedProducts = displayedProducts.filter(
         (p) =>
-          p.name.toLowerCase().includes("top") ||
-          p.name.toLowerCase().includes("shirt") ||
-          p.name.toLowerCase().includes("tee") ||
-          p.name.toLowerCase().includes("t-shirt") ||
-          p.name.toLowerCase().includes("vest") ||
-          p.name.toLowerCase().includes("kurta") ||
-          p.name.toLowerCase().includes("hoodie") ||
-          p.name.toLowerCase().includes("sweatshirt") ||
-          p.name.toLowerCase().includes("jacket") ||
-          p.description.toLowerCase().includes("top") ||
-          p.description.toLowerCase().includes("shirt") ||
-          p.description.toLowerCase().includes("tee") ||
-          p.description.toLowerCase().includes("t-shirt") ||
-          p.description.toLowerCase().includes("vest") ||
-          p.description.toLowerCase().includes("kurta") ||
-          p.description.toLowerCase().includes("hoodie") ||
-          p.description.toLowerCase().includes("sweatshirt") ||
-          p.description.toLowerCase().includes("jacket") ||
-          (p.features && p.features.some(
-            (f) =>
-              f.toLowerCase().includes("top") ||
-              f.toLowerCase().includes("top wear") ||
-              f.toLowerCase().includes("top-wear") ||
-              f.toLowerCase().includes("shirt") ||
-              f.toLowerCase().includes("tee") ||
-              f.toLowerCase().includes("t-shirt") ||
-              f.toLowerCase().includes("vest")
-          ))
+          Array.isArray(p.features) &&
+          p.features.some((f) => {
+            const clean = f.toLowerCase().replace(/^[•\-\*]\s*/, "").replace(/[.,!]$/, "").trim();
+            return clean === "top wear" || clean === "top-wear";
+          })
       );
     } else if (collection === "bottom-wear" || collection === "kidoden-bottom-wear") {
       displayedProducts = displayedProducts.filter(
         (p) =>
-          p.name.toLowerCase().includes("bottom") ||
-          p.name.toLowerCase().includes("pant") ||
-          p.name.toLowerCase().includes("short") ||
-          p.name.toLowerCase().includes("jogger") ||
-          p.name.toLowerCase().includes("trouser") ||
-          p.name.toLowerCase().includes("skirt") ||
-          p.name.toLowerCase().includes("legging") ||
-          p.name.toLowerCase().includes("pyjama") ||
-          p.name.toLowerCase().includes("pajama") ||
-          p.description.toLowerCase().includes("bottom") ||
-          p.description.toLowerCase().includes("pant") ||
-          p.description.toLowerCase().includes("shorts") ||
-          p.description.toLowerCase().includes("jogger") ||
-          p.description.toLowerCase().includes("trouser") ||
-          p.description.toLowerCase().includes("skirt") ||
-          p.description.toLowerCase().includes("legging") ||
-          (p.features && p.features.some(
-            (f) =>
-              f.toLowerCase().includes("bottom") ||
-              f.toLowerCase().includes("bottom wear") ||
-              f.toLowerCase().includes("bottom-wear") ||
-              f.toLowerCase().includes("pant") ||
-              f.toLowerCase().includes("short") ||
-              f.toLowerCase().includes("jogger") ||
-              f.toLowerCase().includes("trouser") ||
-              f.toLowerCase().includes("skirt") ||
-              f.toLowerCase().includes("legging")
-          ))
+          Array.isArray(p.features) &&
+          p.features.some((f) => {
+            const clean = f.toLowerCase().replace(/^[•\-\*]\s*/, "").replace(/[.,!]$/, "").trim();
+            return clean === "bottom wear" || clean === "bottom-wear";
+          })
       );
-    } else if (collection === "top-bottom-sets" || collection === "matching-sets" || collection === "coord-sets" || collection === "co-ord-sets") {
+    } else if (
+      collection === "top-bottom-sets" ||
+      collection === "matching-sets" ||
+      collection === "coord-sets" ||
+      collection === "co-ord-sets"
+    ) {
       displayedProducts = displayedProducts.filter(
         (p) =>
-          p.name.toLowerCase().includes("set") ||
-          p.name.toLowerCase().includes("co-ord") ||
-          p.name.toLowerCase().includes("coord") ||
-          p.description.toLowerCase().includes("set") ||
-          p.description.toLowerCase().includes("two-piece") ||
-          p.description.toLowerCase().includes("co-ord") ||
-          p.description.toLowerCase().includes("coord") ||
-          p.description.toLowerCase().includes("matching") ||
-          p.description.toLowerCase().includes("paired with") ||
-          (p.features && p.features.some(
-            (f) =>
-              f.toLowerCase().includes("set") ||
-              f.toLowerCase().includes("top & bottom") ||
-              f.toLowerCase().includes("top and bottom") ||
-              f.toLowerCase().includes("co-ord") ||
-              f.toLowerCase().includes("coord") ||
-              f.toLowerCase().includes("matching")
-          ))
+          Array.isArray(p.features) &&
+          p.features.some((f) => {
+            const clean = f.toLowerCase().replace(/^[•\-\*]\s*/, "").replace(/[.,!]$/, "").trim();
+            return (
+              clean === "top & bottom set" ||
+              clean === "top & bottom sets" ||
+              clean === "top and bottom set" ||
+              clean === "top and bottom sets"
+            );
+          })
       );
     } else if (collection === "summer-collection") {
       displayedProducts = displayedProducts.filter(
