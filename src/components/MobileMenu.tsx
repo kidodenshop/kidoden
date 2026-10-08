@@ -125,18 +125,39 @@ function MobileNavItems({
         </p>
         <div className="flex flex-col gap-1">
           <Link
+            href="/shop?collection=top-wear"
+            onClick={onClose}
+            className={getItemClass(params.isShop && (params.collection === "top-wear" || params.collection === "kidoden-top-wear"))}
+          >
+            Top Wear
+          </Link>
+          <Link
+            href="/shop?collection=bottom-wear"
+            onClick={onClose}
+            className={getItemClass(params.isShop && (params.collection === "bottom-wear" || params.collection === "kidoden-bottom-wear"))}
+          >
+            Bottom Wear
+          </Link>
+          <Link
+            href="/shop?collection=top-bottom-sets"
+            onClick={onClose}
+            className={getItemClass(params.isShop && (params.collection === "top-bottom-sets" || params.collection === "matching-sets" || params.collection === "coord-sets"))}
+          >
+            Top & Bottom Sets
+          </Link>
+          <Link
             href="/shop?collection=winter-collection"
             onClick={onClose}
             className={getItemClass(params.isShop && params.collection === "winter-collection")}
           >
-            Winter Collection ❄️
+            Winter Collection
           </Link>
           <Link
             href="/shop?collection=night-suits"
             onClick={onClose}
             className={getItemClass(params.isShop && params.collection === "night-suits")}
           >
-            Night Suits 🌙
+            Night Suits
           </Link>
           <Link
             href="/shop?collection=new-arrivals"
@@ -151,13 +172,6 @@ function MobileNavItems({
             className={getItemClass(params.isShop && params.collection === "best-sellers")}
           >
             Best Sellers
-          </Link>
-          <Link
-            href="/shop?collection=premium-picks"
-            onClick={onClose}
-            className={getItemClass(params.isShop && params.collection === "premium-picks")}
-          >
-            Premium Picks
           </Link>
         </div>
       </div>

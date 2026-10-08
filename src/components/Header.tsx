@@ -63,15 +63,23 @@ export default function Header() {
                       Collections
                     </h4>
                     <div className="flex flex-col gap-2">
-                      <Link href="/shop?collection=winter-collection" className="text-sm font-bold text-brand-pink hover:text-brand-navy transition-colors flex items-center gap-1 whitespace-nowrap">
-                        Winter Collection <span className="text-xs">❄️</span>
+                      <Link href="/shop?collection=top-wear" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">
+                        Top Wear
                       </Link>
-                      <Link href="/shop?collection=night-suits" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors flex items-center gap-1 whitespace-nowrap">
-                        Night Suits <span className="text-xs">🌙</span>
+                      <Link href="/shop?collection=bottom-wear" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">
+                        Bottom Wear
+                      </Link>
+                      <Link href="/shop?collection=top-bottom-sets" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">
+                        Top & Bottom Sets
+                      </Link>
+                      <Link href="/shop?collection=winter-collection" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">
+                        Winter Collection
+                      </Link>
+                      <Link href="/shop?collection=night-suits" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">
+                        Night Suits
                       </Link>
                       <Link href="/shop?collection=new-arrivals" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">New Arrivals</Link>
                       <Link href="/shop?collection=best-sellers" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">Best Sellers</Link>
-                      <Link href="/shop?collection=premium-picks" className="text-sm font-bold text-brand-navy hover:text-brand-pink transition-colors whitespace-nowrap">Premium Picks</Link>
                     </div>
                   </div>
 

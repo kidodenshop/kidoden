@@ -125,11 +125,20 @@ export default function ShopPageClient({
       bannerTitle = "Premium Picks";
       bannerDesc = "Our finest, high-quality selections for special occasions.";
     } else if (collection === "winter-collection") {
-      bannerTitle = "Winter Collection ❄️";
+      bannerTitle = "Winter Collection";
       bannerDesc = "Cozy fabrics, gentle layers, and snuggly outfits for chilly days.";
     } else if (collection === "night-suits") {
-      bannerTitle = "Kidoden Night Suits 🌙";
+      bannerTitle = "Kidoden Night Suits";
       bannerDesc = "Ultra-soft, breathable nightwear and cozy sets for sweet dreams and restful sleep.";
+    } else if (collection === "top-wear" || collection === "kidoden-top-wear") {
+      bannerTitle = "Kidoden Top Wear Collection";
+      bannerDesc = "Breezy t-shirts, vests, shirts, and tops crafted with ultra-soft organic fabrics for every adventure.";
+    } else if (collection === "bottom-wear" || collection === "kidoden-bottom-wear") {
+      bannerTitle = "Kidoden Bottom Wear Collection";
+      bannerDesc = "Ultra-comfortable joggers, shorts, pants, and skirts crafted for active little explorers.";
+    } else if (collection === "top-bottom-sets" || collection === "matching-sets" || collection === "coord-sets" || collection === "co-ord-sets") {
+      bannerTitle = "Top & Bottom Sets";
+      bannerDesc = "Effortlessly paired, perfectly coordinated two-piece sets made for play and comfort.";
     } else if (collection === "summer-collection") {
       bannerTitle = "Summer Collection";
       bannerDesc = "Breezy and bright outfits perfect for sunny days.";
@@ -173,7 +182,7 @@ export default function ShopPageClient({
             className="w-full h-full object-cover object-[center_30%]"
             priority
           />
-        ) : category === 'clothing' ? (
+        ) : category === 'clothing' || collection === 'top-wear' || collection === 'kidoden-top-wear' || collection === 'bottom-wear' || collection === 'kidoden-bottom-wear' || collection === 'top-bottom-sets' || collection === 'matching-sets' || collection === 'coord-sets' || collection === 'night-suits' ? (
           <Image
             src="/Banner/clothing_banner.jpg"
             alt="Clothing Collection Banner"
@@ -333,11 +342,13 @@ export default function ShopPageClient({
                 <h3 className="font-extrabold text-brand-navy text-sm mb-4 tracking-tight">Collections</h3>
                 <div className="flex flex-col gap-3">
                   {[
-                    { id: 'winter-collection', label: 'Winter Collection ❄️', href: collection === 'winter-collection' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'winter-collection' }), active: collection === 'winter-collection' },
-                    { id: 'night-suits', label: 'Night Suits 🌙', href: collection === 'night-suits' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'night-suits' }), active: collection === 'night-suits' },
+                    { id: 'top-wear', label: 'Top Wear', href: (collection === 'top-wear' || collection === 'kidoden-top-wear') ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'top-wear' }), active: collection === 'top-wear' || collection === 'kidoden-top-wear' },
+                    { id: 'bottom-wear', label: 'Bottom Wear', href: (collection === 'bottom-wear' || collection === 'kidoden-bottom-wear') ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'bottom-wear' }), active: collection === 'bottom-wear' || collection === 'kidoden-bottom-wear' },
+                    { id: 'top-bottom-sets', label: 'Top & Bottom Sets', href: (collection === 'top-bottom-sets' || collection === 'matching-sets' || collection === 'coord-sets') ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'top-bottom-sets' }), active: collection === 'top-bottom-sets' || collection === 'matching-sets' || collection === 'coord-sets' },
+                    { id: 'winter-collection', label: 'Winter Collection', href: collection === 'winter-collection' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'winter-collection' }), active: collection === 'winter-collection' },
+                    { id: 'night-suits', label: 'Night Suits', href: collection === 'night-suits' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'night-suits' }), active: collection === 'night-suits' },
                     { id: 'new-arrivals', label: 'New Arrivals', href: collection === 'new-arrivals' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'new-arrivals' }), active: collection === 'new-arrivals' },
-                    { id: 'best-sellers', label: 'Best Sellers', href: collection === 'best-sellers' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'best-sellers' }), active: collection === 'best-sellers' },
-                    { id: 'premium-picks', label: 'Premium Picks', href: collection === 'premium-picks' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'premium-picks' }), active: collection === 'premium-picks' }
+                    { id: 'best-sellers', label: 'Best Sellers', href: collection === 'best-sellers' ? getFilterLink({ collection: null }) : getFilterLink({ collection: 'best-sellers' }), active: collection === 'best-sellers' }
                   ].map((item) => (
                     <a
                       key={item.id}

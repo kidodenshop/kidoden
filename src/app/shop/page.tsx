@@ -59,6 +59,15 @@ export async function generateMetadata({
     } else if (collection === "night-suits") {
       title = "Kidoden Night Suits";
       description = "Discover Kidoden's ultra-soft, breathable nightwear, sleepsuits, and cozy pajama sets for little ones.";
+    } else if (collection === "top-wear" || collection === "kidoden-top-wear") {
+      title = "Kidoden Top Wear Collection";
+      description = "Discover Kidoden's soft, breathable, and cheerful top wear collection including t-shirts, vests, shirts, and tops for kids.";
+    } else if (collection === "bottom-wear" || collection === "kidoden-bottom-wear") {
+      title = "Kidoden Bottom Wear Collection";
+      description = "Discover Kidoden's ultra-comfortable, soft and durable bottom wear collection including joggers, shorts, pants, and skirts for kids.";
+    } else if (collection === "top-bottom-sets" || collection === "matching-sets" || collection === "coord-sets" || collection === "co-ord-sets") {
+      title = "Kidoden Top & Bottom Sets";
+      description = "Discover Kidoden's adorable coordinated top & bottom sets, co-ords, and matching two-piece outfits for kids.";
     }
   }
 
@@ -210,6 +219,92 @@ export default async function ShopPage({
               f.toLowerCase().includes("sleepsuit") ||
               f.toLowerCase().includes("pajama") ||
               f.toLowerCase().includes("pyjama")
+          ))
+      );
+    } else if (collection === "top-wear" || collection === "kidoden-top-wear") {
+      displayedProducts = displayedProducts.filter(
+        (p) =>
+          p.name.toLowerCase().includes("top") ||
+          p.name.toLowerCase().includes("shirt") ||
+          p.name.toLowerCase().includes("tee") ||
+          p.name.toLowerCase().includes("t-shirt") ||
+          p.name.toLowerCase().includes("vest") ||
+          p.name.toLowerCase().includes("kurta") ||
+          p.name.toLowerCase().includes("hoodie") ||
+          p.name.toLowerCase().includes("sweatshirt") ||
+          p.name.toLowerCase().includes("jacket") ||
+          p.description.toLowerCase().includes("top") ||
+          p.description.toLowerCase().includes("shirt") ||
+          p.description.toLowerCase().includes("tee") ||
+          p.description.toLowerCase().includes("t-shirt") ||
+          p.description.toLowerCase().includes("vest") ||
+          p.description.toLowerCase().includes("kurta") ||
+          p.description.toLowerCase().includes("hoodie") ||
+          p.description.toLowerCase().includes("sweatshirt") ||
+          p.description.toLowerCase().includes("jacket") ||
+          (p.features && p.features.some(
+            (f) =>
+              f.toLowerCase().includes("top") ||
+              f.toLowerCase().includes("top wear") ||
+              f.toLowerCase().includes("top-wear") ||
+              f.toLowerCase().includes("shirt") ||
+              f.toLowerCase().includes("tee") ||
+              f.toLowerCase().includes("t-shirt") ||
+              f.toLowerCase().includes("vest")
+          ))
+      );
+    } else if (collection === "bottom-wear" || collection === "kidoden-bottom-wear") {
+      displayedProducts = displayedProducts.filter(
+        (p) =>
+          p.name.toLowerCase().includes("bottom") ||
+          p.name.toLowerCase().includes("pant") ||
+          p.name.toLowerCase().includes("short") ||
+          p.name.toLowerCase().includes("jogger") ||
+          p.name.toLowerCase().includes("trouser") ||
+          p.name.toLowerCase().includes("skirt") ||
+          p.name.toLowerCase().includes("legging") ||
+          p.name.toLowerCase().includes("pyjama") ||
+          p.name.toLowerCase().includes("pajama") ||
+          p.description.toLowerCase().includes("bottom") ||
+          p.description.toLowerCase().includes("pant") ||
+          p.description.toLowerCase().includes("shorts") ||
+          p.description.toLowerCase().includes("jogger") ||
+          p.description.toLowerCase().includes("trouser") ||
+          p.description.toLowerCase().includes("skirt") ||
+          p.description.toLowerCase().includes("legging") ||
+          (p.features && p.features.some(
+            (f) =>
+              f.toLowerCase().includes("bottom") ||
+              f.toLowerCase().includes("bottom wear") ||
+              f.toLowerCase().includes("bottom-wear") ||
+              f.toLowerCase().includes("pant") ||
+              f.toLowerCase().includes("short") ||
+              f.toLowerCase().includes("jogger") ||
+              f.toLowerCase().includes("trouser") ||
+              f.toLowerCase().includes("skirt") ||
+              f.toLowerCase().includes("legging")
+          ))
+      );
+    } else if (collection === "top-bottom-sets" || collection === "matching-sets" || collection === "coord-sets" || collection === "co-ord-sets") {
+      displayedProducts = displayedProducts.filter(
+        (p) =>
+          p.name.toLowerCase().includes("set") ||
+          p.name.toLowerCase().includes("co-ord") ||
+          p.name.toLowerCase().includes("coord") ||
+          p.description.toLowerCase().includes("set") ||
+          p.description.toLowerCase().includes("two-piece") ||
+          p.description.toLowerCase().includes("co-ord") ||
+          p.description.toLowerCase().includes("coord") ||
+          p.description.toLowerCase().includes("matching") ||
+          p.description.toLowerCase().includes("paired with") ||
+          (p.features && p.features.some(
+            (f) =>
+              f.toLowerCase().includes("set") ||
+              f.toLowerCase().includes("top & bottom") ||
+              f.toLowerCase().includes("top and bottom") ||
+              f.toLowerCase().includes("co-ord") ||
+              f.toLowerCase().includes("coord") ||
+              f.toLowerCase().includes("matching")
           ))
       );
     } else if (collection === "summer-collection") {
