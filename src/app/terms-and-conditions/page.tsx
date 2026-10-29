@@ -5,10 +5,14 @@ export const metadata: Metadata = {
   title: "Terms & Conditions",
   description:
     "Read Kidoden's terms and conditions covering orders, payments, shipping, returns, cancellations and use of our website.",
+  alternates: {
+    canonical: "https://www.kidoden.in/terms-and-conditions",
+  },
   openGraph: {
     title: "Terms & Conditions | Kidoden",
     description:
       "Read Kidoden's terms and conditions covering orders, payments, shipping, returns, cancellations and use of our website.",
+    url: "https://www.kidoden.in/terms-and-conditions",
   },
   twitter: {
     card: "summary",

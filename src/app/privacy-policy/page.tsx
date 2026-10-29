@@ -5,10 +5,14 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Read Kidoden's privacy policy to understand how we collect, use, protect and handle your personal data and privacy.",
+  alternates: {
+    canonical: "https://www.kidoden.in/privacy-policy",
+  },
   openGraph: {
     title: "Privacy Policy | Kidoden",
     description:
       "Read Kidoden's privacy policy to understand how we collect, use, protect and handle your personal data and privacy.",
+    url: "https://www.kidoden.in/privacy-policy",
   },
   twitter: {
     card: "summary",

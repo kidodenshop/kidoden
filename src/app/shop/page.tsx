@@ -88,6 +88,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${title} | Kidoden`,
       description,
+      url: canonicalUrl,
     },
     twitter: {
       card: "summary",

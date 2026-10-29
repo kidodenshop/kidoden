@@ -20,9 +20,6 @@ export const metadata: Metadata = {
   },
   description:
     "Shop Kidoden for premium kids clothing, babywear and thoughtful gifts in India. Discover soft fabrics, playful styles and comfortable outfits made with love for little ones.",
-  alternates: {
-    canonical: "https://www.kidoden.in",
-  },
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -89,8 +86,9 @@ const jsonLdSchema = {
     {
       "@type": "WebSite",
       "@id": "https://www.kidoden.in/#website",
-      "url": "https://www.kidoden.in",
+      "url": "https://www.kidoden.in/",
       "name": "Kidoden",
+      "alternateName": "kidoden.in",
       "description": "Premium Kids Clothing, Babywear & Gifts in India",
       "publisher": {
         "@id": "https://www.kidoden.in/#organization"

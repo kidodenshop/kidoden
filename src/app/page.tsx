@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getProducts } from "@/lib/products";
@@ -13,6 +14,12 @@ import HomeScrollReveal from "@/components/HomeScrollReveal";
 import { getApprovedTestimonials } from "@/lib/testimonials";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.kidoden.in",
+  },
+};
 
 export default async function Home() {
   const [products, testimonials] = await Promise.all([
